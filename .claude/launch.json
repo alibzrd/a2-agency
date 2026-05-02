@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "a2-agency-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "dist", "-p", "5175"],
+      "port": 5175
+    }
+  ]
+}

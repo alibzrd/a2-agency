@@ -4,32 +4,31 @@ import { Layers, Zap, Globe } from 'lucide-react'
 
 const services = [
   {
-    icon: Layers,
+    Icon: Layers,
     title: 'Stratégie de Marque',
     subtitle: 'Branding & Identité',
-    description:
-      "Nous construisons des identités de marque cohérentes et mémorables. Logo, charte graphique, positionnement — chaque élément est pensé pour raconter votre histoire avec puissance et distinction.",
+    description: "Nous construisons des identités de marque cohérentes et mémorables. Logo, charte graphique, positionnement — chaque élément est pensé pour raconter votre histoire avec puissance et distinction.",
     features: ['Création de logo', 'Charte graphique', 'Positionnement', 'Guidelines'],
     color: '#1e5fff',
+    featured: false,
   },
   {
-    icon: Zap,
+    Icon: Zap,
     title: 'Création de Contenu',
     subtitle: 'Digital & Social Media',
-    description:
-      "Du contenu qui convertit. Posts, Reels, campagnes publicitaires, flyers — nous créons des visuels percutants et des messages calibrés pour capter l'attention sur tous vos canaux digitaux.",
+    description: "Du contenu qui convertit. Posts, Reels, campagnes publicitaires, flyers — nous créons des visuels percutants et des messages calibrés pour capter l'attention sur tous vos canaux.",
     features: ['Social media', 'Vidéo & Reels', 'Flyers & Print', 'Stratégie éditoriale'],
     color: '#0a3dcc',
     featured: true,
   },
   {
-    icon: Globe,
+    Icon: Globe,
     title: 'Développement Web',
     subtitle: 'Design UX/UI',
-    description:
-      "Des interfaces digitales qui impressionnent et convertissent. Sites vitrines, e-commerce, dashboards — nous allions esthétique haut de gamme et performance technique irréprochable.",
+    description: "Des interfaces digitales qui impressionnent et convertissent. Sites vitrines, e-commerce, dashboards — nous allions esthétique haut de gamme et performance technique irréprochable.",
     features: ['Site vitrine', 'E-commerce', 'UX/UI Design', 'Optimisation SEO'],
     color: '#1e5fff',
+    featured: false,
   },
 ]
 
@@ -38,91 +37,91 @@ export default function Services() {
   const inView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="services" className="relative py-32 px-6 overflow-hidden">
-      {/* Background accent */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-[#1e5fff]/5 blur-[120px]" />
+    <section id="services" className="a2-section" style={{ background: 'rgba(30,95,255,0.02)' }}>
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+        <div style={{
+          position: 'absolute', top: '50%', left: '50%',
+          transform: 'translate(-50%,-50%)',
+          width: '50rem', height: '25rem', borderRadius: '50%',
+          background: 'rgba(30,95,255,0.04)', filter: 'blur(120px)',
+        }} />
       </div>
 
-      <div className="max-w-6xl mx-auto">
+      <div className="a2-container">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-20"
+          className="a2-section-title"
         >
-          <span className="text-xs font-semibold tracking-[0.4em] text-[#1e5fff] uppercase">
-            Ce que nous faisons
-          </span>
-          <h2 className="mt-4 text-4xl md:text-5xl font-black text-white leading-tight">
-            Nos services
-          </h2>
-          <p className="mt-4 text-white/50 max-w-xl mx-auto text-lg leading-relaxed">
+          <span className="a2-section-label">Ce que nous faisons</span>
+          <h2 className="a2-section-heading">Nos services</h2>
+          <p className="a2-section-sub">
             Une offre complète pour couvrir chaque dimension de votre communication.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {services.map((service, i) => {
-            const Icon = service.icon
-            return (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
-                className={`relative p-8 rounded-2xl border transition-all duration-500 group hover:-translate-y-1 ${
-                  service.featured
-                    ? 'bg-[#1e5fff]/10 border-[#1e5fff]/40 hover:border-[#1e5fff]/70'
-                    : 'bg-white/3 border-white/8 hover:border-[#1e5fff]/30'
-                }`}
-              >
-                {service.featured && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#1e5fff] text-white text-xs font-bold tracking-wider uppercase">
-                    Populaire
-                  </div>
-                )}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 20rem), 1fr))',
+          gap: '1.5rem',
+        }}>
+          {services.map((service, i) => (
+            <motion.div
+              key={service.title}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.6, delay: i * 0.15 }}
+              style={{
+                position: 'relative', padding: '2rem', borderRadius: '1rem',
+                border: service.featured ? '1px solid rgba(30,95,255,0.4)' : '1px solid rgba(255,255,255,0.07)',
+                background: service.featured ? 'rgba(30,95,255,0.08)' : 'rgba(255,255,255,0.02)',
+                transition: 'transform 0.3s, border-color 0.3s',
+                overflow: 'hidden',
+              }}
+              whileHover={{ y: -4 }}
+            >
+              {service.featured && (
+                <div style={{
+                  position: 'absolute', top: '-1px', left: '50%', transform: 'translateX(-50%)',
+                  padding: '0.25rem 1rem', borderRadius: '0 0 0.5rem 0.5rem',
+                  background: '#1e5fff', color: '#fff',
+                  fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase',
+                }}>Populaire</div>
+              )}
 
-                {/* Icon */}
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
-                  style={{
-                    background: `linear-gradient(135deg, ${service.color}22, ${service.color}44)`,
-                    border: `1px solid ${service.color}33`,
-                  }}
-                >
-                  <Icon size={20} className="text-[#4d8aff]" />
-                </div>
+              <div style={{
+                width: '3rem', height: '3rem', borderRadius: '0.75rem',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                marginBottom: '1.5rem',
+                background: `linear-gradient(135deg, ${service.color}22, ${service.color}44)`,
+                border: `1px solid ${service.color}33`,
+              }}>
+                <service.Icon size={20} color="#4d8aff" />
+              </div>
 
-                <h3 className="text-xl font-bold text-white mb-1">{service.title}</h3>
-                <p className="text-xs text-[#6b9fff] uppercase tracking-widest mb-4">
-                  {service.subtitle}
-                </p>
-                <p className="text-white/55 text-sm leading-relaxed mb-6">
-                  {service.description}
-                </p>
+              <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '1.1rem', fontWeight: 700, color: '#fff', marginBottom: '0.25rem' }}>
+                {service.title}
+              </h3>
+              <p style={{ fontSize: '0.7rem', color: '#6b9fff', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '1rem' }}>
+                {service.subtitle}
+              </p>
+              <p style={{ color: 'rgba(240,244,255,0.55)', fontSize: '0.875rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+                {service.description}
+              </p>
 
-                {/* Features */}
-                <ul className="space-y-2">
-                  {service.features.map((feat) => (
-                    <li key={feat} className="flex items-center gap-2 text-sm text-white/50">
-                      <span className="w-1 h-1 rounded-full bg-[#1e5fff] flex-shrink-0" />
-                      {feat}
-                    </li>
-                  ))}
-                </ul>
-
-                <div
-                  className="absolute bottom-0 left-0 right-0 h-px rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{
-                    background: `linear-gradient(90deg, transparent, ${service.color}80, transparent)`,
-                  }}
-                />
-              </motion.div>
-            )
-          })}
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                {service.features.map((feat) => (
+                  <li key={feat} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: 'rgba(240,244,255,0.5)' }}>
+                    <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#1e5fff', flexShrink: 0 }} />
+                    {feat}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

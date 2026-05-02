@@ -13,6 +13,14 @@ const LiIcon = () => (
   </svg>
 )
 
+const inputStyle = {
+  width: '100%', padding: '0.875rem 1rem', borderRadius: '0.75rem',
+  background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)',
+  color: '#f0f4ff', fontSize: '0.875rem', outline: 'none',
+  transition: 'border-color 0.2s, background 0.2s',
+  fontFamily: 'Inter, sans-serif',
+}
+
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [sent, setSent] = useState(false)
@@ -20,7 +28,6 @@ export default function Contact() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
-
   const handleSubmit = (e) => {
     e.preventDefault()
     setSent(true)
@@ -29,30 +36,27 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="relative py-32 px-6 overflow-hidden">
-      {/* Glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-[#1e5fff]/8 blur-[120px] pointer-events-none" />
+    <section id="contact" className="a2-section" style={{ background: 'rgba(30,95,255,0.015)' }}>
+      <div style={{
+        position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)',
+        width: '37rem', height: '18rem', borderRadius: '50%',
+        background: 'rgba(30,95,255,0.06)', filter: 'blur(120px)', pointerEvents: 'none',
+      }} />
 
-      <div className="max-w-5xl mx-auto">
+      <div className="a2-container">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-20"
+          className="a2-section-title"
         >
-          <span className="text-xs font-semibold tracking-[0.4em] text-[#1e5fff] uppercase">
-            Travaillons ensemble
-          </span>
-          <h2 className="mt-4 text-4xl md:text-5xl font-black text-white leading-tight">
-            Démarrons votre projet
-          </h2>
-          <p className="mt-4 text-white/50 max-w-xl mx-auto text-lg leading-relaxed">
-            Un projet en tête ? Parlez-nous. Nous vous répondons sous 24h.
-          </p>
+          <span className="a2-section-label">Travaillons ensemble</span>
+          <h2 className="a2-section-heading">Démarrons votre projet</h2>
+          <p className="a2-section-sub">Un projet en tête ? Parlez-nous. Nous vous répondons sous 24h.</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-5 gap-12">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 24rem), 1fr))', gap: '3rem', alignItems: 'start' }}>
           {/* Form */}
           <motion.form
             initial={{ opacity: 0, x: -30 }}
@@ -60,64 +64,30 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
             onSubmit={handleSubmit}
-            className="md:col-span-3 space-y-5"
+            style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}
           >
-            <div className="grid sm:grid-cols-2 gap-5">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
               <div>
-                <label className="block text-xs text-white/40 uppercase tracking-widest mb-2">
-                  Nom
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  required
-                  placeholder="Votre nom"
-                  className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/25 text-sm focus:outline-none focus:border-[#1e5fff]/60 focus:bg-[#1e5fff]/5 transition-all duration-200"
-                />
+                <label style={{ display: 'block', fontSize: '0.65rem', color: 'rgba(240,244,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '0.5rem' }}>Nom</label>
+                <input type="text" name="name" value={form.name} onChange={handleChange} required placeholder="Votre nom" style={inputStyle} />
               </div>
               <div>
-                <label className="block text-xs text-white/40 uppercase tracking-widest mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  required
-                  placeholder="votre@email.com"
-                  className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/25 text-sm focus:outline-none focus:border-[#1e5fff]/60 focus:bg-[#1e5fff]/5 transition-all duration-200"
-                />
+                <label style={{ display: 'block', fontSize: '0.65rem', color: 'rgba(240,244,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '0.5rem' }}>Email</label>
+                <input type="email" name="email" value={form.email} onChange={handleChange} required placeholder="votre@email.com" style={inputStyle} />
               </div>
             </div>
             <div>
-              <label className="block text-xs text-white/40 uppercase tracking-widest mb-2">
-                Message
-              </label>
-              <textarea
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                required
-                rows={6}
-                placeholder="Décrivez votre projet..."
-                className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/25 text-sm focus:outline-none focus:border-[#1e5fff]/60 focus:bg-[#1e5fff]/5 transition-all duration-200 resize-none"
-              />
+              <label style={{ display: 'block', fontSize: '0.65rem', color: 'rgba(240,244,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '0.5rem' }}>Message</label>
+              <textarea name="message" value={form.message} onChange={handleChange} required rows={6} placeholder="Décrivez votre projet..." style={{ ...inputStyle, resize: 'none' }} />
             </div>
-            <button
-              type="submit"
-              className="group w-full flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-[#1e5fff] text-white font-semibold text-sm tracking-wide hover:bg-[#1e5fff]/80 transition-all duration-300 hover:shadow-[0_0_30px_rgba(30,95,255,0.4)]"
-            >
-              {sent ? (
-                'Message envoyé ✓'
-              ) : (
-                <>
-                  Envoyer le message
-                  <Send size={15} className="group-hover:translate-x-1 transition-transform duration-200" />
-                </>
-              )}
+            <button type="submit" style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem',
+              padding: '1rem 2rem', borderRadius: '0.75rem',
+              background: '#1e5fff', color: '#fff', border: 'none',
+              fontWeight: 600, fontSize: '0.875rem', letterSpacing: '0.05em',
+              cursor: 'pointer', transition: 'all 0.3s', fontFamily: 'Inter, sans-serif',
+            }}>
+              {sent ? 'Message envoyé ✓' : <><span>Envoyer le message</span><Send size={15} /></>}
             </button>
           </motion.form>
 
@@ -127,53 +97,52 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="md:col-span-2 space-y-8"
+            style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}
           >
             <div>
-              <h3 className="text-lg font-bold text-white mb-6">Coordonnées</h3>
-              <div className="space-y-4">
-                <a
-                  href="mailto:contact@a2agency.fr"
-                  className="flex items-center gap-3 text-white/55 hover:text-white transition-colors group"
-                >
-                  <div className="w-9 h-9 rounded-lg bg-[#1e5fff]/15 border border-[#1e5fff]/25 flex items-center justify-center flex-shrink-0 group-hover:bg-[#1e5fff]/25 transition-colors">
-                    <Mail size={14} className="text-[#4d8aff]" />
+              <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '1.05rem', fontWeight: 700, color: '#fff', marginBottom: '1.25rem' }}>Coordonnées</h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                {[
+                  { icon: <Mail size={14} color="#4d8aff" />, text: 'contact@a2agency.fr', href: 'mailto:contact@a2agency.fr' },
+                  { icon: <MapPin size={14} color="#4d8aff" />, text: 'France', href: null },
+                ].map(({ icon, text, href }) => (
+                  <div key={text} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <div style={{
+                      width: '2.25rem', height: '2.25rem', borderRadius: '0.5rem',
+                      background: 'rgba(30,95,255,0.15)', border: '1px solid rgba(30,95,255,0.25)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                    }}>{icon}</div>
+                    {href
+                      ? <a href={href} style={{ fontSize: '0.875rem', color: 'rgba(240,244,255,0.55)', textDecoration: 'none' }}>{text}</a>
+                      : <span style={{ fontSize: '0.875rem', color: 'rgba(240,244,255,0.55)' }}>{text}</span>
+                    }
                   </div>
-                  <span className="text-sm">contact@a2agency.fr</span>
-                </a>
-                <div className="flex items-center gap-3 text-white/55">
-                  <div className="w-9 h-9 rounded-lg bg-[#1e5fff]/15 border border-[#1e5fff]/25 flex items-center justify-center flex-shrink-0">
-                    <MapPin size={14} className="text-[#4d8aff]" />
-                  </div>
-                  <span className="text-sm">France</span>
-                </div>
+                ))}
               </div>
             </div>
 
             <div>
-              <h3 className="text-sm font-semibold text-white/40 uppercase tracking-widest mb-4">
-                Réseaux sociaux
-              </h3>
-              <div className="flex gap-3">
+              <h3 style={{ fontSize: '0.7rem', fontWeight: 600, color: 'rgba(240,244,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '1rem' }}>Réseaux sociaux</h3>
+              <div style={{ display: 'flex', gap: '0.75rem' }}>
                 {[
-                  { Icon: IgIcon, label: 'Instagram', href: '#' },
-                  { Icon: LiIcon, label: 'LinkedIn', href: '#' },
-                ].map(({ Icon, label, href }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    aria-label={label}
-                    className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-[#1e5fff]/40 hover:bg-[#1e5fff]/10 transition-all duration-200"
-                  >
-                    <Icon size={15} />
+                  { Icon: IgIcon, label: 'Instagram' },
+                  { Icon: LiIcon, label: 'LinkedIn' },
+                ].map(({ Icon, label }) => (
+                  <a key={label} href="#" aria-label={label} style={{
+                    width: '2.5rem', height: '2.5rem', borderRadius: '0.75rem',
+                    background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    color: 'rgba(240,244,255,0.4)', textDecoration: 'none', transition: 'all 0.2s',
+                  }}>
+                    <Icon />
                   </a>
                 ))}
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#1e5fff]/8 border border-[#1e5fff]/20">
-              <p className="text-sm text-white/60 leading-relaxed">
-                <strong className="text-white font-semibold">Réponse garantie sous 24h.</strong>{' '}
+            <div style={{ padding: '1.5rem', borderRadius: '1rem', background: 'rgba(30,95,255,0.06)', border: '1px solid rgba(30,95,255,0.2)' }}>
+              <p style={{ fontSize: '0.875rem', color: 'rgba(240,244,255,0.6)', lineHeight: 1.7 }}>
+                <strong style={{ color: '#fff', fontWeight: 600 }}>Réponse garantie sous 24h.</strong>{' '}
                 Nous prenons le temps d'étudier chaque projet avant de vous proposer une solution sur mesure.
               </p>
             </div>

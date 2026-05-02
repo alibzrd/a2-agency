@@ -3,53 +3,97 @@ import { ArrowRight, Sparkles } from 'lucide-react'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background glow orbs */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#1e5fff]/15 blur-[120px]" />
-        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-[#0a3dcc]/10 blur-[100px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#1e5fff]/5 blur-[160px]" />
+    <section style={{
+      position: 'relative',
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      overflow: 'hidden',
+      paddingTop: '5rem',
+    }}>
+      {/* Glow orbs */}
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+        <div style={{
+          position: 'absolute', top: '25%', left: '25%',
+          width: '24rem', height: '24rem', borderRadius: '50%',
+          background: 'rgba(30,95,255,0.12)', filter: 'blur(120px)',
+        }} />
+        <div style={{
+          position: 'absolute', bottom: '33%', right: '25%',
+          width: '20rem', height: '20rem', borderRadius: '50%',
+          background: 'rgba(10,61,204,0.08)', filter: 'blur(100px)',
+        }} />
       </div>
 
-      {/* Grid overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-        }}
-      />
+      {/* Grid */}
+      <div style={{
+        position: 'absolute', inset: 0, opacity: 0.03,
+        backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
+        backgroundSize: '60px 60px',
+      }} />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <div style={{
+        position: 'relative', zIndex: 10,
+        width: '100%', maxWidth: '60rem',
+        marginLeft: 'auto', marginRight: 'auto',
+        padding: '0 1.5rem',
+        textAlign: 'center',
+      }}>
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#1e5fff]/30 bg-[#1e5fff]/10 text-[#6b9fff] text-xs font-semibold tracking-widest uppercase mb-8"
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+            padding: '0.5rem 1rem', borderRadius: '9999px',
+            border: '1px solid rgba(30,95,255,0.3)',
+            background: 'rgba(30,95,255,0.1)',
+            color: '#6b9fff', fontSize: '0.7rem',
+            fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase',
+            marginBottom: '2rem',
+          }}
         >
           <Sparkles size={12} />
           Agence Communication 360°
         </motion.div>
 
-        {/* Main title */}
+        {/* Title */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight text-white mb-6"
+          style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: 'clamp(2.8rem, 8vw, 5.5rem)',
+            fontWeight: 900,
+            lineHeight: 1.05,
+            letterSpacing: '-0.02em',
+            color: '#ffffff',
+            marginBottom: '1.5rem',
+          }}
         >
           Votre communication
           <br />
-          <span className="relative inline-block">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1e5fff] via-[#4d8aff] to-[#1e5fff]">
-              à la puissance
-            </span>
-            <sup className="text-[#1e5fff] text-4xl md:text-5xl font-black ml-1 align-super">
-              2
-            </sup>
+          <span style={{
+            background: 'linear-gradient(135deg, #1e5fff, #6b9fff, #1e5fff)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}>
+            à la puissance
           </span>
+          <sup style={{
+            color: '#1e5fff',
+            fontSize: 'clamp(1.5rem, 4vw, 3rem)',
+            fontWeight: 900,
+            marginLeft: '0.2rem',
+            verticalAlign: 'super',
+            WebkitTextFillColor: '#1e5fff',
+          }}>
+            2
+          </sup>
         </motion.h1>
 
         {/* Subtitle */}
@@ -57,7 +101,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-lg md:text-xl text-white/50 font-light max-w-2xl mx-auto leading-relaxed mb-12"
+          style={{
+            fontSize: '1.1rem', color: 'rgba(240,244,255,0.5)',
+            fontWeight: 300, lineHeight: 1.8,
+            maxWidth: '36rem', margin: '0 auto 3rem',
+          }}
         >
           Stratégie de marque, création de contenu et développement web —
           deux expertises fusionnées pour un impact exponentiel.
@@ -68,18 +116,36 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}
         >
           <a
             href="#contact"
-            className="group flex items-center gap-3 px-8 py-4 rounded-full bg-[#1e5fff] text-white font-semibold text-sm tracking-wide hover:bg-[#1e5fff]/80 transition-all duration-300 hover:shadow-[0_0_40px_rgba(30,95,255,0.5)] hover:gap-4"
+            className="group"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
+              padding: '1rem 2rem', borderRadius: '9999px',
+              background: '#1e5fff', color: '#fff',
+              fontWeight: 600, fontSize: '0.875rem', letterSpacing: '0.05em',
+              textDecoration: 'none', transition: 'all 0.3s',
+              boxShadow: '0 0 0 rgba(30,95,255,0)',
+            }}
+            onMouseEnter={e => e.currentTarget.style.boxShadow = '0 0 40px rgba(30,95,255,0.5)'}
+            onMouseLeave={e => e.currentTarget.style.boxShadow = '0 0 0 rgba(30,95,255,0)'}
           >
-            Obtenir un devis
-            <ArrowRight size={16} className="transition-all duration-300" />
+            Obtenir un devis <ArrowRight size={16} />
           </a>
           <a
             href="#portfolio"
-            className="px-8 py-4 rounded-full border border-white/15 text-white/70 font-semibold text-sm tracking-wide hover:border-white/30 hover:text-white transition-all duration-300 hover:bg-white/5"
+            style={{
+              display: 'inline-flex', alignItems: 'center',
+              padding: '1rem 2rem', borderRadius: '9999px',
+              border: '1px solid rgba(255,255,255,0.15)',
+              color: 'rgba(240,244,255,0.7)',
+              fontWeight: 600, fontSize: '0.875rem',
+              textDecoration: 'none', transition: 'all 0.3s',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'; e.currentTarget.style.color = '#fff' }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'; e.currentTarget.style.color = 'rgba(240,244,255,0.7)' }}
           >
             Voir nos projets
           </a>
@@ -90,20 +156,28 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-20 grid grid-cols-3 gap-8 max-w-lg mx-auto"
+          style={{
+            marginTop: '5rem',
+            display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '2rem', maxWidth: '28rem',
+            marginLeft: 'auto', marginRight: 'auto',
+          }}
         >
           {[
             { value: '50+', label: 'Projets livrés' },
             { value: '30+', label: 'Clients satisfaits' },
             { value: '360°', label: 'Communication' },
           ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-2xl md:text-3xl font-black text-white mb-1">
-                {stat.value}
-              </div>
-              <div className="text-xs text-white/40 uppercase tracking-wider">
-                {stat.label}
-              </div>
+            <div key={stat.label} style={{ textAlign: 'center' }}>
+              <div style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: '1.75rem', fontWeight: 900, color: '#fff',
+                marginBottom: '0.25rem',
+              }}>{stat.value}</div>
+              <div style={{
+                fontSize: '0.65rem', color: 'rgba(240,244,255,0.4)',
+                textTransform: 'uppercase', letterSpacing: '0.1em',
+              }}>{stat.label}</div>
             </div>
           ))}
         </motion.div>
@@ -114,15 +188,20 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        style={{
+          position: 'absolute', bottom: '2.5rem',
+          left: '50%', transform: 'translateX(-50%)',
+          display: 'flex', flexDirection: 'column',
+          alignItems: 'center', gap: '0.5rem',
+        }}
       >
-        <span className="text-xs text-white/30 tracking-widest uppercase">
+        <span style={{ fontSize: '0.65rem', color: 'rgba(240,244,255,0.3)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
           Scroll
         </span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-px h-10 bg-gradient-to-b from-white/30 to-transparent"
+          style={{ width: '1px', height: '2.5rem', background: 'linear-gradient(to bottom, rgba(255,255,255,0.3), transparent)' }}
         />
       </motion.div>
     </section>

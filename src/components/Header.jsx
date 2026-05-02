@@ -25,78 +25,55 @@ export default function Header() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'bg-[#060912]/90 backdrop-blur-xl border-b border-white/5 py-3'
-          : 'bg-transparent py-6'
-      }`}
+      style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
+        transition: 'all 0.5s',
+        background: scrolled ? 'rgba(6,9,18,0.9)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(20px)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.05)' : 'none',
+        padding: scrolled ? '0.75rem 0' : '1.5rem 0',
+      }}
     >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
-        <a href="#" className="flex items-center group">
-          <Logo size={36} withText={true} />
+      <div style={{
+        maxWidth: '72rem', margin: '0 auto', padding: '0 1.5rem',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      }}>
+        <a href="#" style={{ textDecoration: 'none' }}>
+          <Logo size={36} withText />
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-white/60 hover:text-white transition-colors duration-200 relative group"
+              style={{
+                fontSize: '0.875rem', fontWeight: 500,
+                color: 'rgba(240,244,255,0.6)',
+                textDecoration: 'none', transition: 'color 0.2s',
+              }}
+              onMouseEnter={e => e.currentTarget.style.color = '#fff'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(240,244,255,0.6)'}
             >
               {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#1e5fff] group-hover:w-full transition-all duration-300" />
             </a>
           ))}
           <a
             href="#contact"
-            className="px-5 py-2 rounded-full bg-[#1e5fff] text-white text-sm font-semibold hover:bg-[#1e5fff]/80 transition-all duration-200 hover:shadow-[0_0_20px_rgba(30,95,255,0.4)]"
+            style={{
+              padding: '0.5rem 1.25rem', borderRadius: '9999px',
+              background: '#1e5fff', color: '#fff',
+              fontSize: '0.875rem', fontWeight: 600,
+              textDecoration: 'none', transition: 'all 0.2s',
+            }}
+            onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
+            onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
             Devis gratuit
           </a>
         </nav>
-
-        {/* Mobile burger */}
-        <button
-          className="md:hidden text-white/70 hover:text-white transition-colors"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
       </div>
-
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#060912]/95 backdrop-blur-xl border-t border-white/5"
-          >
-            <nav className="flex flex-col px-6 py-4 gap-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="text-white/70 hover:text-white py-2 text-sm font-medium transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
-              <a
-                href="#contact"
-                onClick={() => setMenuOpen(false)}
-                className="mt-2 px-5 py-3 rounded-full bg-[#1e5fff] text-white text-sm font-semibold text-center"
-              >
-                Devis gratuit
-              </a>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.header>
   )
 }

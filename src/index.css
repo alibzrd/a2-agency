@@ -30,6 +30,65 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
 }
 
+/* ── Layout helpers garantis ── */
+.a2-container {
+  width: 100%;
+  max-width: 72rem;   /* ~1152px = max-w-6xl */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.a2-container-md {
+  width: 100%;
+  max-width: 64rem;   /* ~1024px = max-w-5xl */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.a2-section {
+  position: relative;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  overflow: hidden;
+}
+
+.a2-section-title {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.a2-section-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  color: #1e5fff;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.a2-section-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.a2-section-sub {
+  margin-top: 1rem;
+  color: rgba(240,244,255,0.5);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 38rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: #060912; }
 ::-webkit-scrollbar-thumb { background: #1e5fff; border-radius: 2px; }
