@@ -21,6 +21,27 @@ const webClients = [
 
 const clients = [
   {
+    name: 'House Barber',
+    description: 'Identité visuelle sur les réseaux pour un barbershop — visuels de recrutement et stories à la une.',
+    categories: [
+      {
+        name: 'Recrutement',
+        images: [
+          '/projects/House Barber/HOUSE BARBER - Recrute coiffeurs (1080 x 1920 px).png',
+        ],
+      },
+      {
+        name: 'Stories à la une',
+        images: [
+          '/projects/House Barber/House Barber stories a la une/2.png',
+          '/projects/House Barber/House Barber stories a la une/9.png',
+          '/projects/House Barber/House Barber stories a la une/10.png',
+          '/projects/House Barber/House Barber stories a la une/11.png',
+        ],
+      },
+    ],
+  },
+  {
     name: 'Affiches Football',
     description: 'Affiches et visuels sportifs — matchdays, scores et portraits pour clubs et joueurs.',
     categories: [
