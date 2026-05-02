@@ -25,7 +25,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, ease: 'easeOut' }}
-          style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}
+          style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.5rem' }}
         >
           <img
             src={logoSrc}
