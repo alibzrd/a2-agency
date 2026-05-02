@@ -5,9 +5,9 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 const webClients = [
   {
     name: 'Clear Glass',
-    description: 'Site vitrine développé pour un spécialiste du vitrage — design épuré, UX optimisée.',
+    description: 'Identité digitale complète pour un spécialiste du vitrage — site vitrine épuré et campagne de visuels publicitaires sur-mesure.',
     url: 'https://clear-glass.fr',
-    tag: 'Site Web',
+    tag: 'Web & Ads',
     ads: [
       '/projects/Clear Glass/1.png',
       '/projects/Clear Glass/2.png',
