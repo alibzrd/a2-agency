@@ -8,6 +8,14 @@ const webClients = [
     description: 'Site vitrine développé pour un spécialiste du vitrage — design épuré, UX optimisée.',
     url: 'https://clear-glass.fr',
     tag: 'Site Web',
+    ads: [
+      '/projects/Clear Glass/1.png',
+      '/projects/Clear Glass/2.png',
+      '/projects/Clear Glass/3.png',
+      '/projects/Clear Glass/4.png',
+      '/projects/Clear Glass/5.png',
+      '/projects/Clear Glass/6.png',
+    ],
   },
 ]
 
@@ -190,6 +198,51 @@ export default function Portfolio() {
                 aria-label={`Visiter ${client.name}`}
               />
             </div>
+
+            {/* Ads gallery */}
+            {client.ads && client.ads.length > 0 && (
+              <div style={{ marginTop: '1.75rem' }}>
+                <p style={{ fontSize: '0.68rem', fontWeight: 700, color: 'rgba(194,231,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '1rem' }}>
+                  Visuels Ads
+                </p>
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 180px), 1fr))',
+                  gap: '0.75rem',
+                }}>
+                  {client.ads.map((src, i) => (
+                    <motion.div
+                      key={src}
+                      whileHover={{ scale: 1.03 }}
+                      onClick={() => setLightbox({ images: client.ads, index: i })}
+                      style={{
+                        position: 'relative', borderRadius: '0.75rem',
+                        overflow: 'hidden', cursor: 'pointer',
+                        aspectRatio: '1/1',
+                        border: '1px solid rgba(194,231,255,0.1)',
+                      }}
+                    >
+                      <img
+                        src={src}
+                        alt={`${client.name} — Ad ${i + 1}`}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                      />
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        whileHover={{ opacity: 1 }}
+                        style={{
+                          position: 'absolute', inset: 0,
+                          background: 'rgba(6,9,18,0.5)',
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        }}
+                      >
+                        <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#c2e7ff', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Agrandir</span>
+                      </motion.div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            )}
           </motion.div>
         ))}
 
