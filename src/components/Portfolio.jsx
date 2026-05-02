@@ -26,7 +26,7 @@ const clients = [
         ],
       },
       {
-        name: 'Flyer Bubble',
+        name: 'Flyer Boissons',
         images: [
           '/projects/Smash Gourmet/Flyer bubble/1.png',
           '/projects/Smash Gourmet/Flyer bubble/2.png',
