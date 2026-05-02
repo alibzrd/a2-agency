@@ -37,7 +37,7 @@ export default function Header() {
     >
       <div style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <a href="#" style={{ textDecoration: 'none' }}>
-          <img src={logoSrc} alt="A2 Agency" style={{ height: '64px', width: 'auto', filter: 'brightness(0) invert(1) sepia(1) saturate(0.4) hue-rotate(190deg) brightness(1.05)' }} />
+          <img src={logoSrc} alt="A2 Agency" style={{ height: '64px', width: 'auto', filter: 'brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(195deg) brightness(1.1)' }} />
         </a>
 
         <nav style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
