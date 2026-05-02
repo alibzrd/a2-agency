@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import Logo from './Logo'
+const logoSrc = '/a2 logo transpa.png'
 
 const navLinks = [
   { label: 'Histoire', href: '#storytelling' },
@@ -37,24 +37,7 @@ export default function Header() {
     >
       <div style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <a href="#" style={{ textDecoration: 'none' }}>
-          {/* Logo horizontal compact dans header */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <svg width="36" height="36" viewBox="0 0 200 200" fill="none">
-              <defs>
-                <linearGradient id="hGrad" x1="60" y1="20" x2="140" y2="180" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stopColor="#ddeeff" /><stop offset="100%" stopColor="#7aaed8" />
-                </linearGradient>
-              </defs>
-              <path d="M 100 18 A 82 82 0 1 1 34 151" stroke="#c0d8f0" strokeWidth="6" strokeLinecap="round" fill="none" />
-              <path d="M 166 49 A 82 82 0 0 1 100 182" stroke="#c0d8f0" strokeWidth="6" strokeLinecap="round" fill="none" opacity="0.4" />
-              <text x="100" y="158" textAnchor="middle" fontFamily="Montserrat, sans-serif" fontWeight="900" fontStyle="italic" fontSize="148" fill="url(#hGrad)">A</text>
-              <text x="148" y="60" fontFamily="Montserrat, sans-serif" fontWeight="700" fontSize="40" fill="#c0d8f0">2</text>
-            </svg>
-            <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
-              <span style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, fontSize: '1rem', color: '#e8f0ff' }}>A<sup style={{ color: '#4d8aff', fontSize: '0.6rem' }}>2</sup></span>
-              <span style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 300, fontSize: '0.45rem', color: 'rgba(232,240,255,0.5)', letterSpacing: '0.35em', textTransform: 'uppercase' }}>AGENCY</span>
-            </div>
-          </div>
+          <img src={logoSrc} alt="A2 Agency" style={{ height: '48px', width: 'auto' }} />
         </a>
 
         <nav style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>

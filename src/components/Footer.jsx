@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 
+const logoSrc = '/a2 logo transpa.png'
+
 const IgIcon = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
 const LiIcon = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
 const XIcon = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -10,19 +12,7 @@ export default function Footer() {
       <div className="a2-container">
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '3rem', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '3rem' }}>
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '0.75rem' }}>
-              <svg width="32" height="32" viewBox="0 0 200 200" fill="none">
-                <defs><linearGradient id="fGrad" x1="60" y1="20" x2="140" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stopColor="#ddeeff"/><stop offset="100%" stopColor="#7aaed8"/></linearGradient></defs>
-                <path d="M 100 18 A 82 82 0 1 1 34 151" stroke="#c0d8f0" strokeWidth="6" strokeLinecap="round" fill="none"/>
-                <path d="M 166 49 A 82 82 0 0 1 100 182" stroke="#c0d8f0" strokeWidth="6" strokeLinecap="round" fill="none" opacity="0.4"/>
-                <text x="100" y="158" textAnchor="middle" fontFamily="Montserrat, sans-serif" fontWeight="900" fontStyle="italic" fontSize="148" fill="url(#fGrad)">A</text>
-                <text x="148" y="60" fontFamily="Montserrat, sans-serif" fontWeight="700" fontSize="40" fill="#c0d8f0">2</text>
-              </svg>
-              <div>
-                <div style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, fontSize: '1rem', color: '#e8f0ff' }}>A<sup style={{ color: '#4d8aff', fontSize: '0.6rem' }}>2</sup></div>
-                <div style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 300, fontSize: '0.45rem', color: 'rgba(232,240,255,0.4)', letterSpacing: '0.35em', textTransform: 'uppercase' }}>AGENCY</div>
-              </div>
-            </div>
+            <img src={logoSrc} alt="A2 Agency" style={{ height: '56px', width: 'auto', marginBottom: '0.75rem' }} />
             <p style={{ fontSize: '0.8rem', color: 'rgba(232,240,255,0.3)', maxWidth: '14rem', lineHeight: 1.7 }}>Votre communication à la puissance deux.</p>
           </motion.div>
 

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Sparkles } from 'lucide-react'
-import Logo from './Logo'
+
+const logoSrc = '/a2 logo transpa.png'
 
 export default function Hero() {
   return (
@@ -24,9 +25,13 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, ease: 'easeOut' }}
-          style={{ display: 'flex', justifyContent: 'center', marginBottom: '3rem' }}
+          style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}
         >
-          <Logo size={140} showAgency={true} />
+          <img
+            src={logoSrc}
+            alt="A2 Agency"
+            style={{ width: '220px', height: 'auto', filter: 'drop-shadow(0 0 30px rgba(30,95,255,0.3))' }}
+          />
         </motion.div>
 
         {/* Badge */}
