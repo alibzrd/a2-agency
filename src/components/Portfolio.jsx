@@ -21,6 +21,23 @@ const webClients = [
 
 const clients = [
   {
+    name: '5 CINQ',
+    description: 'Menu flyer pour une pizzeria — mise en page appétissante et identité visuelle percutante.',
+    categories: [
+      {
+        name: 'Menu Flyer',
+        images: [
+          '/projects/5 CINQ/3.png',
+          '/projects/5 CINQ/4.png',
+          '/projects/5 CINQ/5.png',
+          '/projects/5 CINQ/6.png',
+          '/projects/5 CINQ/7.png',
+          '/projects/5 CINQ/8.png',
+        ],
+      },
+    ],
+  },
+  {
     name: 'House Barber',
     description: 'Identité visuelle sur les réseaux pour un barbershop — visuels de recrutement et stories à la une.',
     categories: [
