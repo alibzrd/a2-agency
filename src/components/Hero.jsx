@@ -41,7 +41,7 @@ export default function Hero() {
             display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
             padding: '0.45rem 1.1rem', borderRadius: '9999px',
             border: '1px solid rgba(171,193,216,0.25)', background: 'rgba(171,193,216,0.1)',
-            color: '#cfdff0', fontSize: '0.7rem', fontWeight: 700,
+            color: '#c2e7ff', fontSize: '0.7rem', fontWeight: 700,
             letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '2rem',
           }}
         >
@@ -60,10 +60,10 @@ export default function Hero() {
         >
           Votre communication
           <br />
-          <span style={{ background: 'linear-gradient(135deg, #abc1d8, #8198b1)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+          <span style={{ background: 'linear-gradient(135deg, #89c8f0, #5a9dbf)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
             à la puissance
           </span>
-          <sup style={{ color: '#8198b1', fontSize: '45%', verticalAlign: 'super', WebkitTextFillColor: '#8198b1' }}>2</sup>
+          <sup style={{ color: '#5a9dbf', fontSize: '45%', verticalAlign: 'super', WebkitTextFillColor: '#5a9dbf' }}>2</sup>
         </motion.h1>
 
         {/* Subtitle */}
@@ -107,7 +107,7 @@ export default function Hero() {
       >
         <span style={{ fontSize: '0.6rem', color: 'rgba(232,240,255,0.3)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Scroll</span>
         <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity }}
-          style={{ width: '1px', height: '2rem', background: 'linear-gradient(to bottom, #8198b1, transparent)' }} />
+          style={{ width: '1px', height: '2rem', background: 'linear-gradient(to bottom, #5a9dbf, transparent)' }} />
       </motion.div>
     </section>
   )

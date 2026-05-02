@@ -6,9 +6,9 @@
 html { scroll-behavior: smooth; }
 
 :root {
-  --c1: #cfdff0;  /* light — titres, accents forts */
-  --c2: #abc1d8;  /* medium — éléments secondaires, icônes */
-  --c3: #8198b1;  /* foncé — texte subtil, borders */
+  --c1: #c2e7ff;  /* primary vibrant — titres, accents, CTAs */
+  --c2: #89c8f0;  /* medium — icônes, labels */
+  --c3: #5a9dbf;  /* subtil — borders, muted text */
   --bg: #060912;
   --bg2: #0a0f1e;
 }
@@ -48,8 +48,8 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
 }
 
 .glass-card {
-  background: rgba(207, 223, 240, 0.04);
-  border: 1px solid rgba(171, 193, 216, 0.15);
+  background: rgba(194, 231, 255, 0.04);
+  border: 1px solid rgba(194, 231, 255, 0.12);
   border-radius: 1.25rem;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -58,31 +58,31 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
 .btn-primary {
   display: inline-flex; align-items: center; gap: 0.6rem;
   padding: 0.875rem 2rem; border-radius: 9999px;
-  background: var(--c2);
-  color: var(--bg);
+  background: var(--c1);
+  color: #060912;
   font-weight: 700; font-size: 0.875rem; letter-spacing: 0.04em;
   text-decoration: none; border: none; cursor: pointer;
-  box-shadow: 0 4px 24px rgba(171,193,216,0.25);
+  box-shadow: 0 4px 28px rgba(194,231,255,0.35);
   transition: all 0.3s; font-family: 'Inter', sans-serif;
 }
 .btn-primary:hover {
-  background: var(--c1);
-  box-shadow: 0 8px 40px rgba(207,223,240,0.35);
+  background: #d8f0ff;
+  box-shadow: 0 8px 48px rgba(194,231,255,0.55);
   transform: translateY(-2px);
-  color: var(--bg);
+  color: #060912;
 }
 
 .btn-secondary {
   display: inline-flex; align-items: center; gap: 0.6rem;
   padding: 0.875rem 2rem; border-radius: 9999px;
   background: transparent;
-  border: 1px solid var(--c3);
-  color: var(--c2); font-weight: 600; font-size: 0.875rem;
+  border: 1px solid rgba(194,231,255,0.35);
+  color: var(--c1); font-weight: 600; font-size: 0.875rem;
   text-decoration: none; transition: all 0.3s;
 }
 .btn-secondary:hover {
-  border-color: var(--c1); color: var(--c1);
-  background: rgba(207,223,240,0.05);
+  border-color: var(--c1); color: #fff;
+  background: rgba(194,231,255,0.08);
 }
 
 ::-webkit-scrollbar { width: 4px; }

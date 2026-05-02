@@ -20,7 +20,7 @@ function Founder({ name, role, trait, initials, delay }) {
         border: '1px solid rgba(171,193,216,0.25)',
       }}>{initials}</div>
       <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '1.1rem', fontWeight: 700, color: '#fff', marginBottom: '0.2rem' }}>{name}</h3>
-      <p style={{ fontSize: '0.68rem', color: '#abc1d8', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '1rem' }}>{role}</p>
+      <p style={{ fontSize: '0.68rem', color: '#89c8f0', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '1rem' }}>{role}</p>
       <p style={{ color: 'rgba(232,240,255,0.6)', fontSize: '0.9rem', lineHeight: 1.75 }}>{trait}</p>
     </motion.div>
   )
@@ -36,7 +36,7 @@ export default function Storytelling() {
       <div className="a2-container">
         <motion.div ref={titleRef} initial="hidden" animate={titleInView ? 'visible' : 'hidden'} variants={fadeUp} className="a2-section-title">
           <span className="a2-section-label">L'Origine</span>
-          <h2 className="a2-section-heading">Deux visions, <span style={{ background: 'linear-gradient(135deg, #8198b1, #cfdff0)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>une agence</span></h2>
+          <h2 className="a2-section-heading">Deux visions, <span style={{ background: 'linear-gradient(135deg, #5a9dbf, #c2e7ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>une agence</span></h2>
         </motion.div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 28rem), 1fr))', gap: '3rem', marginBottom: '4rem' }}>
@@ -56,7 +56,7 @@ export default function Storytelling() {
               Ensemble, ils ont compris que l'excellence ne choisit pas entre la forme et le fond — elle les fusionne. C'est de cette alchimie qu'est née <strong style={{ color: '#fff', fontWeight: 700 }}>A² Agency</strong>.
             </p>
             <p style={{ color: 'rgba(232,240,255,0.7)', fontSize: '1.05rem', lineHeight: 1.85 }}>
-              Chaque projet est une équation. Chaque solution, une signature. Ce qui les motive, c'est de <em style={{ color: '#cfdff0', fontStyle: 'normal', fontWeight: 600 }}>marquer</em>.
+              Chaque projet est une équation. Chaque solution, une signature. Ce qui les motive, c'est de <em style={{ color: '#c2e7ff', fontStyle: 'normal', fontWeight: 600 }}>marquer</em>.
             </p>
             <div style={{ borderLeft: '2px solid rgba(171,193,216,0.25)', paddingLeft: '1.5rem' }}>
               <p style={{ color: 'rgba(232,240,255,0.45)', fontSize: '0.9rem', fontStyle: 'italic', lineHeight: 1.8 }}>
