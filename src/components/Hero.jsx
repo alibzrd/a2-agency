@@ -30,7 +30,7 @@ export default function Hero() {
           <img
             src={logoSrc}
             alt="A2 Agency"
-            style={{ width: '320px', height: 'auto', filter: 'drop-shadow(0 0 30px rgba(207,223,240,0.2))' }}
+            style={{ width: '320px', height: 'auto', filter: 'brightness(0) invert(1) sepia(1) saturate(0.4) hue-rotate(190deg) brightness(1.05)' }}
           />
         </motion.div>
 
