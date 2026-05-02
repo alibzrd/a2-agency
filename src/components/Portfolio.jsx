@@ -7,7 +7,7 @@ const webClients = [
     name: 'Clear Glass',
     description: 'Identité digitale complète pour un spécialiste du vitrage — site vitrine épuré et campagne de visuels publicitaires sur-mesure.',
     url: 'https://clear-glass.fr',
-    tag: 'Web & Ads',
+    tag: null,
     ads: [
       '/projects/Clear Glass/1.png',
       '/projects/Clear Glass/2.png',
@@ -166,7 +166,7 @@ export default function Portfolio() {
               <div style={{ marginBottom: '1.75rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.4rem' }}>
                   <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '1.4rem', fontWeight: 900, color: '#fff' }}>{client.name}</h3>
-                  <span style={{ padding: '0.2rem 0.75rem', borderRadius: '9999px', background: 'rgba(194,231,255,0.1)', border: '1px solid rgba(194,231,255,0.2)', fontSize: '0.68rem', fontWeight: 600, color: '#c2e7ff', letterSpacing: '0.1em' }}>{client.tag}</span>
+                  {client.tag && <span style={{ padding: '0.2rem 0.75rem', borderRadius: '9999px', background: 'rgba(194,231,255,0.1)', border: '1px solid rgba(194,231,255,0.2)', fontSize: '0.68rem', fontWeight: 600, color: '#c2e7ff', letterSpacing: '0.1em' }}>{client.tag}</span>}
                 </div>
                 <p style={{ fontSize: '0.875rem', color: 'rgba(194,231,255,0.5)', lineHeight: 1.6 }}>{client.description}</p>
               </div>
