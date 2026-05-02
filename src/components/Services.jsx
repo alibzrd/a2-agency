@@ -12,8 +12,8 @@ export default function Services() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
   return (
-    <section id="services" className="a2-section" style={{ background: 'rgba(30,95,255,0.02)' }}>
-      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '50rem', height: '25rem', borderRadius: '50%', background: 'rgba(30,95,255,0.04)', filter: 'blur(120px)', pointerEvents: 'none' }} />
+    <section id="services" className="a2-section" style={{ background: 'rgba(129,152,177,0.02)' }}>
+      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '50rem', height: '25rem', borderRadius: '50%', background: 'rgba(129,152,177,0.04)', filter: 'blur(120px)', pointerEvents: 'none' }} />
       <div className="a2-container">
         <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7 }} className="a2-section-title">
           <span className="a2-section-label">Ce que nous faisons</span>
@@ -23,17 +23,17 @@ export default function Services() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 20rem), 1fr))', gap: '1.5rem' }}>
           {services.map((s, i) => (
             <motion.div key={s.title} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.6, delay: i * 0.15 }} whileHover={{ y: -6 }}
-              className="glass-card" style={{ padding: '2rem', position: 'relative', overflow: 'hidden', ...(s.featured ? { border: '1px solid rgba(30,95,255,0.4)', boxShadow: '0 8px 32px rgba(30,95,255,0.12)' } : {}) }}
+              className="glass-card" style={{ padding: '2rem', position: 'relative', overflow: 'hidden', ...(s.featured ? { border: '1px solid rgba(171,193,216,0.25)', boxShadow: '0 8px 32px rgba(129,152,177,0.1)' } : {}) }}
             >
-              {s.featured && <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', padding: '0.2rem 1rem', borderRadius: '0 0 0.75rem 0.75rem', background: '#1e5fff', color: '#fff', fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>Populaire</div>}
-              <div style={{ width: '3rem', height: '3rem', borderRadius: '0.875rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(30,95,255,0.15)', border: '1px solid rgba(30,95,255,0.25)' }}>
-                <s.Icon size={20} color="#4d8aff" />
+              {s.featured && <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', padding: '0.2rem 1rem', borderRadius: '0 0 0.75rem 0.75rem', background: '#8198b1', color: '#fff', fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>Populaire</div>}
+              <div style={{ width: '3rem', height: '3rem', borderRadius: '0.875rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(171,193,216,0.15)', border: '1px solid rgba(171,193,216,0.2)' }}>
+                <s.Icon size={20} color="#abc1d8" />
               </div>
               <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '1.1rem', fontWeight: 700, color: '#fff', marginBottom: '0.2rem' }}>{s.title}</h3>
-              <p style={{ fontSize: '0.68rem', color: '#4d8aff', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '0.875rem' }}>{s.subtitle}</p>
+              <p style={{ fontSize: '0.68rem', color: '#abc1d8', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '0.875rem' }}>{s.subtitle}</p>
               <p style={{ color: 'rgba(232,240,255,0.55)', fontSize: '0.875rem', lineHeight: 1.75, marginBottom: '1.5rem' }}>{s.description}</p>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                {s.features.map(f => <li key={f} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: 'rgba(232,240,255,0.5)' }}><span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#1e5fff', flexShrink: 0 }} />{f}</li>)}
+                {s.features.map(f => <li key={f} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: 'rgba(232,240,255,0.5)' }}><span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#8198b1', flexShrink: 0 }} />{f}</li>)}
               </ul>
             </motion.div>
           ))}

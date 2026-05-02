@@ -8,7 +8,7 @@ const XIcon = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="curren
 
 export default function Footer() {
   return (
-    <footer style={{ background: 'rgba(4,6,14,0.98)', borderTop: '1px solid rgba(30,95,255,0.15)', padding: '4rem 0 2rem' }}>
+    <footer style={{ background: 'rgba(4,6,14,0.98)', borderTop: '1px solid rgba(171,193,216,0.15)', padding: '4rem 0 2rem' }}>
       <div className="a2-container">
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '3rem', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '3rem' }}>
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
@@ -27,15 +27,15 @@ export default function Footer() {
 
           <div style={{ display: 'flex', gap: '0.75rem' }}>
             {[IgIcon, LiIcon, XIcon].map((Icon, i) => (
-              <a key={i} href="#" style={{ width: '2.25rem', height: '2.25rem', borderRadius: '0.625rem', background: 'rgba(30,95,255,0.1)', border: '1px solid rgba(30,95,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(232,240,255,0.4)', textDecoration: 'none', transition: 'all 0.2s' }}
-                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(30,95,255,0.25)'; e.currentTarget.style.color = '#e8f0ff' }}
-                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(30,95,255,0.1)'; e.currentTarget.style.color = 'rgba(232,240,255,0.4)' }}
+              <a key={i} href="#" style={{ width: '2.25rem', height: '2.25rem', borderRadius: '0.625rem', background: 'rgba(171,193,216,0.1)', border: '1px solid rgba(30,95,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(232,240,255,0.4)', textDecoration: 'none', transition: 'all 0.2s' }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(171,193,216,0.2)'; e.currentTarget.style.color = '#e8f0ff' }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(171,193,216,0.1)'; e.currentTarget.style.color = 'rgba(232,240,255,0.4)' }}
               ><Icon /></a>
             ))}
           </div>
         </div>
 
-        <div style={{ borderTop: '1px solid rgba(30,95,255,0.1)', paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
+        <div style={{ borderTop: '1px solid rgba(171,193,216,0.1)', paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
           <p style={{ fontSize: '0.75rem', color: 'rgba(232,240,255,0.25)' }}>© {new Date().getFullYear()} A² Agency. Tous droits réservés.</p>
           <p style={{ fontSize: '0.75rem', color: 'rgba(232,240,255,0.25)' }}>Conçu avec passion · Ali & Arthur</p>
         </div>

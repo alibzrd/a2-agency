@@ -12,8 +12,8 @@ export default function Hero() {
     }}>
       {/* Glow orbs */}
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
-        <div style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)', width: '40rem', height: '40rem', borderRadius: '50%', background: 'rgba(30,95,255,0.08)', filter: 'blur(120px)' }} />
-        <div style={{ position: 'absolute', bottom: '10%', left: '20%', width: '20rem', height: '20rem', borderRadius: '50%', background: 'rgba(30,95,255,0.05)', filter: 'blur(80px)' }} />
+        <div style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)', width: '40rem', height: '40rem', borderRadius: '50%', background: 'rgba(129,152,177,0.08)', filter: 'blur(120px)' }} />
+        <div style={{ position: 'absolute', bottom: '10%', left: '20%', width: '20rem', height: '20rem', borderRadius: '50%', background: 'rgba(129,152,177,0.05)', filter: 'blur(80px)' }} />
       </div>
       {/* Grid */}
       <div style={{ position: 'absolute', inset: 0, opacity: 0.025, backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
@@ -30,7 +30,7 @@ export default function Hero() {
           <img
             src={logoSrc}
             alt="A2 Agency"
-            style={{ width: '220px', height: 'auto', filter: 'drop-shadow(0 0 30px rgba(30,95,255,0.3))' }}
+            style={{ width: '220px', height: 'auto', filter: 'drop-shadow(0 0 30px rgba(207,223,240,0.2))' }}
           />
         </motion.div>
 
@@ -40,8 +40,8 @@ export default function Hero() {
           style={{
             display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
             padding: '0.45rem 1.1rem', borderRadius: '9999px',
-            border: '1px solid rgba(30,95,255,0.35)', background: 'rgba(30,95,255,0.1)',
-            color: '#6b9fff', fontSize: '0.7rem', fontWeight: 700,
+            border: '1px solid rgba(171,193,216,0.25)', background: 'rgba(171,193,216,0.1)',
+            color: '#cfdff0', fontSize: '0.7rem', fontWeight: 700,
             letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '2rem',
           }}
         >
@@ -60,10 +60,10 @@ export default function Hero() {
         >
           Votre communication
           <br />
-          <span style={{ background: 'linear-gradient(135deg, #4d8aff, #1e5fff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+          <span style={{ background: 'linear-gradient(135deg, #abc1d8, #8198b1)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
             à la puissance
           </span>
-          <sup style={{ color: '#1e5fff', fontSize: '45%', verticalAlign: 'super', WebkitTextFillColor: '#1e5fff' }}>2</sup>
+          <sup style={{ color: '#8198b1', fontSize: '45%', verticalAlign: 'super', WebkitTextFillColor: '#8198b1' }}>2</sup>
         </motion.h1>
 
         {/* Subtitle */}
@@ -107,7 +107,7 @@ export default function Hero() {
       >
         <span style={{ fontSize: '0.6rem', color: 'rgba(232,240,255,0.3)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Scroll</span>
         <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity }}
-          style={{ width: '1px', height: '2rem', background: 'linear-gradient(to bottom, #1e5fff, transparent)' }} />
+          style={{ width: '1px', height: '2rem', background: 'linear-gradient(to bottom, #8198b1, transparent)' }} />
       </motion.div>
     </section>
   )
