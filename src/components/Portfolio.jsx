@@ -199,8 +199,8 @@ export default function Portfolio() {
 
         {/* Web clients — tabs: Site Web / Ads */}
         {webClients.map((client) => {
-          const tabs = [{ key: 'site', label: 'Site Web' }, ...(client.ads?.length ? [{ key: 'ads', label: 'Visuels Ads' }] : [])]
-          const currentWebTab = activeWebTab[client.name] || 'site'
+          const tabs = [...(client.ads?.length ? [{ key: 'ads', label: 'Visuels Ads' }] : []), { key: 'site', label: 'Site Web' }]
+          const currentWebTab = activeWebTab[client.name] || (client.ads?.length ? 'ads' : 'site')
 
           return (
             <motion.div
