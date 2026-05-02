@@ -11,12 +11,12 @@ const projects = [
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="a2-section" style={{ background: '#c2e7ff' }}>
+    <section id="portfolio" className="a2-section">
       <div className="a2-container">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.7 }} className="a2-section-title">
-          <span style={{ display: 'block', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.4em', color: '#0a2a40', textTransform: 'uppercase', marginBottom: '1rem' }}>Nos réalisations</span>
-          <h2 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 900, color: '#060912', lineHeight: 1.1 }}>Portfolio</h2>
-          <p style={{ marginTop: '1rem', color: '#1a4a6a', fontSize: '1.05rem', lineHeight: 1.75, maxWidth: '38rem', marginLeft: 'auto', marginRight: 'auto' }}>Chaque projet est une histoire — la vôtre, racontée avec précision et audace.</p>
+          <span className="a2-section-label">Nos réalisations</span>
+          <h2 className="a2-section-heading">Portfolio</h2>
+          <p className="a2-section-sub">Chaque projet est une histoire — la vôtre, racontée avec précision et audace.</p>
         </motion.div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
