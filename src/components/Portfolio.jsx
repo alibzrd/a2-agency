@@ -25,14 +25,9 @@ const clients = [
     description: 'Identité visuelle sur les réseaux pour un barbershop — visuels de recrutement et stories à la une.',
     categories: [
       {
-        name: 'Recrutement',
+        name: 'Stories Instagram',
         images: [
           '/projects/House Barber/HOUSE BARBER - Recrute coiffeurs (1080 x 1920 px).png',
-        ],
-      },
-      {
-        name: 'Stories à la une',
-        images: [
           '/projects/House Barber/House Barber stories a la une/2.png',
           '/projects/House Barber/House Barber stories a la une/9.png',
           '/projects/House Barber/House Barber stories a la une/10.png',
