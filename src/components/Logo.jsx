@@ -1,53 +1,93 @@
-export default function Logo({ size = 48, withText = true, dark = false }) {
-  const textColor = dark ? '#0f2236' : '#0f2236'
-  const subColor = dark ? 'rgba(15,34,54,0.5)' : 'rgba(15,34,54,0.5)'
-
+export default function Logo({ size = 48, showAgency = true }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-      {/* A² SVG — style 3D cercle comme charte */}
-      <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
+      <svg
+        width={size}
+        height={size}
+        viewBox="0 0 200 200"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <defs>
-          <linearGradient id="ring" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#5baed4"/>
-            <stop offset="50%" stopColor="#2a7fc0"/>
-            <stop offset="100%" stopColor="#1a5a8a"/>
+          <linearGradient id="aGrad" x1="60" y1="20" x2="140" y2="180" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#ddeeff" />
+            <stop offset="40%" stopColor="#c0d8f0" />
+            <stop offset="100%" stopColor="#7aaed8" />
           </linearGradient>
-          <linearGradient id="letter" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#7ec4e4"/>
-            <stop offset="100%" stopColor="#2a7fc0"/>
+          <linearGradient id="ringGrad" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#c8e0f4" />
+            <stop offset="100%" stopColor="#8ab8d8" />
           </linearGradient>
-          <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-            <feDropShadow dx="1" dy="2" stdDeviation="2" floodColor="#1a5a8a" floodOpacity="0.3"/>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
           </filter>
         </defs>
-        {/* Outer ring */}
-        <circle cx="50" cy="50" r="46" stroke="url(#ring)" strokeWidth="3" fill="none" filter="url(#shadow)"/>
-        {/* Inner ring subtle */}
-        <circle cx="50" cy="50" r="36" stroke="url(#ring)" strokeWidth="1" strokeOpacity="0.3" fill="none"/>
-        {/* Letter A */}
-        <text x="14" y="70" fontFamily="Montserrat, sans-serif" fontWeight="900" fontSize="52" fill="url(#letter)" filter="url(#shadow)">A</text>
-        {/* Diagonal slash */}
-        <line x1="38" y1="72" x2="68" y2="26" stroke="url(#ring)" strokeWidth="3.5" strokeLinecap="round" filter="url(#shadow)"/>
+
+        {/* Ring — open circle like the logo (gap at top-left and bottom-right) */}
+        <path
+          d="M 100 18
+             A 82 82 0 1 1 34 151"
+          stroke="url(#ringGrad)"
+          strokeWidth="5"
+          strokeLinecap="round"
+          fill="none"
+          filter="url(#glow)"
+        />
+        <path
+          d="M 166 49
+             A 82 82 0 0 1 100 182"
+          stroke="url(#ringGrad)"
+          strokeWidth="5"
+          strokeLinecap="round"
+          fill="none"
+          opacity="0.5"
+        />
+
+        {/* Bold italic A */}
+        <text
+          x="100"
+          y="158"
+          textAnchor="middle"
+          fontFamily="Montserrat, Arial Black, sans-serif"
+          fontWeight="900"
+          fontStyle="italic"
+          fontSize="148"
+          fill="url(#aGrad)"
+          filter="url(#glow)"
+          style={{ userSelect: 'none' }}
+        >
+          A
+        </text>
+
         {/* Superscript 2 */}
-        <text x="64" y="38" fontFamily="Montserrat, sans-serif" fontWeight="900" fontSize="20" fill="#2a7fc0" filter="url(#shadow)">2</text>
+        <text
+          x="148"
+          y="60"
+          fontFamily="Montserrat, Arial, sans-serif"
+          fontWeight="700"
+          fontSize="40"
+          fill="url(#aGrad)"
+          filter="url(#glow)"
+          style={{ userSelect: 'none' }}
+        >
+          2
+        </text>
       </svg>
 
-      {withText && (
-        <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
-          <span style={{
-            fontFamily: 'Montserrat, sans-serif', fontWeight: 900,
-            fontSize: '1.2rem', color: textColor, letterSpacing: '0.02em',
-          }}>
-            A<sup style={{ color: '#2a7fc0', fontSize: '0.7rem', verticalAlign: 'super' }}>2</sup>
-          </span>
-          <span style={{
-            fontFamily: 'Montserrat, sans-serif', fontWeight: 600,
-            fontSize: '0.55rem', color: subColor,
-            letterSpacing: '0.4em', textTransform: 'uppercase', marginTop: '1px',
-          }}>
-            Agency
-          </span>
-        </div>
+      {showAgency && (
+        <span style={{
+          fontFamily: 'Montserrat, sans-serif',
+          fontWeight: 300,
+          fontSize: `${size * 0.115}px`,
+          color: '#c0d8f0',
+          letterSpacing: `${size * 0.07}px`,
+          textTransform: 'uppercase',
+          paddingLeft: `${size * 0.07}px`,
+          userSelect: 'none',
+        }}>
+          AGENCY
+        </span>
       )}
     </div>
   )
