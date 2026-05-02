@@ -8,21 +8,21 @@ const clients = [
     description: 'Identité visuelle complète — menus, flyers et supports print pour ce restaurant burger haut de gamme.',
     categories: [
       {
-        name: 'Menu Board',
-        images: [
-          '/projects/Smash Gourmet/Menu Board/1.png',
-          '/projects/Smash Gourmet/Menu Board/2.png',
-          '/projects/Smash Gourmet/Menu Board/3.png',
-          '/projects/Smash Gourmet/Menu Board/4.png',
-        ],
-      },
-      {
         name: 'Menu Flyer',
         images: [
           '/projects/Smash Gourmet/Menu flyer/1.png',
           '/projects/Smash Gourmet/Menu flyer/2.png',
           '/projects/Smash Gourmet/Menu flyer/3.png',
           '/projects/Smash Gourmet/Menu flyer/4.png',
+        ],
+      },
+      {
+        name: 'Menu Board',
+        images: [
+          '/projects/Smash Gourmet/Menu Board/1.png',
+          '/projects/Smash Gourmet/Menu Board/2.png',
+          '/projects/Smash Gourmet/Menu Board/3.png',
+          '/projects/Smash Gourmet/Menu Board/4.png',
         ],
       },
       {
