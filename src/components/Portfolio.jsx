@@ -62,6 +62,8 @@ const clients = [
         images: [
           '/projects/Affiches Football/Affiche Saint Marcel CHAMPIONS.png',
           '/projects/Affiches Football/COLE.png',
+          '/projects/Affiches Football/FC SION MATCHDAY.png',
+          '/projects/Affiches Football/FULLTIME.png',
           '/projects/Affiches Football/LAUSANNE SPORT SCORE FINAL.png',
           '/projects/Affiches Football/Matchday Sekou Fofana.png',
         ],
