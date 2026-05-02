@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import Logo from './Logo'
 
 const navLinks = [
   { label: 'Histoire', href: '#storytelling' },
@@ -32,20 +33,8 @@ export default function Header() {
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group">
-          <div className="relative">
-            <span
-              className="text-2xl font-black tracking-tight text-white"
-              style={{ fontFamily: 'Montserrat, sans-serif' }}
-            >
-              A
-              <sup className="text-[#1e5fff] text-base font-black">2</sup>
-            </span>
-            <div className="absolute -inset-2 rounded-lg bg-[#1e5fff]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </div>
-          <span className="text-sm font-semibold tracking-[0.3em] text-white/70 uppercase">
-            Agency
-          </span>
+        <a href="#" className="flex items-center group">
+          <Logo size={36} withText={true} />
         </a>
 
         {/* Desktop nav */}
