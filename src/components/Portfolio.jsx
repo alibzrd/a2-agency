@@ -21,6 +21,21 @@ const webClients = [
 
 const clients = [
   {
+    name: 'Affiches Football',
+    description: 'Affiches et visuels sportifs — matchdays, scores et portraits pour clubs et joueurs.',
+    categories: [
+      {
+        name: 'Affiches',
+        images: [
+          '/projects/Affiches Football/Affiche Saint Marcel CHAMPIONS.png',
+          '/projects/Affiches Football/COLE.png',
+          '/projects/Affiches Football/LAUSANNE SPORT SCORE FINAL.png',
+          '/projects/Affiches Football/Matchday Sekou Fofana.png',
+        ],
+      },
+    ],
+  },
+  {
     name: 'Smash Gourmet',
     description: 'Identité visuelle complète — menus, flyers et supports print pour ce restaurant burger haut de gamme.',
     categories: [
