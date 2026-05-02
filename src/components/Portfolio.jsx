@@ -2,6 +2,15 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 
+const webClients = [
+  {
+    name: 'Clear Glass',
+    description: 'Site vitrine développé pour un spécialiste du vitrage — design épuré, UX optimisée.',
+    url: 'https://clear-glass.fr',
+    tag: 'Site Web',
+  },
+]
+
 const clients = [
   {
     name: 'Smash Gourmet',
@@ -129,6 +138,62 @@ export default function Portfolio() {
           <p className="a2-section-sub">Chaque projet est une histoire — la vôtre, racontée avec précision et audace.</p>
         </motion.div>
 
+        {/* Web clients — iframe */}
+        {webClients.map((client) => (
+          <motion.div
+            key={client.name}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.7 }}
+            className="glass-card"
+            style={{ padding: '2rem', marginBottom: '2rem' }}
+          >
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.25rem' }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.4rem' }}>
+                  <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '1.4rem', fontWeight: 900, color: '#fff' }}>{client.name}</h3>
+                  <span style={{ padding: '0.2rem 0.75rem', borderRadius: '9999px', background: 'rgba(194,231,255,0.1)', border: '1px solid rgba(194,231,255,0.2)', fontSize: '0.68rem', fontWeight: 600, color: '#c2e7ff', letterSpacing: '0.1em' }}>{client.tag}</span>
+                </div>
+                <p style={{ fontSize: '0.875rem', color: 'rgba(194,231,255,0.5)', lineHeight: 1.6 }}>{client.description}</p>
+              </div>
+              <a href={client.url} target="_blank" rel="noopener noreferrer" style={{
+                display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+                padding: '0.5rem 1.1rem', borderRadius: '9999px',
+                background: '#c2e7ff', color: '#060912',
+                fontSize: '0.8rem', fontWeight: 700, textDecoration: 'none',
+                flexShrink: 0,
+              }}>
+                Ouvrir le site ↗
+              </a>
+            </div>
+
+            {/* Iframe */}
+            <div style={{
+              position: 'relative', width: '100%', height: '500px',
+              borderRadius: '0.875rem', overflow: 'hidden',
+              border: '1px solid rgba(194,231,255,0.1)',
+            }}>
+              <iframe
+                src={client.url}
+                title={client.name}
+                style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
+                loading="lazy"
+                sandbox="allow-scripts allow-same-origin allow-forms"
+              />
+              {/* Overlay cliquable vers le site */}
+              <a
+                href={client.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ position: 'absolute', inset: 0, zIndex: 10 }}
+                aria-label={`Visiter ${client.name}`}
+              />
+            </div>
+          </motion.div>
+        ))}
+
+        {/* Image clients */}
         {clients.map((client) => {
           const currentCat = activeTab[client.name] || client.categories[0].name
           const category = client.categories.find((c) => c.name === currentCat)
