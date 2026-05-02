@@ -4,31 +4,20 @@ import { Layers, Zap, Globe } from 'lucide-react'
 
 const services = [
   {
-    Icon: Layers,
-    title: 'Stratégie de Marque',
-    subtitle: 'Branding & Identité',
-    description: "Nous construisons des identités de marque cohérentes et mémorables. Logo, charte graphique, positionnement — chaque élément est pensé pour raconter votre histoire avec puissance et distinction.",
+    Icon: Layers, title: 'Stratégie de Marque', subtitle: 'Branding & Identité',
+    description: "Nous construisons des identités de marque cohérentes et mémorables. Logo, charte graphique, positionnement — chaque élément pensé pour raconter votre histoire avec puissance.",
     features: ['Création de logo', 'Charte graphique', 'Positionnement', 'Guidelines'],
-    color: '#1e5fff',
-    featured: false,
   },
   {
-    Icon: Zap,
-    title: 'Création de Contenu',
-    subtitle: 'Digital & Social Media',
-    description: "Du contenu qui convertit. Posts, Reels, campagnes publicitaires, flyers — nous créons des visuels percutants et des messages calibrés pour capter l'attention sur tous vos canaux.",
+    Icon: Zap, title: 'Création de Contenu', subtitle: 'Digital & Social Media',
+    description: "Du contenu qui convertit. Posts, Reels, campagnes, flyers — des visuels percutants et des messages calibrés pour capter l'attention sur tous vos canaux.",
     features: ['Social media', 'Vidéo & Reels', 'Flyers & Print', 'Stratégie éditoriale'],
-    color: '#0a3dcc',
     featured: true,
   },
   {
-    Icon: Globe,
-    title: 'Développement Web',
-    subtitle: 'Design UX/UI',
-    description: "Des interfaces digitales qui impressionnent et convertissent. Sites vitrines, e-commerce, dashboards — nous allions esthétique haut de gamme et performance technique irréprochable.",
+    Icon: Globe, title: 'Développement Web', subtitle: 'Design UX/UI',
+    description: "Des interfaces digitales qui impressionnent et convertissent. Sites vitrines, e-commerce — esthétique haut de gamme et performance technique irréprochable.",
     features: ['Site vitrine', 'E-commerce', 'UX/UI Design', 'Optimisation SEO'],
-    color: '#1e5fff',
-    featured: false,
   },
 ]
 
@@ -37,86 +26,52 @@ export default function Services() {
   const inView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="services" className="a2-section" style={{ background: 'rgba(30,95,255,0.02)' }}>
-      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
-        <div style={{
-          position: 'absolute', top: '50%', left: '50%',
-          transform: 'translate(-50%,-50%)',
-          width: '50rem', height: '25rem', borderRadius: '50%',
-          background: 'rgba(30,95,255,0.04)', filter: 'blur(120px)',
-        }} />
-      </div>
-
+    <section id="services" className="a2-section marble-bg">
       <div className="a2-container">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="a2-section-title"
-        >
+        <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7 }} className="a2-section-title">
           <span className="a2-section-label">Ce que nous faisons</span>
           <h2 className="a2-section-heading">Nos services</h2>
-          <p className="a2-section-sub">
-            Une offre complète pour couvrir chaque dimension de votre communication.
-          </p>
+          <p className="a2-section-sub">Une offre complète pour couvrir chaque dimension de votre communication.</p>
         </motion.div>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 20rem), 1fr))',
-          gap: '1.5rem',
-        }}>
-          {services.map((service, i) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 20rem), 1fr))', gap: '1.5rem' }}>
+          {services.map((s, i) => (
+            <motion.div key={s.title}
+              initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.6, delay: i * 0.15 }}
+              whileHover={{ y: -6, transition: { duration: 0.2 } }}
+              className="glass-card"
               style={{
-                position: 'relative', padding: '2rem', borderRadius: '1rem',
-                border: service.featured ? '1px solid rgba(30,95,255,0.4)' : '1px solid rgba(255,255,255,0.07)',
-                background: service.featured ? 'rgba(30,95,255,0.08)' : 'rgba(255,255,255,0.02)',
-                transition: 'transform 0.3s, border-color 0.3s',
-                overflow: 'hidden',
+                padding: '2rem', position: 'relative', overflow: 'hidden',
+                ...(s.featured ? { border: '2px solid rgba(42,127,192,0.4)', boxShadow: '0 8px 32px rgba(42,127,192,0.15)' } : {}),
               }}
-              whileHover={{ y: -4 }}
             >
-              {service.featured && (
+              {s.featured && (
                 <div style={{
-                  position: 'absolute', top: '-1px', left: '50%', transform: 'translateX(-50%)',
-                  padding: '0.25rem 1rem', borderRadius: '0 0 0.5rem 0.5rem',
-                  background: '#1e5fff', color: '#fff',
-                  fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase',
+                  position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
+                  padding: '0.2rem 1rem', borderRadius: '0 0 0.75rem 0.75rem',
+                  background: 'linear-gradient(135deg, #2a7fc0, #1a5a8a)',
+                  color: '#fff', fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase',
                 }}>Populaire</div>
               )}
 
               <div style={{
-                width: '3rem', height: '3rem', borderRadius: '0.75rem',
+                width: '3rem', height: '3rem', borderRadius: '0.875rem', marginBottom: '1.5rem',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                marginBottom: '1.5rem',
-                background: `linear-gradient(135deg, ${service.color}22, ${service.color}44)`,
-                border: `1px solid ${service.color}33`,
+                background: 'linear-gradient(135deg, rgba(42,127,192,0.15), rgba(42,127,192,0.3))',
+                border: '1px solid rgba(42,127,192,0.25)',
               }}>
-                <service.Icon size={20} color="#4d8aff" />
+                <s.Icon size={20} color="#2a7fc0" />
               </div>
 
-              <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '1.1rem', fontWeight: 700, color: '#fff', marginBottom: '0.25rem' }}>
-                {service.title}
-              </h3>
-              <p style={{ fontSize: '0.7rem', color: '#6b9fff', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '1rem' }}>
-                {service.subtitle}
-              </p>
-              <p style={{ color: 'rgba(240,244,255,0.55)', fontSize: '0.875rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-                {service.description}
-              </p>
+              <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '1.1rem', fontWeight: 700, color: '#0f2236', marginBottom: '0.2rem' }}>{s.title}</h3>
+              <p style={{ fontSize: '0.68rem', color: '#2a7fc0', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '0.875rem' }}>{s.subtitle}</p>
+              <p style={{ color: '#4a6070', fontSize: '0.875rem', lineHeight: 1.75, marginBottom: '1.5rem' }}>{s.description}</p>
 
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                {service.features.map((feat) => (
-                  <li key={feat} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: 'rgba(240,244,255,0.5)' }}>
-                    <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#1e5fff', flexShrink: 0 }} />
-                    {feat}
+                {s.features.map(f => (
+                  <li key={f} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: '#3a5060' }}>
+                    <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#2a7fc0', flexShrink: 0 }} />{f}
                   </li>
                 ))}
               </ul>

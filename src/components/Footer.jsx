@@ -1,13 +1,14 @@
 import { motion } from 'framer-motion'
+import Logo from './Logo'
 
 const IgIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+    <rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
   </svg>
 )
 const LiIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
   </svg>
 )
 const XIcon = () => (
@@ -16,73 +17,47 @@ const XIcon = () => (
   </svg>
 )
 
-const navLinks = [
-  { label: 'Histoire', href: '#storytelling' },
-  { label: 'Services', href: '#services' },
-  { label: 'Portfolio', href: '#portfolio' },
-  { label: 'Contact', href: '#contact' },
-]
-
-const socials = [
-  { Icon: IgIcon, href: '#', label: 'Instagram' },
-  { Icon: LiIcon, href: '#', label: 'LinkedIn' },
-  { Icon: XIcon, href: '#', label: 'Twitter / X' },
-]
+const navLinks = ['Histoire', 'Services', 'Portfolio', 'Contact']
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-white/5 py-16 px-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-10">
-          {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="flex flex-col items-center md:items-start gap-2"
-          >
-            <div className="flex items-center gap-2">
-              <span className="text-2xl font-black text-white" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                A<sup className="text-[#1e5fff] text-base font-black">2</sup>
-              </span>
-              <span className="text-sm font-semibold tracking-[0.3em] text-white/50 uppercase">Agency</span>
-            </div>
-            <p className="text-xs text-white/30 max-w-[200px] text-center md:text-left leading-relaxed">
+    <footer style={{ background: 'rgba(15,34,54,0.95)', padding: '4rem 0 2rem', borderTop: '1px solid rgba(42,127,192,0.2)' }}>
+      <div className="a2-container">
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '3rem', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '3rem' }}>
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+            <Logo size={44} withText dark={false} />
+            <p style={{ fontSize: '0.8rem', color: 'rgba(200,220,234,0.5)', marginTop: '0.75rem', maxWidth: '14rem', lineHeight: 1.7 }}>
               Votre communication à la puissance deux.
             </p>
           </motion.div>
 
-          {/* Nav */}
-          <nav className="flex flex-wrap justify-center gap-6">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-white/40 hover:text-white transition-colors duration-200"
-              >
-                {link.label}
-              </a>
+          <nav style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
+            {navLinks.map(l => (
+              <a key={l} href={`#${l.toLowerCase()}`} style={{ fontSize: '0.875rem', color: 'rgba(200,220,234,0.5)', textDecoration: 'none', transition: 'color 0.2s' }}
+                onMouseEnter={e => e.currentTarget.style.color = '#c8dcea'}
+                onMouseLeave={e => e.currentTarget.style.color = 'rgba(200,220,234,0.5)'}
+              >{l}</a>
             ))}
           </nav>
 
-          {/* Socials */}
-          <div className="flex gap-3">
-            {socials.map(({ Icon, href, label }) => (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/35 hover:text-white hover:border-[#1e5fff]/40 hover:bg-[#1e5fff]/10 transition-all duration-200"
-              >
-                <Icon />
-              </a>
+          <div style={{ display: 'flex', gap: '0.75rem' }}>
+            {[IgIcon, LiIcon, XIcon].map((Icon, i) => (
+              <a key={i} href="#" style={{
+                width: '2.25rem', height: '2.25rem', borderRadius: '0.625rem',
+                background: 'rgba(42,127,192,0.15)', border: '1px solid rgba(42,127,192,0.25)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: 'rgba(200,220,234,0.5)', textDecoration: 'none', transition: 'all 0.2s',
+              }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(42,127,192,0.3)'; e.currentTarget.style.color = '#c8dcea' }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(42,127,192,0.15)'; e.currentTarget.style.color = 'rgba(200,220,234,0.5)' }}
+              ><Icon /></a>
             ))}
           </div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/25">
-          <p>© {new Date().getFullYear()} A² Agency. Tous droits réservés.</p>
-          <p>Conçu avec passion · Ali & Arthur</p>
+        <div style={{ borderTop: '1px solid rgba(42,127,192,0.15)', paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
+          <p style={{ fontSize: '0.75rem', color: 'rgba(200,220,234,0.35)' }}>© {new Date().getFullYear()} A² Agency. Tous droits réservés.</p>
+          <p style={{ fontSize: '0.75rem', color: 'rgba(200,220,234,0.35)' }}>Conçu avec passion · Ali & Arthur</p>
         </div>
       </div>
     </footer>
