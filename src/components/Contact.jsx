@@ -86,7 +86,7 @@ export default function Contact() {
             <div className="glass-card" style={{ padding: '1.75rem' }}>
               <h3 style={{ fontSize: '0.68rem', fontWeight: 700, color: '#4a6070', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '1rem' }}>Réseaux sociaux</h3>
               <div style={{ display: 'flex', gap: '0.75rem' }}>
-                {[{ Icon: IgIcon, label: 'Instagram', href: 'https://www.instagram.com/a2agency.fr' }, { Icon: LiIcon, label: 'LinkedIn', href: '#' }].map(({ Icon, label, href }) => (
+                {[{ Icon: IgIcon, label: 'Instagram', href: 'https://www.instagram.com/a2agency.fr' }].map(({ Icon, label, href }) => (
                   <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} style={{
                     width: '2.5rem', height: '2.5rem', borderRadius: '0.75rem',
                     background: 'rgba(42,127,192,0.1)', border: '1px solid rgba(42,127,192,0.2)',
