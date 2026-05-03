@@ -6,19 +6,20 @@ const fadeUp = {
   visible: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.7, delay: i * 0.15, ease: 'easeOut' } }),
 }
 
-function Founder({ name, role, trait, initials, delay }) {
+function Founder({ name, role, trait, photo, delay }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
   return (
     <motion.div ref={ref} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUp} custom={delay}
       className="glass-card" style={{ padding: '2rem' }}>
       <div style={{
-        width: '3.5rem', height: '3.5rem', borderRadius: '50%', marginBottom: '1.25rem',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontFamily: 'Montserrat, sans-serif', fontWeight: 900, fontSize: '1rem', color: '#fff',
-        background: 'linear-gradient(135deg, rgba(171,193,216,0.25), rgba(30,95,255,0.7))',
-        border: '1px solid rgba(171,193,216,0.25)',
-      }}>{initials}</div>
+        width: '5rem', height: '5rem', borderRadius: '50%', marginBottom: '1.25rem',
+        overflow: 'hidden', flexShrink: 0,
+        border: '2px solid rgba(194,231,255,0.25)',
+        boxShadow: '0 0 20px rgba(194,231,255,0.1)',
+      }}>
+        <img src={photo} alt={name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+      </div>
       <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '1.1rem', fontWeight: 700, color: '#fff', marginBottom: '0.2rem' }}>{name}</h3>
       <p style={{ fontSize: '0.68rem', color: '#89c8f0', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '1rem' }}>{role}</p>
       <p style={{ color: 'rgba(232,240,255,0.6)', fontSize: '0.9rem', lineHeight: 1.75 }}>{trait}</p>
@@ -67,9 +68,9 @@ export default function Storytelling() {
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 22rem), 1fr))', gap: '1.5rem' }}>
-          <Founder name="Arthur" role="Co-Fondateur · Directeur Créatif" initials="A" delay={0}
+          <Founder name="Arthur" role="Co-Fondateur · Directeur Créatif" photo="/Photo Arthur Ali/ARTHUR.JPG" delay={0}
             trait="L'audace comme boussole. Arthur transforme chaque brief en manifeste visuel. Sa sensibilité artistique donne vie aux identités qui marquent les esprits durablement." />
-          <Founder name="Ali" role="Co-Fondateur · Directeur Stratégique" initials="A²" delay={1}
+          <Founder name="Ali" role="Co-Fondateur · Directeur Stratégique" photo="/Photo Arthur Ali/ALI.JPG" delay={1}
             trait="La stratégie comme colonne vertébrale. Ali traduit les ambitions en feuilles de route précises. Chaque message calibré pour générer un impact réel et mesurable." />
         </div>
       </div>
