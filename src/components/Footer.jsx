@@ -26,8 +26,8 @@ export default function Footer() {
           </nav>
 
           <div style={{ display: 'flex', gap: '0.75rem' }}>
-            {[IgIcon, LiIcon, XIcon].map((Icon, i) => (
-              <a key={i} href="#" style={{ width: '2.25rem', height: '2.25rem', borderRadius: '0.625rem', background: 'rgba(171,193,216,0.1)', border: '1px solid rgba(30,95,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(232,240,255,0.4)', textDecoration: 'none', transition: 'all 0.2s' }}
+            {[{ Icon: IgIcon, href: 'https://www.instagram.com/a2agency.fr' }, { Icon: LiIcon, href: '#' }, { Icon: XIcon, href: '#' }].map(({ Icon, href }, i) => (
+              <a key={i} href={href} target={href !== '#' ? '_blank' : undefined} rel="noopener noreferrer" style={{ width: '2.25rem', height: '2.25rem', borderRadius: '0.625rem', background: 'rgba(171,193,216,0.1)', border: '1px solid rgba(30,95,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(232,240,255,0.4)', textDecoration: 'none', transition: 'all 0.2s' }}
                 onMouseEnter={e => { e.currentTarget.style.background = 'rgba(171,193,216,0.2)'; e.currentTarget.style.color = '#e8f0ff' }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'rgba(171,193,216,0.1)'; e.currentTarget.style.color = 'rgba(232,240,255,0.4)' }}
               ><Icon /></a>
