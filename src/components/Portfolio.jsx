@@ -38,39 +38,6 @@ const clients = [
     ],
   },
   {
-    name: 'House Barber',
-    description: 'Identité visuelle sur les réseaux pour un barbershop — visuels de recrutement et stories à la une.',
-    categories: [
-      {
-        name: 'Stories Instagram',
-        images: [
-          '/projects/House Barber/HOUSE BARBER - Recrute coiffeurs (1080 x 1920 px).png',
-          '/projects/House Barber/House Barber stories a la une/2.png',
-          '/projects/House Barber/House Barber stories a la une/9.png',
-          '/projects/House Barber/House Barber stories a la une/10.png',
-          '/projects/House Barber/House Barber stories a la une/11.png',
-        ],
-      },
-    ],
-  },
-  {
-    name: 'Affiches Football',
-    description: 'Affiches et visuels sportifs — matchdays, scores et portraits pour clubs et joueurs.',
-    categories: [
-      {
-        name: 'Affiches',
-        images: [
-          '/projects/Affiches Football/Affiche Saint Marcel CHAMPIONS.png',
-          '/projects/Affiches Football/COLE.png',
-          '/projects/Affiches Football/FC SION MATCHDAY.png',
-          '/projects/Affiches Football/FULLTIME.png',
-          '/projects/Affiches Football/LAUSANNE SPORT SCORE FINAL.png',
-          '/projects/Affiches Football/Matchday Sekou Fofana.png',
-        ],
-      },
-    ],
-  },
-  {
     name: 'Smash Gourmet',
     description: 'Identité visuelle complète — menus, flyers et supports print pour ce restaurant burger haut de gamme.',
     categories: [
@@ -97,6 +64,39 @@ const clients = [
         images: [
           '/projects/Smash Gourmet/Flyer bubble/1.png',
           '/projects/Smash Gourmet/Flyer bubble/2.png',
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Affiches Football',
+    description: 'Affiches et visuels sportifs — matchdays, scores et portraits pour clubs et joueurs.',
+    categories: [
+      {
+        name: 'Affiches',
+        images: [
+          '/projects/Affiches Football/Affiche Saint Marcel CHAMPIONS.png',
+          '/projects/Affiches Football/COLE.png',
+          '/projects/Affiches Football/FC SION MATCHDAY.png',
+          '/projects/Affiches Football/FULLTIME.png',
+          '/projects/Affiches Football/LAUSANNE SPORT SCORE FINAL.png',
+          '/projects/Affiches Football/Matchday Sekou Fofana.png',
+        ],
+      },
+    ],
+  },
+  {
+    name: 'House Barber',
+    description: 'Identité visuelle sur les réseaux pour un barbershop — visuels de recrutement et stories à la une.',
+    categories: [
+      {
+        name: 'Stories Instagram',
+        images: [
+          '/projects/House Barber/HOUSE BARBER - Recrute coiffeurs (1080 x 1920 px).png',
+          '/projects/House Barber/House Barber stories a la une/2.png',
+          '/projects/House Barber/House Barber stories a la une/9.png',
+          '/projects/House Barber/House Barber stories a la une/10.png',
+          '/projects/House Barber/House Barber stories a la une/11.png',
         ],
       },
     ],
