@@ -70,7 +70,7 @@ export default function Storytelling() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 22rem), 1fr))', gap: '1.5rem' }}>
           <Founder name="Arthur" role="Co-Fondateur · Directeur Créatif" photo="/Photo Arthur Ali/ARTHUR.JPG" delay={0}
             trait="L'audace comme boussole. Arthur transforme chaque brief en manifeste visuel. Sa sensibilité artistique donne vie aux identités qui marquent les esprits durablement." />
-          <Founder name="Ali" role="Co-Fondateur · Directeur Stratégique" photo="/Photo Arthur Ali/ALI.JPG" delay={1}
+          <Founder name="Ali" role="Co-Fondateur · Directeur Stratégique" photo="/Photo Arthur Ali/ALI 2.png" delay={1}
             trait="La stratégie comme colonne vertébrale. Ali traduit les ambitions en feuilles de route précises. Chaque message calibré pour générer un impact réel et mesurable." />
         </div>
       </div>
