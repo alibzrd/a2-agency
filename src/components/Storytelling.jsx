@@ -46,10 +46,10 @@ export default function Storytelling() {
               Tout a commencé dans les amphithéâtres d'un Master Communication, où deux esprits aux tempéraments opposés se sont trouvés — et ne se sont plus lâchés.
             </p>
             <p style={{ color: 'rgba(232,240,255,0.7)', fontSize: '1.05rem', lineHeight: 1.85 }}>
-              <strong style={{ color: '#fff', fontWeight: 700 }}>Ali</strong>, architecte de stratégies, perçoit chaque marque comme un système à optimiser : cohérent, précis, calibré pour durer.
+              <strong style={{ color: '#fff', fontWeight: 700 }}>Ali</strong>, le créatif du duo, voit le monde en images et en émotions. Son audace visuelle brise les conventions et capte l'attention là où les autres passent inaperçus.
             </p>
             <p style={{ color: 'rgba(232,240,255,0.7)', fontSize: '1.05rem', lineHeight: 1.85 }}>
-              <strong style={{ color: '#fff', fontWeight: 700 }}>Arthur</strong>, lui, voit le monde en images et en émotions. Son audace créative brise les conventions et capte l'attention là où les autres passent inaperçus.
+              <strong style={{ color: '#fff', fontWeight: 700 }}>Arthur</strong>, lui, est l'architecte de la relation client et de la stratégie. Il traduit chaque ambition en feuille de route claire, et chaque client en partenaire de long terme.
             </p>
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={fadeUp} custom={1} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -68,10 +68,10 @@ export default function Storytelling() {
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 22rem), 1fr))', gap: '1.5rem' }}>
-          <Founder name="Arthur" role="Co-Fondateur · Directeur Créatif" photo="/Photo Arthur Ali/ARTHUR.JPG" delay={0}
-            trait="L'audace comme boussole. Arthur transforme chaque brief en manifeste visuel. Sa sensibilité artistique donne vie aux identités qui marquent les esprits durablement." />
-          <Founder name="Ali" role="Co-Fondateur · Directeur Stratégique" photo="/Photo Arthur Ali/ALI 2.png" delay={1}
-            trait="La stratégie comme colonne vertébrale. Ali traduit les ambitions en feuilles de route précises. Chaque message calibré pour générer un impact réel et mesurable." />
+          <Founder name="Arthur" role="Co-Fondateur · Stratégie & Relation Client" photo="/Photo Arthur Ali/ARTHUR.JPG" delay={0}
+            trait="La relation client comme moteur. Arthur construit des stratégies solides et des partenariats durables. Il transforme chaque brief en feuille de route claire et chaque client en allié de confiance." />
+          <Founder name="Ali" role="Co-Fondateur · Directeur Créatif" photo="/Photo Arthur Ali/ALI 2.png" delay={1}
+            trait="L'audace comme boussole. Ali transforme chaque projet en manifeste visuel. Sa sensibilité créative brise les conventions et forge des identités qui marquent les esprits durablement." />
         </div>
       </div>
     </section>
