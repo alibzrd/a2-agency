@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Sparkles } from 'lucide-react'
 
-const logoSrc = '/a2 logo transpa.png'
+const logoSrc = '/logo.png'
 
 export default function Hero() {
   return (

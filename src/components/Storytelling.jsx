@@ -68,9 +68,9 @@ export default function Storytelling() {
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 22rem), 1fr))', gap: '1.5rem' }}>
-          <Founder name="Arthur" role="Co-Fondateur · Stratégie & Relation Client" photo="/Photo Arthur Ali/ARTHUR.JPG" delay={0}
+          <Founder name="Arthur" role="Co-Fondateur · Stratégie & Relation Client" photo="/founders/arthur.jpg" delay={0}
             trait="La relation client comme moteur. Arthur construit des stratégies solides et des partenariats durables. Il transforme chaque brief en feuille de route claire et chaque client en allié de confiance." />
-          <Founder name="Ali" role="Co-Fondateur · Directeur Créatif" photo="/Photo Arthur Ali/ALI 2.png" delay={1}
+          <Founder name="Ali" role="Co-Fondateur · Directeur Créatif" photo="/founders/ali.png" delay={1}
             trait="L'audace comme boussole. Ali transforme chaque projet en manifeste visuel. Sa sensibilité créative brise les conventions et forge des identités qui marquent les esprits durablement." />
         </div>
       </div>

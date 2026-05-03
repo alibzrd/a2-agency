@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-const logoSrc = '/a2 logo transpa.png'
+const logoSrc = '/logo.png'
 
 const navLinks = [
   { label: 'Histoire', href: '#storytelling' },
