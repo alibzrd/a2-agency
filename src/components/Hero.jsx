@@ -1,7 +1,30 @@
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 import { ArrowRight, Sparkles } from 'lucide-react'
 
 const logoSrc = '/logo.png'
+
+function Counter({ to, suffix = '', duration = 2 }) {
+  const [count, setCount] = useState(0)
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true })
+
+  useEffect(() => {
+    if (!inView) return
+    let start = 0
+    const steps = 60
+    const increment = to / steps
+    const interval = (duration * 1000) / steps
+    const timer = setInterval(() => {
+      start += increment
+      if (start >= to) { setCount(to); clearInterval(timer) }
+      else setCount(Math.floor(start))
+    }, interval)
+    return () => clearInterval(timer)
+  }, [inView, to, duration])
+
+  return <span ref={ref}>{count}{suffix}</span>
+}
 
 export default function Hero() {
   return (
@@ -89,14 +112,27 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8 }}
           style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '1px', maxWidth: '28rem', margin: '0 auto' }}
         >
-          {[{ value: '50+', label: 'Projets' }, { value: '30+', label: 'Clients' }, { value: '360°', label: 'Communication' }].map((s, i) => (
-            <div key={s.label} className="glass-card" style={{
-              padding: '1.1rem 0.75rem', textAlign: 'center',
-              borderRadius: i === 0 ? '1rem 0 0 1rem' : i === 2 ? '0 1rem 1rem 0' : '0',
-            }}>
-              <div style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '1.5rem', fontWeight: 900, color: '#fff' }}>{s.value}</div>
+          {[
+            { to: 50, suffix: '+', label: 'Projets' },
+            { to: 30, suffix: '+', label: 'Clients' },
+            { to: 360, suffix: '°', label: 'Communication' },
+          ].map((s, i) => (
+            <motion.div
+              key={s.label}
+              className="glass-card"
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 1 + i * 0.15 }}
+              style={{
+                padding: '1.1rem 0.75rem', textAlign: 'center',
+                borderRadius: i === 0 ? '1rem 0 0 1rem' : i === 2 ? '0 1rem 1rem 0' : '0',
+              }}
+            >
+              <div style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '1.5rem', fontWeight: 900, color: '#fff' }}>
+                <Counter to={s.to} suffix={s.suffix} />
+              </div>
               <div style={{ fontSize: '0.6rem', color: 'rgba(232,240,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: '0.2rem' }}>{s.label}</div>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>
