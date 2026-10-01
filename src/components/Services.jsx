@@ -1,44 +1,73 @@
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { Layers, Zap, Globe } from 'lucide-react'
+import { ChevronRight, Megaphone, PenTool, MonitorSmartphone, Heart, CalendarCheck } from 'lucide-react'
+import { Phone, PostScreen, StoryScreen, Chip } from './Mockups'
+import SitesShowcase from './SitesShowcase'
 
-const services = [
-  { Icon: Layers, title: 'Stratégie de Marque', subtitle: 'Branding & Identité', description: "Nous construisons des identités mémorables. Logo, charte graphique, positionnement — chaque élément pensé pour raconter votre histoire avec puissance.", features: ['Création de logo', 'Charte graphique', 'Positionnement', 'Guidelines'] },
-  { Icon: Zap, title: 'Création de Contenu', subtitle: 'Digital & Social Media', description: "Du contenu qui convertit. Posts, Reels, campagnes, flyers — visuels percutants et messages calibrés pour capter l'attention sur tous vos canaux.", features: ['Social media', 'Vidéo & Reels', 'Flyers & Print', 'Stratégie éditoriale'], featured: true },
-  { Icon: Globe, title: 'Développement Web', subtitle: 'Design UX/UI', description: "Interfaces digitales qui impressionnent et convertissent. Sites vitrines, e-commerce — esthétique haut de gamme et performance irréprochable.", features: ['Site vitrine', 'E-commerce', 'UX/UI Design', 'SEO'] },
-]
+function Scope({ items }) {
+  return (
+    <p className="scope muted">
+      {items.map((t, i) => (
+        <span key={t}><span className="nowrap">{t}{i < items.length - 1 ? ' ·' : ''}</span>{' '}</span>
+      ))}
+    </p>
+  )
+}
+
+function Links({ more }) {
+  return (
+    <div className="actions links">
+      {more && <a href={more.href} className="link">{more.label} <ChevronRight size={16} /></a>}
+      <a href="#contact" className="link">Demander un devis <ChevronRight size={16} /></a>
+    </div>
+  )
+}
 
 export default function Services() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-100px' })
   return (
-    <section id="services" className="a2-section" style={{ background: 'rgba(129,152,177,0.02)' }}>
-      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '50rem', height: '25rem', borderRadius: '50%', background: 'rgba(129,152,177,0.04)', filter: 'blur(120px)', pointerEvents: 'none' }} />
-      <div className="a2-container">
-        <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7 }} className="a2-section-title">
-          <span className="a2-section-label">Ce que nous faisons</span>
-          <h2 className="a2-section-heading">Nos services</h2>
-          <p className="a2-section-sub">Une offre complète pour couvrir chaque dimension de votre communication.</p>
-        </motion.div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 20rem), 1fr))', gap: '1.5rem' }}>
-          {services.map((s, i) => (
-            <motion.div key={s.title} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.6, delay: i * 0.15 }} whileHover={{ y: -6 }}
-              className="glass-card" style={{ padding: '2rem', position: 'relative', overflow: 'hidden', ...(s.featured ? { border: '1px solid rgba(171,193,216,0.25)', boxShadow: '0 8px 32px rgba(129,152,177,0.1)' } : {}) }}
-            >
-              {s.featured && <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', padding: '0.2rem 1rem', borderRadius: '0 0 0.75rem 0.75rem', background: '#5a9dbf', color: '#fff', fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>Populaire</div>}
-              <div style={{ width: '3rem', height: '3rem', borderRadius: '0.875rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(171,193,216,0.15)', border: '1px solid rgba(171,193,216,0.2)' }}>
-                <s.Icon size={20} color="#89c8f0" />
-              </div>
-              <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '1.1rem', fontWeight: 700, color: '#fff', marginBottom: '0.2rem' }}>{s.title}</h3>
-              <p style={{ fontSize: '0.68rem', color: '#89c8f0', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '0.875rem' }}>{s.subtitle}</p>
-              <p style={{ color: 'rgba(232,240,255,0.55)', fontSize: '0.875rem', lineHeight: 1.75, marginBottom: '1.5rem' }}>{s.description}</p>
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                {s.features.map(f => <li key={f} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: 'rgba(232,240,255,0.5)' }}><span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#5a9dbf', flexShrink: 0 }} />{f}</li>)}
-              </ul>
-            </motion.div>
-          ))}
+    <section id="expertises" className="tiles" aria-label="Nos expertises">
+      <article className="tile is-wide">
+        <span className="icon-badge"><Megaphone size={22} /></span>
+        <h2 className="h-tile">Contenus & réseaux</h2>
+        <p className="sub">Des visuels qui arrêtent le scroll.</p>
+        <Scope items={["Affiches sport", "Visuels réseaux", "Feed Instagram", "Vidéo & Reels", "Flyers & print", "Ligne éditoriale"]} />
+        <Links more={{ href: '#feed', label: 'Voir le feed Instagram' }} />
+        <div className="tile-art art-phones">
+          <div className="print-card is-left"><img src="/contenus/originale.webp" alt="Menu Bubble juice Originale" loading="lazy" /></div>
+          <Phone><PostScreen src="/contenus/matchday.webp" /></Phone>
+          <Phone><StoryScreen src="/contenus/fastloc.webp" /></Phone>
+          <Phone><PostScreen src="/contenus/clear-glass-switch.webp" /></Phone>
+          <div className="print-card is-right"><img src="/contenus/cinq.webp" alt="Flyer 5 Cinq" loading="lazy" /></div>
+          <Chip icon={Heart} title="Nouveau post" note="Jour de match" className="c1 floaty" />
+          <Chip icon={CalendarCheck} title="Planning éditorial" note="Calé pour le mois" className="c2 floaty d2" />
         </div>
-      </div>
+      </article>
+
+      <article className="tile">
+        <span className="icon-badge"><PenTool size={22} /></span>
+        <h2 className="h-tile">Identité & branding</h2>
+        <p className="sub">Une marque qu'on reconnaît au premier coup d'œil.</p>
+        <Scope items={["Logo", "Charte graphique", "Positionnement", "Guide de marque"]} />
+        <Links />
+        <div className="tile-art art-brand">
+          <div className="brand-card is-logo"><img src="/branding/am-nail-artist.webp" alt="Logo AM Nail Artist" loading="lazy" /></div>
+          <div className="brand-card is-poster"><img src="/branding/nanalash.webp" alt="Visuel « Nanalash is back »" loading="lazy" /></div>
+          <div className="chip palette floaty" aria-hidden="true">
+            <span style={{ display: 'flex' }}>
+              {['#f7cbd8', '#3f3f42', '#c9c9cc', '#f4f4f4'].map(c => <span key={c} className="sw" style={{ background: c }} />)}
+            </span>
+            <span>Palette</span>
+          </div>
+          <div className="chip type floaty d2" aria-hidden="true"><b className="serif">Aa</b><span>Typographie<small>Serif et script</small></span></div>
+        </div>
+      </article>
+
+      <article className="tile">
+        <span className="icon-badge"><MonitorSmartphone size={22} /></span>
+        <h2 className="h-tile">Sites web</h2>
+        <p className="sub">Rapides, beaux sur mobile, pensés pour convertir.</p>
+        <Scope items={["Site vitrine", "E-commerce", "Design UX/UI", "Référencement"]} />
+        <Links />
+        <SitesShowcase />
+      </article>
     </section>
   )
 }

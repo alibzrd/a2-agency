@@ -1,150 +1,85 @@
-import { motion, useInView } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
-import { ArrowRight, Sparkles } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { ChevronRight, Sparkles, CheckCircle2, Globe } from 'lucide-react'
+import { Phone, ImageScreen, Chip } from './Mockups'
 
-const logoSrc = '/logo.png'
+// Bande défilante : visuels tirés des feeds clients, sans reprendre ceux de la composition du haut
+const reelImages = [
+  '/contenus/matchday.webp',
+  '/feed/smash-gourmet/1.webp',
+  '/feed/fanushari3/1.webp',
+  '/branding/am-nail-artist.webp',
+  '/thumbs/Clear-Glass/3.webp',
+  '/feed/smash-gourmet/2.webp',
+  '/feed/fanushari3/2.webp',
+  '/contenus/mojito.webp',
+  '/feed/smash-gourmet/4.webp',
+  '/feed/fanushari3.webp',
+  '/feed/fanushari3/3.webp',
+  '/contenus/cinq.webp',
+  '/feed/smash-gourmet/3.webp',
+  '/thumbs/Clear-Glass/6.webp',
+  '/feed/fanushari3/4.webp',
+  '/feed/smash-gourmet/5.webp',
+  '/feed/fanushari3/6.webp',
+  '/feed/smash-gourmet/6.webp',
+  '/feed/fanushari3/5.webp',
+]
 
-function Counter({ to, suffix = '', duration = 2 }) {
-  const [count, setCount] = useState(0)
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true })
-
-  useEffect(() => {
-    if (!inView) return
-    let start = 0
-    const steps = 60
-    const increment = to / steps
-    const interval = (duration * 1000) / steps
-    const timer = setInterval(() => {
-      start += increment
-      if (start >= to) { setCount(to); clearInterval(timer) }
-      else setCount(Math.floor(start))
-    }, interval)
-    return () => clearInterval(timer)
-  }, [inView, to, duration])
-
-  return <span ref={ref}>{count}{suffix}</span>
+const ease = [0.22, 1, 0.36, 1]
+const rise = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.9, delay: 0.1 + i * 0.12, ease } }),
 }
 
 export default function Hero() {
   return (
-    <section style={{
-      position: 'relative', minHeight: '100vh',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      overflow: 'hidden', paddingTop: '5rem', background: '#060912',
-    }}>
-      {/* Glow orbs */}
-      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
-        <div style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)', width: '40rem', height: '40rem', borderRadius: '50%', background: 'rgba(129,152,177,0.08)', filter: 'blur(120px)' }} />
-        <div style={{ position: 'absolute', bottom: '10%', left: '20%', width: '20rem', height: '20rem', borderRadius: '50%', background: 'rgba(129,152,177,0.05)', filter: 'blur(80px)' }} />
+    <>
+      <div className="ribbon">
+        Une idée, un projet ? On vous répond sous 24 h.
+        <a href="#contact" className="link">Nous écrire <ChevronRight size={14} /></a>
       </div>
-      {/* Grid */}
-      <div style={{ position: 'absolute', inset: 0, opacity: 0.025, backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
-      <div style={{ position: 'relative', zIndex: 10, width: '100%', maxWidth: '56rem', margin: '0 auto', padding: '0 1.5rem', textAlign: 'center' }}>
+      <section id="top" className="hero">
+        <div className="aurora" />
+        <div className="grid-bg" />
 
-        {/* Logo central */}
+        <div className="wrap">
+          <motion.h1 className="h-hero grad" initial="hidden" animate="visible" variants={rise}>
+            Communication 360°<sup className="sq">²</sup>
+          </motion.h1>
+          <motion.p className="sub muted" initial="hidden" animate="visible" variants={rise} custom={1}>
+            Branding, contenus et sites web pour les commerces, les clubs et les marques qui veulent marquer.
+          </motion.p>
+          <motion.div className="actions" initial="hidden" animate="visible" variants={rise} custom={2}>
+            <a href="#contact" className="btn btn-fill">Demander un devis</a>
+            <a href="#expertises" className="btn btn-ghost">Voir nos réalisations</a>
+          </motion.div>
+        </div>
+
         <motion.div
-          initial={{ opacity: 0, scale: 0.7 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, ease: 'easeOut' }}
-          style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.5rem' }}
+          className="stage"
+          initial={{ opacity: 0, y: 60 }} animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 0.35, ease }}
         >
-          <img
-            src={logoSrc}
-            alt="A2 Agency"
-            style={{ width: '320px', height: 'auto', filter: 'brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(195deg) brightness(1.1)' }}
-          />
+          <div className="float-card far-left"><img src="/contenus/fanushari3-beanie.webp" alt="" /></div>
+          <div className="float-card left"><img src="/contenus/clear-glass-switch.webp" alt="" /></div>
+          <Phone><ImageScreen src="/contenus/a2-profil.webp" /></Phone>
+          <div className="float-card right is-story"><img src="/contenus/am-jeu-concours.webp" alt="" /></div>
+          <div className="float-card far-right is-tall"><img src="/contenus/rs-prestige.webp" alt="" /></div>
+
+          <Chip icon={Sparkles} title="Nouveau visuel" note="Prêt à publier" className="c1 floaty" />
+          <Chip icon={CheckCircle2} title="Validé par le client" className="c2 floaty d2" />
+          <Chip icon={Globe} title="Site en ligne" note="Mobile et ordinateur" className="c3 floaty d3" />
         </motion.div>
+      </section>
 
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
-          style={{
-            display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-            padding: '0.45rem 1.1rem', borderRadius: '9999px',
-            border: '1px solid rgba(171,193,216,0.25)', background: 'rgba(171,193,216,0.1)',
-            color: '#c2e7ff', fontSize: '0.7rem', fontWeight: 700,
-            letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '2rem',
-          }}
-        >
-          <Sparkles size={11} /> Agence Communication 360°
-        </motion.div>
-
-        {/* Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }}
-          style={{
-            fontFamily: 'Montserrat, sans-serif',
-            fontSize: 'clamp(2.4rem, 6.5vw, 4.5rem)',
-            fontWeight: 900, lineHeight: 1.08,
-            letterSpacing: '-0.02em', color: '#ffffff', marginBottom: '1.5rem',
-          }}
-        >
-          Votre communication
-          <br />
-          <span style={{ background: 'linear-gradient(135deg, #89c8f0, #5a9dbf)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-            à la puissance
-          </span>
-          <sup style={{ color: '#5a9dbf', fontSize: '45%', verticalAlign: 'super', WebkitTextFillColor: '#5a9dbf' }}>2</sup>
-        </motion.h1>
-
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }}
-          style={{ fontSize: '1.05rem', color: 'rgba(232,240,255,0.5)', fontWeight: 300, lineHeight: 1.85, maxWidth: '34rem', margin: '0 auto 2.5rem' }}
-        >
-          Stratégie de marque, création de contenu et développement web —
-          deux expertises fusionnées pour un impact exponentiel.
-        </motion.p>
-
-        {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.6 }}
-          style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '4rem' }}
-        >
-          <a href="#contact" className="btn-primary">Obtenir un devis <ArrowRight size={16} /></a>
-          <a href="#portfolio" className="btn-secondary">Voir nos projets</a>
-        </motion.div>
-
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8 }}
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '1px', maxWidth: '28rem', margin: '0 auto' }}
-        >
-          {[
-            { to: 50, suffix: '+', label: 'Projets' },
-            { to: 30, suffix: '+', label: 'Clients' },
-            { to: 360, suffix: '°', label: 'Communication' },
-          ].map((s, i) => (
-            <motion.div
-              key={s.label}
-              className="glass-card"
-              initial={{ opacity: 0, scale: 0.85 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 1 + i * 0.15 }}
-              style={{
-                padding: '1.1rem 0.75rem', textAlign: 'center',
-                borderRadius: i === 0 ? '1rem 0 0 1rem' : i === 2 ? '0 1rem 1rem 0' : '0',
-              }}
-            >
-              <div style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '1.5rem', fontWeight: 900, color: '#fff' }}>
-                <Counter to={s.to} suffix={s.suffix} />
-              </div>
-              <div style={{ fontSize: '0.6rem', color: 'rgba(232,240,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: '0.2rem' }}>{s.label}</div>
-            </motion.div>
+      <div className="reel" aria-label="Aperçu de nos réalisations">
+        <div className="reel-track">
+          {[...reelImages, ...reelImages].map((src, i) => (
+            <img key={i} src={src} alt="" loading="lazy" aria-hidden={i >= reelImages.length} />
           ))}
-        </motion.div>
+        </div>
       </div>
-
-      {/* Scroll */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4 }}
-        style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.4rem' }}
-      >
-        <span style={{ fontSize: '0.6rem', color: 'rgba(232,240,255,0.3)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Scroll</span>
-        <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity }}
-          style={{ width: '1px', height: '2rem', background: 'linear-gradient(to bottom, #5a9dbf, transparent)' }} />
-      </motion.div>
-    </section>
+    </>
   )
 }

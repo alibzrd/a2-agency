@@ -1,77 +1,66 @@
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { useInView, useReducedMotion } from 'framer-motion'
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.7, delay: i * 0.15, ease: 'easeOut' } }),
-}
-
-function Founder({ name, role, trait, photo, delay }) {
+function Counter({ to, suffix = '' }) {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
-  return (
-    <motion.div ref={ref} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeUp} custom={delay}
-      className="glass-card" style={{ padding: '2rem' }}>
-      <div style={{
-        width: '5rem', height: '5rem', borderRadius: '50%', marginBottom: '1.25rem',
-        overflow: 'hidden', flexShrink: 0,
-        border: '2px solid rgba(194,231,255,0.25)',
-        boxShadow: '0 0 20px rgba(194,231,255,0.1)',
-      }}>
-        <img src={photo} alt={name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-      </div>
-      <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '1.1rem', fontWeight: 700, color: '#fff', marginBottom: '0.2rem' }}>{name}</h3>
-      <p style={{ fontSize: '0.68rem', color: '#89c8f0', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '1rem' }}>{role}</p>
-      <p style={{ color: 'rgba(232,240,255,0.6)', fontSize: '0.9rem', lineHeight: 1.75 }}>{trait}</p>
-    </motion.div>
-  )
+  const inView = useInView(ref, { once: true, margin: '0px 0px -15% 0px' })
+  const reduce = useReducedMotion()
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!inView || reduce) return
+    let frame
+    const t0 = performance.now()
+    const tick = (now) => {
+      const p = Math.min((now - t0) / 1600, 1)
+      setCount(Math.round(to * (1 - Math.pow(1 - p, 3))))
+      if (p < 1) frame = requestAnimationFrame(tick)
+    }
+    frame = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(frame)
+  }, [inView, to, reduce])
+
+  return <strong ref={ref}>{reduce ? to : count}{suffix}</strong>
 }
 
 export default function Storytelling() {
-  const titleRef = useRef(null)
-  const titleInView = useInView(titleRef, { once: true, margin: '-80px' })
-
   return (
-    <section id="storytelling" className="a2-section">
-      <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: '1px', height: '8rem', background: 'linear-gradient(to bottom, transparent, rgba(171,193,216,0.25))' }} />
-      <div className="a2-container">
-        <motion.div ref={titleRef} initial="hidden" animate={titleInView ? 'visible' : 'hidden'} variants={fadeUp} className="a2-section-title">
-          <span className="a2-section-label">L'Origine</span>
-          <h2 className="a2-section-heading">Deux visions, <span style={{ background: 'linear-gradient(135deg, #5a9dbf, #c2e7ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>une agence</span></h2>
-        </motion.div>
+    <section id="agence" className="agency">
+      <div className="aurora" />
+      <div className="wrap">
+        <h2 className="h-section grad">Une agence. Un seul interlocuteur.</h2>
+        <p className="sub muted">De la première idée à la mise en ligne, vous parlez toujours à la même personne.</p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 28rem), 1fr))', gap: '3rem', marginBottom: '4rem' }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={fadeUp} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <p style={{ color: 'rgba(232,240,255,0.7)', fontSize: '1.05rem', lineHeight: 1.85 }}>
-              Tout a commencé dans les amphithéâtres d'un Master Communication, où deux esprits aux tempéraments opposés se sont trouvés — et ne se sont plus lâchés.
-            </p>
-            <p style={{ color: 'rgba(232,240,255,0.7)', fontSize: '1.05rem', lineHeight: 1.85 }}>
-              <strong style={{ color: '#fff', fontWeight: 700 }}>Ali</strong>, le créatif du duo, voit le monde en images et en émotions. Son audace visuelle brise les conventions et capte l'attention là où les autres passent inaperçus.
-            </p>
-            <p style={{ color: 'rgba(232,240,255,0.7)', fontSize: '1.05rem', lineHeight: 1.85 }}>
-              <strong style={{ color: '#fff', fontWeight: 700 }}>Arthur</strong>, lui, est l'architecte de la relation client et de la stratégie. Il traduit chaque ambition en feuille de route claire, et chaque client en partenaire de long terme.
-            </p>
-          </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={fadeUp} custom={1} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <p style={{ color: 'rgba(232,240,255,0.7)', fontSize: '1.05rem', lineHeight: 1.85 }}>
-              Ensemble, ils ont compris que l'excellence ne choisit pas entre la forme et le fond — elle les fusionne. C'est de cette alchimie qu'est née <strong style={{ color: '#fff', fontWeight: 700 }}>A² Agency</strong>.
-            </p>
-            <p style={{ color: 'rgba(232,240,255,0.7)', fontSize: '1.05rem', lineHeight: 1.85 }}>
-              Chaque projet est une équation. Chaque solution, une signature. Ce qui les motive, c'est de <em style={{ color: '#c2e7ff', fontStyle: 'normal', fontWeight: 600 }}>marquer</em>.
-            </p>
-            <div style={{ borderLeft: '2px solid rgba(171,193,216,0.25)', paddingLeft: '1.5rem' }}>
-              <p style={{ color: 'rgba(232,240,255,0.45)', fontSize: '0.9rem', fontStyle: 'italic', lineHeight: 1.8 }}>
-                « L'exposant n'est pas qu'un symbole mathématique. C'est notre promesse : votre impact, élevé à la puissance deux. »
-              </p>
-            </div>
-          </motion.div>
+        <div className="stats">
+          <div className="stat"><Counter to={50} suffix="+" /><span>projets livrés</span></div>
+          <div className="stat"><Counter to={30} suffix="+" /><span>clients accompagnés</span></div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 22rem), 1fr))', gap: '1.5rem' }}>
-          <Founder name="Arthur" role="Co-Fondateur · Stratégie & Relation Client" photo="/founders/arthur.jpg" delay={0}
-            trait="La relation client comme moteur. Arthur construit des stratégies solides et des partenariats durables. Il transforme chaque brief en feuille de route claire et chaque client en allié de confiance." />
-          <Founder name="Ali" role="Co-Fondateur · Directeur Créatif" photo="/founders/ali.png" delay={1}
-            trait="L'audace comme boussole. Ali transforme chaque projet en manifeste visuel. Sa sensibilité créative brise les conventions et forge des identités qui marquent les esprits durablement." />
+        <div className="agency-duo">
+          <figure className="founder">
+            <div className="photo"><img src="/founders/arthur.jpg" alt="Portrait d'Arthur, fondateur d'A² Agency" loading="lazy" /></div>
+            <figcaption>
+              <h3>Arthur</h3>
+              <p>Fondateur, stratégie et relation client</p>
+            </figcaption>
+          </figure>
+
+          <div className="story">
+            <p>
+              A² Agency est née d'une conviction simple : une bonne communication ne choisit pas entre la forme et le fond.
+              Un beau visuel sans stratégie passe inaperçu. Une stratégie sans image forte ne se voit pas.
+            </p>
+            <p>
+              Formé en master communication, <strong>Arthur</strong> a créé l'agence pour réunir les deux. Il écoute,
+              traduit chaque ambition en plan clair, puis suit chaque projet jusqu'au dernier détail, qu'il s'agisse
+              d'une affiche de match, d'un menu ou d'un site web.
+            </p>
+            <p>
+              Commerces de quartier, clubs de football, marques qui se lancent : chaque client est traité comme un
+              partenaire de long terme, pas comme un dossier de plus.
+            </p>
+            <blockquote>Le ² n'est pas qu'un symbole. C'est notre promesse : votre impact, élevé à la puissance deux.</blockquote>
+          </div>
         </div>
       </div>
     </section>
