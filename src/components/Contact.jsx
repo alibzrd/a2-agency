@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { ChevronRight, MessageCircle, Mail } from 'lucide-react'
-import { whatsappLink, mailtoLink, EMAIL, INSTAGRAM_URL } from '../contact'
+import { ChevronRight, MessageCircle, Mail, CheckCircle2 } from 'lucide-react'
+import { whatsappLink, mailtoLink, EMAIL, INSTAGRAM_URL, WEB3FORMS_KEY } from '../contact'
 
 const needs = ['Contenus & réseaux', 'Identité & branding', 'Site web', 'Plusieurs besoins', 'Autre']
 const channels = [
@@ -9,14 +9,16 @@ const channels = [
 ]
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', need: needs[0], message: '' })
+  const [form, setForm] = useState({ name: '', email: '', need: needs[0], message: '', botcheck: false })
   const [channel, setChannel] = useState('whatsapp')
+  const [status, setStatus] = useState('idle') // idle | sending | sent | error
   const current = channels.find(c => c.id === channel)
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
 
-  // Le formulaire prépare le message dans WhatsApp ou dans la messagerie du visiteur : il n'a plus qu'à l'envoyer.
-  const handleSubmit = (e) => {
+  // WhatsApp : ouvre la conversation avec le message prêt. Email : envoi direct via Web3Forms
+  // (ou, si la clé n'est pas encore renseignée, ouverture de la messagerie du visiteur).
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const name = form.name.trim()
     const text =
@@ -25,8 +27,34 @@ export default function Contact() {
       form.message.trim()
     if (channel === 'whatsapp') {
       window.open(whatsappLink(text), '_blank', 'noopener,noreferrer')
-    } else {
+      return
+    }
+    if (!WEB3FORMS_KEY) {
       window.location.href = mailtoLink(`Projet : ${form.need} (${name})`, text)
+      return
+    }
+    setStatus('sending')
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Nouveau projet : ${form.need} (${name})`,
+          from_name: 'Site A² Agency',
+          name,
+          email: form.email.trim(),
+          besoin: form.need,
+          message: form.message.trim(),
+          botcheck: form.botcheck,
+        }),
+      })
+      const data = await res.json()
+      if (!data.success) throw new Error(data.message)
+      setStatus('sent')
+      setForm({ name: '', email: '', need: needs[0], message: '', botcheck: false })
+    } catch {
+      setStatus('error')
     }
   }
 
@@ -81,15 +109,33 @@ export default function Contact() {
               </select>
             </div>
           </div>
+          {channel === 'email' && (
+            <div className="field">
+              <label htmlFor="c-email">Votre email (pour qu'on vous réponde)</label>
+              <input id="c-email" type="email" name="email" value={form.email} onChange={handleChange} required autoComplete="email" />
+            </div>
+          )}
+          <input type="checkbox" name="botcheck" className="hp" tabIndex={-1} autoComplete="off" aria-hidden="true"
+            checked={form.botcheck} onChange={e => setForm({ ...form, botcheck: e.target.checked })} />
           <div className="field">
             <label htmlFor="c-msg">Votre projet</label>
             <textarea id="c-msg" name="message" value={form.message} onChange={handleChange} required rows={5} />
           </div>
-          <button type="submit" className="btn btn-fill btn-wa"><current.Icon size={18} /> {channel === 'whatsapp' ? 'Envoyer sur WhatsApp' : 'Envoyer par email'}</button>
-          <p className="form-note">
+          {status === 'sent' && channel === 'email' ? (
+            <p className="form-success" role="status"><CheckCircle2 size={20} /> Message envoyé ! On vous répond sous 24 h.</p>
+          ) : (
+            <button type="submit" className="btn btn-fill btn-wa" disabled={status === 'sending'}>
+              <current.Icon size={18} /> {channel === 'whatsapp' ? 'Envoyer sur WhatsApp' : status === 'sending' ? 'Envoi en cours…' : 'Envoyer par email'}
+            </button>
+          )}
+          <p className="form-note" role={status === 'error' ? 'alert' : undefined}>
             {channel === 'whatsapp'
               ? "WhatsApp s'ouvre avec votre message pré-rempli. Il ne reste qu'à appuyer sur envoyer."
-              : `Votre messagerie s'ouvre avec le message pré-rempli pour ${EMAIL}. Il ne reste qu'à l'envoyer.`}
+              : status === 'error'
+                ? `L'envoi n'a pas fonctionné. Réessayez ou écrivez-nous directement à ${EMAIL}.`
+                : WEB3FORMS_KEY
+                  ? 'Votre message nous est envoyé directement, sans quitter le site.'
+                  : `Votre messagerie s'ouvre avec le message pré-rempli pour ${EMAIL}. Il ne reste qu'à l'envoyer.`}
           </p>
         </form>
       </div>
