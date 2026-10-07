@@ -49,7 +49,7 @@ export default function Hero() {
             Communication 360°<sup className="sq">²</sup>
           </motion.h1>
           <motion.p className="sub muted" initial="hidden" animate="visible" variants={rise} custom={1}>
-            Agence de communication à Vernon : branding, contenus et sites web pour les commerces, les clubs et les marques qui veulent marquer.
+            Branding, contenus et sites web pour les commerces, les clubs et les marques qui veulent marquer.
           </motion.p>
           <motion.div className="actions" initial="hidden" animate="visible" variants={rise} custom={2}>
             <a href="#contact" className="btn btn-fill">Demander un devis</a>
