@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { ChevronRight, MessageCircle, Mail, CheckCircle2 } from 'lucide-react'
-import { whatsappLink, mailtoLink, EMAIL, INSTAGRAM_URL, WEB3FORMS_KEY } from '../contact'
+import { whatsappLink, mailtoLink, INSTAGRAM_URL, WEB3FORMS_KEY } from '../contact'
 
 const needs = ['Contenus & réseaux', 'Identité & branding', 'Site web', 'Plusieurs besoins', 'Autre']
 const channels = [
@@ -15,6 +15,16 @@ export default function Contact() {
   const current = channels.find(c => c.id === channel)
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
+  const formRef = useRef(null)
+
+  // « Envoyer un email » : bascule le formulaire en mode email et y amène le visiteur,
+  // pour que l'adresse de l'agence n'apparaisse jamais.
+  const goToEmailForm = () => {
+    setChannel('email')
+    setStatus('idle')
+    formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    setTimeout(() => document.getElementById('c-name')?.focus({ preventScroll: true }), 500)
+  }
 
   // WhatsApp : ouvre la conversation avec le message prêt. Email : envoi direct via Web3Forms
   // (ou, si la clé n'est pas encore renseignée, ouverture de la messagerie du visiteur).
@@ -73,16 +83,15 @@ export default function Contact() {
           >
             <MessageCircle size={20} /> Écrire sur WhatsApp
           </a>
-          <a className="btn btn-ghost btn-wa" href={mailtoLink('Demande de contact')}>
+          <button type="button" className="btn btn-ghost btn-wa" onClick={goToEmailForm}>
             <Mail size={20} /> Envoyer un email
-          </a>
+          </button>
         </div>
         <p className="contact-direct muted">
-          <a className="link" href={`mailto:${EMAIL}`}>{EMAIL}</a>
           <a className="link" href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">Instagram <ChevronRight size={15} /></a>
         </p>
 
-        <form className="form-card" onSubmit={handleSubmit}>
+        <form className="form-card" onSubmit={handleSubmit} ref={formRef}>
           <p className="form-intro">Ou décrivez votre projet ici : on prépare le message pour vous.</p>
           <div className="channel-pick">
             <span>Recevoir votre message par</span>
@@ -132,10 +141,10 @@ export default function Contact() {
             {channel === 'whatsapp'
               ? "WhatsApp s'ouvre avec votre message pré-rempli. Il ne reste qu'à appuyer sur envoyer."
               : status === 'error'
-                ? `L'envoi n'a pas fonctionné. Réessayez ou écrivez-nous directement à ${EMAIL}.`
+                ? "L'envoi n'a pas fonctionné. Réessayez dans un instant ou écrivez-nous sur WhatsApp."
                 : WEB3FORMS_KEY
                   ? 'Votre message nous est envoyé directement, sans quitter le site.'
-                  : `Votre messagerie s'ouvre avec le message pré-rempli pour ${EMAIL}. Il ne reste qu'à l'envoyer.`}
+                  : "Votre messagerie s'ouvre avec le message pré-rempli. Il ne reste qu'à l'envoyer."}
           </p>
           <p className="form-legal">Vos informations servent uniquement à répondre à votre demande. <a href="#confidentialite">Politique de confidentialité</a></p>
         </form>
