@@ -5,23 +5,23 @@ import { thumb } from '../thumb'
 
 export function Phone({ children, className = '', style }) {
   return (
-    <div className={`phone ${className}`} style={style} aria-hidden="true">
+    <div className={`phone ${className}`} style={style}>
       <div className="screen">
-        <span className="island" />
+        <span className="island" aria-hidden="true" />
         {children}
       </div>
     </div>
   )
 }
 
-export function PostScreen({ src }) {
+export function PostScreen({ src, alt = '' }) {
   return (
     <div className="post">
       <div className="post-head">
         <span className="av" />
         <span className="bar" style={{ width: '38%' }} />
       </div>
-      <img className="post-img" src={thumb(src)} alt="" loading="lazy" />
+      <img className="post-img" src={thumb(src)} alt={alt} loading="lazy" decoding="async" />
       <div className="post-actions">
         <Heart size={16} className="liked" />
         <MessageCircle size={16} />
@@ -36,19 +36,19 @@ export function PostScreen({ src }) {
   )
 }
 
-export function StoryScreen({ src }) {
+export function StoryScreen({ src, alt = '' }) {
   return (
     <div className="post story-screen" style={{ paddingTop: 0 }}>
       <div className="story-bars"><i /><i /><i /></div>
-      <img src={thumb(src)} alt="" loading="lazy" />
+      <img src={thumb(src)} alt={alt} loading="lazy" decoding="async" />
     </div>
   )
 }
 
-export function ImageScreen({ src }) {
+export function ImageScreen({ src, alt = '' }) {
   return (
     <div className="post story-screen" style={{ paddingTop: 0 }}>
-      <img src={thumb(src)} alt="" style={{ objectPosition: 'top' }} />
+      <img src={thumb(src)} alt={alt} fetchPriority="high" style={{ objectPosition: 'top' }} />
     </div>
   )
 }

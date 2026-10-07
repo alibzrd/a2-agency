@@ -352,6 +352,25 @@ a.shot:hover img { filter: brightness(1.06); }
   .reels-grid { grid-auto-columns: 62%; }
 }
 
+/* ─── Pages légales ─── */
+.legal { position: relative; overflow: hidden; padding: clamp(3.5rem, 7vw, 5.5rem) 0 clamp(4rem, 8vw, 6rem); min-height: 70vh; }
+.legal-wrap { position: relative; z-index: 1; max-width: 52rem; }
+.legal-back { font-size: 15px; margin-bottom: 1.5rem; }
+.legal .h-section { margin-bottom: 1rem; }
+.legal-intro { font-size: 17px; margin-bottom: 1rem; }
+.legal h2 { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin: 2.25rem 0 .7rem; color: var(--text); }
+.legal p, .legal li { color: #c9d4df; font-size: 16px; line-height: 1.7; }
+.legal p + p { margin-top: .7rem; }
+.legal ul { list-style: disc; padding-left: 1.3rem; display: grid; gap: .35rem; margin-top: .4rem; }
+.legal a:not(.legal-back) { color: var(--ice); }
+.legal-date { margin-top: 3rem; font-size: 14px; }
+mark.todo { background: rgba(255, 196, 87, .15); color: #ffc457; padding: .05rem .4rem; border-radius: 6px; font-size: .92em; }
+.footer-legal { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+.footer-legal a { color: var(--muted); text-decoration: none; }
+.footer-legal a:hover { color: var(--text); text-decoration: underline; }
+.form-legal { color: var(--muted); font-size: 12.5px; text-align: center; }
+.form-legal a { color: var(--ice); }
+
 /* ─── Agence ─── */
 .agency { position: relative; overflow: hidden; padding: clamp(3.5rem, 7vw, 5.5rem) 0; text-align: center; border-top: 1px solid var(--line); }
 .agency > .wrap { position: relative; z-index: 1; }

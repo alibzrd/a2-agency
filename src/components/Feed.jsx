@@ -47,7 +47,7 @@ function Profile({ feed }) {
     <div className="ig">
       <p className="ig-top">{feed.name}</p>
       <div className="ig-head">
-        <span className="ig-avatar"><img src={feed.avatar} alt="" /></span>
+        <span className="ig-avatar"><img src={feed.avatar} alt={`Logo ${feed.name}`} /></span>
         <div className="ig-stats">
           {['publications', 'abonnés', 'suivis'].map(l => (
             <span key={l}><i className="bar" /><small>{l}</small></span>

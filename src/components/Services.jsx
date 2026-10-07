@@ -32,9 +32,9 @@ export default function Services() {
         <Links more={{ href: '#feed', label: 'Voir le feed Instagram' }} />
         <div className="tile-art art-phones">
           <div className="print-card is-left"><img src="/contenus/originale.webp" alt="Menu Bubble juice Originale" loading="lazy" /></div>
-          <Phone><PostScreen src="/contenus/matchday.webp" /></Phone>
-          <Phone><StoryScreen src="/contenus/fastloc.webp" /></Phone>
-          <Phone><PostScreen src="/contenus/clear-glass-switch.webp" /></Phone>
+          <Phone><PostScreen src="/contenus/matchday.webp" alt="Post Instagram Match Day" /></Phone>
+          <Phone><StoryScreen src="/contenus/fastloc.webp" alt="Story de location de voiture pour FastLoc" /></Phone>
+          <Phone><PostScreen src="/contenus/clear-glass-switch.webp" alt="Post Instagram Clear Glass" /></Phone>
           <div className="print-card is-right"><img src="/contenus/cinq.webp" alt="Flyer 5 Cinq" loading="lazy" /></div>
           <Chip icon={Heart} title="Nouveau post" note="Jour de match" className="c1 floaty" />
           <Chip icon={CalendarCheck} title="Planning éditorial" note="Calé pour le mois" className="c2 floaty d2" />

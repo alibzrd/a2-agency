@@ -137,6 +137,7 @@ export default function Contact() {
                   ? 'Votre message nous est envoyé directement, sans quitter le site.'
                   : `Votre messagerie s'ouvre avec le message pré-rempli pour ${EMAIL}. Il ne reste qu'à l'envoyer.`}
           </p>
+          <p className="form-legal">Vos informations servent uniquement à répondre à votre demande. <a href="#confidentialite">Politique de confidentialité</a></p>
         </form>
       </div>
     </section>

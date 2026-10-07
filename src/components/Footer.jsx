@@ -26,8 +26,8 @@ export default function Footer() {
           ))}
         </div>
         <div className="footer-bottom">
-          <p>Copyright © {new Date().getFullYear()} A² Agency. Tous droits réservés.</p>
-          <p>Agence de communication 360°</p>
+          <p>© {new Date().getFullYear()} A² Agency · Agence de communication à Vernon (Eure), en Normandie et en Île-de-France.</p>
+          <p className="footer-legal"><a href="#mentions-legales">Mentions légales</a><a href="#confidentialite">Politique de confidentialité</a></p>
         </div>
       </div>
     </footer>
