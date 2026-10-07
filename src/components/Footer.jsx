@@ -1,9 +1,9 @@
-import { whatsappLink, INSTAGRAM_URL } from '../contact'
+import { whatsappLink, EMAIL, INSTAGRAM_URL } from '../contact'
 
 const cols = [
   { title: 'Expertises', links: [['Contenus & réseaux', '#expertises'], ['Identité & branding', '#expertises'], ['Sites web', '#expertises']] },
   { title: "L'agence", links: [['Feed Instagram', '#feed'], ['Notre histoire', '#agence']] },
-  { title: 'Contact', links: [['WhatsApp', whatsappLink()], ['Instagram', INSTAGRAM_URL], ['Demander un devis', '#contact']] },
+  { title: 'Contact', links: [['WhatsApp', whatsappLink()], ['Email', `mailto:${EMAIL}`], ['Instagram', INSTAGRAM_URL], ['Demander un devis', '#contact']] },
 ]
 
 export default function Footer() {
