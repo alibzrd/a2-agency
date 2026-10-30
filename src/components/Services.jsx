@@ -46,7 +46,7 @@ export default function Services() {
         <h2 className="h-tile">Identité & branding</h2>
         <p className="sub">Une marque qu'on reconnaît au premier coup d'œil.</p>
         <Scope items={["Logo", "Charte graphique", "Positionnement", "Guide de marque"]} />
-        <Links />
+        <Links more={{ href: '/creation-logo-identite-visuelle/', label: 'Logo & identité visuelle' }} />
         <div className="tile-art art-brand">
           <div className="brand-card is-logo"><img src="/branding/am-nail-artist.webp" alt="Logo AM Nail Artist" loading="lazy" /></div>
           <div className="brand-card is-poster"><img src="/branding/nanalash.webp" alt="Visuel « Nanalash is back »" loading="lazy" /></div>
@@ -65,7 +65,7 @@ export default function Services() {
         <h2 className="h-tile">Sites web</h2>
         <p className="sub">Rapides, beaux sur mobile, pensés pour convertir.</p>
         <Scope items={["Site vitrine", "E-commerce", "Design UX/UI", "Référencement"]} />
-        <Links />
+        <Links more={{ href: '/creation-site-internet-vernon/', label: 'Création de site internet' }} />
         <SitesShowcase />
       </article>
     </section>

@@ -1,7 +1,7 @@
 import { whatsappLink, INSTAGRAM_URL } from '../contact'
 
 const cols = [
-  { title: 'Expertises', links: [['Contenus & réseaux', '#expertises'], ['Identité & branding', '#expertises'], ['Sites web', '#expertises']] },
+  { title: 'Expertises', links: [['Réseaux sociaux', '/community-manager-eure/'], ['Logo & identité visuelle', '/creation-logo-identite-visuelle/'], ['Création de site internet', '/creation-site-internet-vernon/']] },
   { title: "L'agence", links: [['Feed Instagram', '#feed'], ['Notre histoire', '#agence']] },
   { title: 'Contact', links: [['WhatsApp', whatsappLink()], ['Email', '#contact'], ['Instagram', INSTAGRAM_URL], ['Demander un devis', '#contact']] },
 ]
