@@ -45,10 +45,15 @@ h2 { font-size: clamp(26px, 3.4vw, 38px); line-height: 1.12; letter-spacing: -.0
 .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 24px; min-width: 0; }
 .card h3 { font-size: 18px; margin: 0 0 8px; }
+.card h3 a { color: var(--text); text-decoration: none; }
+.card h3 a::after { content: " →"; color: var(--accent); }
+.card h3 a:hover { color: var(--accent); }
 .card p { margin: 0; color: #c2cfdc; font-size: 15.5px; }
 .works { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 .works figure { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
 .works img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: center top; }
+.works.tall { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.works.tall img { aspect-ratio: 4 / 5; object-position: center; }
 .works figcaption { padding: 14px 18px; font-size: 15px; color: #c2cfdc; }
 .works figcaption b { color: var(--text); }
 .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); counter-reset: s; }
