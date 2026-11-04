@@ -65,7 +65,7 @@ export default function Services() {
         <h2 className="h-tile">Sites web</h2>
         <p className="sub">Rapides, beaux sur mobile, pensés pour convertir.</p>
         <Scope items={["Site vitrine", "E-commerce", "Design UX/UI", "Référencement"]} />
-        <Links more={{ href: '/creation-site-internet-vernon/', label: 'Création de site internet' }} />
+        <Links more={{ href: '/creation-site-internet/', label: 'Création de site internet' }} />
         <SitesShowcase />
       </article>
     </section>

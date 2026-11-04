@@ -1,8 +1,8 @@
 import { whatsappLink, INSTAGRAM_URL } from '../contact'
 
 const cols = [
-  { title: 'Expertises', links: [['Réseaux sociaux', '/community-manager-eure/'], ['Logo & identité visuelle', '/creation-logo-identite-visuelle/'], ['Création de site internet', '/creation-site-internet-vernon/']] },
-  { title: "L'agence", links: [['Feed Instagram', '#feed'], ['Notre histoire', '#agence']] },
+  { title: 'Expertises', links: [['Réseaux sociaux', '/gestion-reseaux-sociaux/'], ['Logo & identité visuelle', '/creation-logo-identite-visuelle/'], ['Affiches, flyers & enseignes', '/creation-affiches-flyers/'], ['Création de site internet', '/creation-site-internet/']] },
+  { title: "L'agence", links: [['Agence de communication digitale', '/agence-communication-digitale/'], ['Feed Instagram', '#feed'], ['Notre histoire', '#agence']] },
   { title: 'Contact', links: [['WhatsApp', whatsappLink()], ['Email', '#contact'], ['Instagram', INSTAGRAM_URL], ['Demander un devis', '#contact']] },
 ]
 
@@ -26,7 +26,7 @@ export default function Footer() {
           ))}
         </div>
         <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} A² Agency · Agence de communication à Vernon (Eure), en Normandie et en Île-de-France.</p>
+          <p>© {new Date().getFullYear()} A² Agency · Agence de communication digitale, partout en France.</p>
           <p className="footer-legal"><a href="#mentions-legales">Mentions légales</a><a href="#confidentialite">Politique de confidentialité</a></p>
         </div>
       </div>
