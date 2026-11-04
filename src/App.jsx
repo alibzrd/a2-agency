@@ -14,7 +14,7 @@ import Legal from './components/Legal'
 const LEGAL_PAGES = { '#mentions-legales': 'mentions', '#confidentialite': 'confidentialite' }
 
 function useHash() {
-  const [hash, setHash] = useState(() => window.location.hash)
+  const [hash, setHash] = useState(() => (typeof window === 'undefined' ? '' : window.location.hash))
   useEffect(() => {
     const onChange = () => setHash(window.location.hash)
     window.addEventListener('hashchange', onChange)

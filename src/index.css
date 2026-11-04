@@ -484,3 +484,6 @@ mark.todo { background: rgba(255, 196, 87, .15); color: #ffc457; padding: .05rem
 @media (max-width: 360px) {
   .segmented button { font-size: 13px; padding: .45rem .6rem; }
 }
+
+/* Texte lu par les moteurs de recherche et les lecteurs d’écran, invisible à l’écran */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
