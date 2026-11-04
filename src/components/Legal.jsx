@@ -77,7 +77,7 @@ function Confidentialite() {
       <ul>
         <li>Web3Forms, pour la transmission du formulaire de contact vers notre messagerie ;</li>
         <li>Microsoft (Outlook), pour notre messagerie ;</li>
-        <li>Vercel, pour l'hébergement du site ;</li>
+        <li>Vercel, pour l'hébergement du site et la mesure d'audience ;</li>
         <li>Meta (WhatsApp), si vous choisissez de nous écrire sur WhatsApp, selon ses propres conditions.</li>
       </ul>
       <p>Certains de ces prestataires peuvent traiter des données en dehors de l'Union européenne, notamment aux États-Unis. Ces transferts sont encadrés par les garanties prévues par le RGPD (décision d'adéquation ou clauses contractuelles types).</p>
@@ -85,8 +85,8 @@ function Confidentialite() {
       <h2>Durée de conservation</h2>
       <p>Les données d'une demande de contact sont conservées au maximum 3 ans après notre dernier échange. Si vous devenez client, elles sont conservées pendant la durée de notre collaboration, puis pendant les durées imposées par la loi (obligations comptables notamment).</p>
 
-      <h2>Cookies</h2>
-      <p>Le site n'utilise aucun cookie publicitaire ni de mesure d'audience. L'hébergeur peut enregistrer des données techniques de connexion (adresse IP, navigateur) pour assurer la sécurité et le bon fonctionnement du site.</p>
+      <h2>Cookies et mesure d'audience</h2>
+      <p>Le site ne dépose aucun cookie. Pour connaître sa fréquentation, il utilise Vercel Web Analytics, un outil de mesure d'audience sans cookie : il compte les pages vues, le site d'où vous arrivez, le pays et le type d'appareil, sous forme de statistiques globales, sans vous identifier ni vous suivre d'un site à l'autre. L'hébergeur peut aussi enregistrer des données techniques de connexion (adresse IP, navigateur) pour assurer la sécurité et le bon fonctionnement du site.</p>
 
       <h2>Vos droits</h2>
       <p>Vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité de vos données. Pour les exercer, écrivez-nous à <a href={`mailto:${EMAIL}`}>{EMAIL}</a> : nous vous répondons dans un délai d'un mois.</p>
