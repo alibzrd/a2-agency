@@ -1,0 +1,25 @@
+{
+  "buildCommand": "npm run build",
+  "redirects": [
+    {
+      "source": "/creation-site-internet-vernon",
+      "destination": "/creation-site-internet/",
+      "permanent": true
+    },
+    {
+      "source": "/creation-site-internet-vernon/",
+      "destination": "/creation-site-internet/",
+      "permanent": true
+    },
+    {
+      "source": "/community-manager-eure",
+      "destination": "/gestion-reseaux-sociaux/",
+      "permanent": true
+    },
+    {
+      "source": "/community-manager-eure/",
+      "destination": "/gestion-reseaux-sociaux/",
+      "permanent": true
+    }
+  ]
+}
