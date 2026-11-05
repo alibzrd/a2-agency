@@ -9,6 +9,8 @@ const videos = [
   { id: 'house-barber', title: 'House Barber', note: 'Ouverture du barbershop' },
 ]
 
+// Aperçu muet de 6 s (≈ 200 à 500 Ko) pour les cartes ; la vidéo complète ne se charge qu'à l'ouverture
+const previewSrc = (id) => `/videos/${id}-preview.mp4`
 const src = (id) => `/videos/${id}.mp4`
 const poster = (id) => `/videos/${id}.webp`
 
@@ -34,7 +36,7 @@ function Preview({ video, onOpen }) {
 
   return (
     <button className="reel-card" onClick={() => onOpen(video)} aria-label={`Regarder la vidéo ${video.title} avec le son`}>
-      <video ref={ref} src={src(video.id)} poster={poster(video.id)} muted loop playsInline preload="none" aria-hidden="true" />
+      <video ref={ref} src={previewSrc(video.id)} poster={poster(video.id)} muted loop playsInline preload="none" aria-hidden="true" />
       <span className="reel-play"><Play size={18} fill="currentColor" /></span>
       <span className="reel-info">
         <b>{video.title}</b>
