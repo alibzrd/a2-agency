@@ -47,7 +47,8 @@ export default function Hero() {
         <div className="wrap">
           <motion.h1 className="h-hero grad" initial="hidden" animate="visible" variants={rise}>
             Communication 360°<sup className="sq">²</sup>
-            <span className="sr-only"> : agence de communication digitale, branding, réseaux sociaux et sites web</span>
+            <span className="sr-only"> : </span>
+            <span className="hero-trade">Agence de communication digitale</span>
           </motion.h1>
           <motion.p className="sub muted" initial="hidden" animate="visible" variants={rise} custom={1}>
             Branding, contenus et sites web pour les commerces, les clubs et les marques qui veulent marquer.
