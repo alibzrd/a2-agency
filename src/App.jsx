@@ -9,6 +9,7 @@ import Storytelling from './components/Storytelling'
 import Testimonials from './components/Testimonials'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import BookingButton from './components/BookingButton'
 import Legal from './components/Legal'
 
 // Pages légales accessibles par a2agency.fr/#mentions-legales et a2agency.fr/#confidentialite
@@ -58,6 +59,7 @@ function App() {
         </main>
       )}
       <Footer />
+      <BookingButton />
     </>
   )
 }

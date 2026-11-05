@@ -504,3 +504,26 @@ mark.todo { background: rgba(255, 196, 87, .15); color: #ffc457; padding: .05rem
 
 /* Texte lu par les moteurs de recherche et les lecteurs d’écran, invisible à l’écran */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* Icône fixe « Réserver un appel » sur le côté droit */
+.booking-fab {
+  position: fixed; right: 16px; top: 50%; transform: translateY(-50%); z-index: 40;
+  display: flex; align-items: center; gap: .6rem; text-decoration: none;
+  padding: 5px; border-radius: 999px; color: var(--bg);
+  background: var(--ice); box-shadow: 0 12px 30px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.25);
+  transition: box-shadow .3s, background .3s;
+}
+.booking-fab-icon { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; flex: none; }
+.booking-fab-label {
+  max-width: 0; overflow: hidden; white-space: nowrap; opacity: 0;
+  font-size: 15px; font-weight: 600; letter-spacing: -0.01em;
+  transition: max-width .35s ease, opacity .25s ease, padding .35s ease;
+}
+.booking-fab:hover .booking-fab-label, .booking-fab:focus-visible .booking-fab-label { max-width: 200px; opacity: 1; padding-left: .9rem; }
+.booking-fab:hover { box-shadow: 0 14px 34px rgba(0,0,0,.5), 0 0 0 4px rgba(194,231,255,.25); }
+@media (max-width: 640px) {
+  .booking-fab { right: 0; padding: 2px; border-radius: 14px 0 0 14px; box-shadow: 0 10px 24px rgba(0,0,0,.45); }
+  .booking-fab-icon { width: 40px; height: 44px; border-radius: 12px 0 0 12px; }
+  .booking-fab-label { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .booking-fab, .booking-fab-label { transition: none; } }
