@@ -1,9 +1,9 @@
-import { whatsappLink, INSTAGRAM_URL, BOOKING_URL } from '../contact'
+import { whatsappLink, INSTAGRAM_URL } from '../contact'
 
 const cols = [
   { title: 'Expertises', links: [['Réseaux sociaux', '/gestion-reseaux-sociaux/'], ['Logo & identité visuelle', '/creation-logo-identite-visuelle/'], ['Affiches, flyers & enseignes', '/creation-affiches-flyers/'], ['Création de site internet', '/creation-site-internet/']] },
   { title: "L'agence", links: [['Agence de communication digitale', '/agence-communication-digitale/'], ['Feed Instagram', '#feed'], ['Notre histoire', '#agence']] },
-  { title: 'Contact', links: [['WhatsApp', whatsappLink()], ['Email', '#contact'], ...(BOOKING_URL ? [['Réserver un appel de 30 min', BOOKING_URL]] : []), ['Instagram', INSTAGRAM_URL], ['Demander un devis', '#contact']] },
+  { title: 'Contact', links: [['WhatsApp', whatsappLink()], ['Email', '#contact'], ['Instagram', INSTAGRAM_URL], ['Demander un devis', '#contact']] },
 ]
 
 export default function Footer() {
