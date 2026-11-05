@@ -101,6 +101,17 @@ sup.sq { font-size: .5em; position: relative; top: -.85em; vertical-align: basel
 .hero { position: relative; text-align: center; padding: clamp(3.5rem, 8vw, 6rem) 0 0; overflow: hidden; }
 .hero > .wrap { position: relative; z-index: 1; }
 .hero .sub { margin: 1.1rem auto 0; max-width: 36rem; }
+.hero-trade {
+  display: flex; align-items: center; justify-content: center; gap: .9rem; margin-top: 1.1rem;
+  font-size: clamp(.8rem, 1.3vw, 1rem); font-weight: 600; letter-spacing: .2em; text-transform: uppercase; line-height: 1.3;
+  color: var(--ice); -webkit-text-fill-color: var(--ice);
+}
+.hero-trade::before, .hero-trade::after { content: ""; width: clamp(1.5rem, 4vw, 3rem); height: 1px; background: linear-gradient(90deg, transparent, rgba(194,231,255,.6)); }
+.hero-trade::after { transform: scaleX(-1); }
+@media (max-width: 640px) {
+  .hero-trade { font-size: .78rem; letter-spacing: .12em; gap: .5rem; white-space: nowrap; }
+  .hero-trade::before, .hero-trade::after { width: 1rem; }
+}
 .hero .actions { margin-top: 2rem; }
 
 /* Scène d'illustration */
