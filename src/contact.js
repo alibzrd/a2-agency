@@ -16,5 +16,5 @@ export const mailtoLink = (subject, body) =>
 // Lien direct « Laisser un avis » de la fiche Google A² Agency
 export const GOOGLE_REVIEW_URL = 'https://g.page/r/CcdJAUBgGRE3EBM/review'
 
-// Lien de réservation d'un appel de 15 min (Calendly). Tant qu'il est vide, le bouton n'apparaît pas sur le site.
-export const BOOKING_URL = ''
+// Lien de réservation d'un appel de 30 min (Calendly). Tant qu'il est vide, le bouton n'apparaît pas sur le site.
+export const BOOKING_URL = 'https://calendly.com/a2agency-icp8/30min'
