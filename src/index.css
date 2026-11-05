@@ -566,3 +566,29 @@ mark.todo { background: rgba(255, 196, 87, .15); color: #ffc457; padding: .05rem
 .reviews .google-score { font-size: 14px; padding: .45rem .95rem; }
 .reviews .google-score b { font-size: 1rem; }
 .reviews .google-score .stars svg { width: 15px; height: 15px; }
+
+/* Section avis : version encore plus compacte */
+.reviews { padding: clamp(2.5rem, 5vw, 4rem) 0; }
+.reviews .h-section { font-size: clamp(1.5rem, 2.8vw, 2.1rem); }
+.reviews .sub { font-size: clamp(.95rem, 1.3vw, 1.05rem); margin-top: .5rem; }
+.reviews .google-score { margin-top: .9rem; font-size: 13px; padding: .35rem .8rem; gap: .45rem; }
+.reviews .google-score b { font-size: .95rem; }
+.reviews .google-score .stars svg { width: 13px; height: 13px; }
+.reviews-grid.has-google { columns: 3 220px; column-gap: .8rem; max-width: 54rem; margin-top: 1.5rem; }
+.reviews-grid.has-google .review-card { margin-bottom: .8rem; }
+.reviews .review-card { gap: .6rem; padding: 1rem 1.1rem; border-radius: 14px; }
+.reviews .review-card blockquote p, .reviews .review-card.is-google blockquote p { font-size: 13.5px; line-height: 1.45; }
+.reviews .review-card blockquote p.is-clamped { display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+.reviews .review-more { margin-top: .3rem; padding: 0; background: none; border: 0; color: var(--ice); font: inherit; font-size: 12.5px; cursor: pointer; }
+.reviews .review-more:hover { text-decoration: underline; }
+.reviews .review-mark { width: 16px; height: 16px; }
+.reviews .review-av { width: 28px; height: 28px; font-size: 12px; }
+.reviews .review-card figcaption { gap: .55rem; }
+.reviews .review-card figcaption b { font-size: 13.5px; }
+.reviews .review-card figcaption small { font-size: 11.5px; }
+.reviews .stars svg { width: 12px; height: 12px; }
+.reviews .g-badge { font-size: 10px; padding: .15rem .45rem; }
+.reviews-cta { margin-top: 1rem; font-size: 13.5px; }
+.reviews-grid.has-google { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; columns: auto; }
+.reviews-grid.has-google .review-card { flex: 0 1 calc((100% - 1.6rem) / 3); margin-bottom: 0; }
+@media (max-width: 760px) { .reviews-grid.has-google .review-card { flex-basis: 100%; } }
