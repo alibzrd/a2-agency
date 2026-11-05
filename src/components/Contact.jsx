@@ -76,7 +76,7 @@ export default function Contact() {
         <p className="sub muted">
           Un commerce à faire connaître, un club à mettre en avant, une marque à lancer ?{' '}
           {BOOKING_URL
-            ? 'Écrivez-nous sur WhatsApp ou par email, on vous répond sous 24 h. Ou réservez directement un appel de 15 minutes.'
+            ? 'Écrivez-nous sur WhatsApp ou par email, on vous répond sous 24 h. Ou réservez directement un appel de 30 minutes.'
             : 'Écrivez-nous sur WhatsApp ou par email, on vous répond sous 24 h.'}
         </p>
 
@@ -93,7 +93,7 @@ export default function Contact() {
           </button>
           {BOOKING_URL && (
             <a className="btn btn-ghost btn-wa" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
-              <CalendarCheck size={20} /> Réserver un appel de 15 min
+              <CalendarCheck size={20} /> Réserver un appel de 30 min
             </a>
           )}
         </div>
