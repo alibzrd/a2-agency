@@ -3,13 +3,15 @@ import { MessageCircle, Mail, CheckCircle2, CalendarCheck } from 'lucide-react'
 import { whatsappLink, mailtoLink, WEB3FORMS_KEY, BOOKING_URL } from '../contact'
 
 const needs = ['Contenus & réseaux', 'Identité & branding', 'Site web', 'Plusieurs besoins', 'Autre']
+// « Comment nous avez-vous connus ? » : pour savoir d'où viennent les demandes (point mensuel)
+const origins = ['Recherche Google', 'Instagram', 'LinkedIn', 'Malt', 'Bouche-à-oreille', 'Autre']
 const channels = [
   { id: 'whatsapp', label: 'WhatsApp', Icon: MessageCircle },
   { id: 'email', label: 'Email', Icon: Mail },
 ]
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', need: needs[0], message: '', botcheck: false })
+  const [form, setForm] = useState({ name: '', email: '', need: needs[0], origin: '', message: '', botcheck: false })
   const [channel, setChannel] = useState('whatsapp')
   const [status, setStatus] = useState('idle') // idle | sending | sent | error
   const current = channels.find(c => c.id === channel)
@@ -24,7 +26,8 @@ export default function Contact() {
     const name = form.name.trim()
     const text =
       `Bonjour A² Agency, je m'appelle ${name}.\n` +
-      `Mon besoin : ${form.need}.\n\n` +
+      `Mon besoin : ${form.need}.\n` +
+      (form.origin ? `Je vous ai connus par : ${form.origin}.\n` : '') + '\n' +
       form.message.trim()
     if (channel === 'whatsapp') {
       window.open(whatsappLink(text), '_blank', 'noopener,noreferrer')
@@ -46,6 +49,7 @@ export default function Contact() {
           name,
           email: form.email.trim(),
           besoin: form.need,
+          connu_par: form.origin || 'Non précisé',
           message: form.message.trim(),
           botcheck: form.botcheck,
         }),
@@ -53,7 +57,7 @@ export default function Contact() {
       const data = await res.json()
       if (!data.success) throw new Error(data.message)
       setStatus('sent')
-      setForm({ name: '', email: '', need: needs[0], message: '', botcheck: false })
+      setForm({ name: '', email: '', need: needs[0], origin: '', message: '', botcheck: false })
     } catch {
       setStatus('error')
     }
@@ -98,6 +102,13 @@ export default function Contact() {
                 {needs.map(n => <option key={n}>{n}</option>)}
               </select>
             </div>
+          </div>
+          <div className="field">
+            <label htmlFor="c-origin">Comment nous avez-vous connus ?</label>
+            <select id="c-origin" name="origin" value={form.origin} onChange={handleChange}>
+              <option value="">Choisir (facultatif)</option>
+              {origins.map(o => <option key={o}>{o}</option>)}
+            </select>
           </div>
           {channel === 'email' && (
             <div className="field">
