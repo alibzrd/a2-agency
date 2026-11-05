@@ -398,8 +398,9 @@ mark.todo { background: rgba(255, 196, 87, .15); color: #ffc457; padding: .05rem
 .review-card figcaption b { display: block; font-weight: 600; }
 .review-card figcaption small { display: block; color: var(--muted); font-size: 14px; }
 .reviews-cta { margin-top: clamp(1.5rem, 3vw, 2rem); font-size: 15px; }
-.reviews-grid.has-google { grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); max-width: 72rem; }
-.review-card.is-google blockquote p { font-size: clamp(1rem, 1.3vw, 1.1rem); display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
+.reviews-grid.has-google { display: block; columns: 3 290px; column-gap: clamp(1rem, 2vw, 1.5rem); max-width: 72rem; }
+.reviews-grid.has-google .review-card { break-inside: avoid; margin-bottom: clamp(1rem, 2vw, 1.5rem); }
+.review-card.is-google blockquote p { font-size: clamp(1rem, 1.3vw, 1.1rem); white-space: pre-line; }
 .review-top { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
 .stars { display: inline-flex; gap: 2px; color: rgba(194,231,255,.25); }
 .stars .on { color: #fbbc04; fill: #fbbc04; }
