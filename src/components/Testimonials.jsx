@@ -84,7 +84,7 @@ export default function Testimonials() {
           {testimonials.map(t => (
             <figure className="review-card" key={t.name}>
               <Quote className="review-mark" size={28} aria-hidden="true" />
-              <blockquote><p>{'«\u00a0'}{t.quote}{'\u00a0»'}</p></blockquote>
+              <blockquote><p>{t.quote}</p></blockquote>
               <figcaption>
                 {t.avatar
                   ? <img className="review-av" src={t.avatar} alt="" width="44" height="44" loading="lazy" />
