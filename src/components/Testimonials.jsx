@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Quote, ChevronRight, Star } from 'lucide-react'
 import { GOOGLE_REVIEW_URL } from '../contact'
 import { GOOGLE_REVIEWS, GOOGLE_MAPS_URL } from '../googleReviews'
@@ -30,6 +31,22 @@ function Stars({ value, size = 16 }) {
 
 const fmtRating = n => n.toLocaleString('fr-FR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
 
+// Texte d'avis coupé à 5 lignes au-delà d'une certaine longueur, avec « Lire la suite »
+function ReviewText({ text }) {
+  const [open, setOpen] = useState(false)
+  const long = text.length > 260
+  return (
+    <blockquote>
+      <p className={long && !open ? 'is-clamped' : undefined}>{text}</p>
+      {long && (
+        <button type="button" className="review-more" onClick={() => setOpen(o => !o)} aria-expanded={open}>
+          {open ? 'Réduire' : 'Lire la suite'}
+        </button>
+      )}
+    </blockquote>
+  )
+}
+
 export default function Testimonials() {
   const reviews = GOOGLE_REVIEWS
   const avg = reviews.length ? reviews.reduce((n, r) => n + r.rating, 0) / reviews.length : 0
@@ -54,7 +71,7 @@ export default function Testimonials() {
                 <Stars value={r.rating} />
                 <span className="g-badge">Avis Google</span>
               </div>
-              <blockquote><p>{r.text}</p></blockquote>
+              <ReviewText text={r.text} />
               <figcaption>
                 <span className="review-av review-initial" aria-hidden="true">{r.author.charAt(0)}</span>
                 <span>
