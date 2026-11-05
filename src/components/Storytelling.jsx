@@ -1,11 +1,20 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useInView, useReducedMotion } from 'framer-motion'
+
+// useLayoutEffect côté navigateur seulement (le pré-rendu tourne sur le serveur)
+const useBrowserLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect
 
 function Counter({ to, suffix = '' }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '0px 0px -15% 0px' })
   const reduce = useReducedMotion()
-  const [count, setCount] = useState(0)
+  // La valeur finale est écrite dans le HTML pré-rendu : Google lit « 50+ » et non « 0+ ».
+  // Dans le navigateur, le compteur repart de 0 avant l'affichage pour garder l'animation.
+  const [count, setCount] = useState(to)
+
+  useBrowserLayoutEffect(() => {
+    if (!reduce) setCount(0)
+  }, [])
 
   useEffect(() => {
     if (!inView || reduce) return
