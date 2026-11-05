@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
 import { Quote, ChevronRight, Star } from 'lucide-react'
 import { GOOGLE_REVIEW_URL } from '../contact'
+import { GOOGLE_REVIEWS, GOOGLE_MAPS_URL } from '../googleReviews'
 
 // Témoignages validés par les clients (repris de la plaquette A² Agency)
 const testimonials = [
@@ -30,53 +30,36 @@ function Stars({ value, size = 16 }) {
 
 const fmtRating = n => n.toLocaleString('fr-FR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
 
-// Avis Google récupérés en direct par /api/google-reviews (vide tant que la clé Google n'est pas configurée)
-function useGoogleReviews() {
-  const [data, setData] = useState(null)
-  useEffect(() => {
-    let alive = true
-    fetch('/api/google-reviews')
-      .then(r => (r.ok ? r.json() : null))
-      .then(d => { if (alive && d && d.reviews?.length) setData(d) })
-      .catch(() => {})
-    return () => { alive = false }
-  }, [])
-  return data
-}
-
 export default function Testimonials() {
-  const google = useGoogleReviews()
+  const reviews = GOOGLE_REVIEWS
+  const avg = reviews.length ? reviews.reduce((n, r) => n + r.rating, 0) / reviews.length : 0
   return (
     <section id="avis" className="reviews" aria-labelledby="avis-title">
       <div className="wrap">
         <h2 id="avis-title" className="h-section grad">Ils en parlent mieux que nous.</h2>
         <p className="sub muted">Ce que nos clients disent de leur collaboration avec A² Agency.</p>
 
-        {google && google.rating && (
-          <a className="google-score" href={google.url || GOOGLE_REVIEW_URL} target="_blank" rel="noopener noreferrer">
-            <b>{fmtRating(google.rating)}</b>
-            <Stars value={google.rating} size={18} />
-            <span>{google.count} avis sur Google</span>
+        {reviews.length > 0 && (
+          <a className="google-score" href={GOOGLE_MAPS_URL} target="_blank" rel="noopener noreferrer">
+            <b>{fmtRating(avg)}</b>
+            <Stars value={avg} size={18} />
+            <span>{reviews.length} avis sur Google</span>
           </a>
         )}
 
-        <div className={`reviews-grid${google ? ' has-google' : ''}`}>
-          {google?.reviews.map(r => (
-            <figure className="review-card is-google" key={`${r.author}-${r.publishTime || r.when}`}>
+        <div className={`reviews-grid${reviews.length ? ' has-google' : ''}`}>
+          {reviews.map(r => (
+            <figure className="review-card is-google" key={r.author}>
               <div className="review-top">
                 <Stars value={r.rating} />
                 <span className="g-badge">Avis Google</span>
               </div>
               <blockquote><p>{r.text}</p></blockquote>
               <figcaption>
-                {r.photo
-                  ? <img className="review-av" src={r.photo} alt="" width="44" height="44" loading="lazy" referrerPolicy="no-referrer" />
-                  : <span className="review-av review-initial" aria-hidden="true">{r.author.charAt(0)}</span>}
+                <span className="review-av review-initial" aria-hidden="true">{r.author.charAt(0)}</span>
                 <span>
-                  {r.authorUrl
-                    ? <a href={r.authorUrl} target="_blank" rel="noopener noreferrer"><b>{r.author}</b></a>
-                    : <b>{r.author}</b>}
-                  <small>{r.when ? `${r.when} sur Google` : 'sur Google'}</small>
+                  <b>{r.author}</b>
+                  <small>Avis Google · {r.date}</small>
                 </span>
               </figcaption>
             </figure>
