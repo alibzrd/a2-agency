@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Quote, ChevronRight, Star } from 'lucide-react'
 import { GOOGLE_REVIEW_URL } from '../contact'
-import { GOOGLE_REVIEWS, GOOGLE_MAPS_URL } from '../googleReviews'
+import { GOOGLE_REVIEWS, GOOGLE_MAPS_URL, GOOGLE_RATING, GOOGLE_COUNT } from '../googleReviews'
 
 // Témoignages validés par les clients (repris de la plaquette A² Agency)
 const testimonials = [
@@ -49,7 +49,7 @@ function ReviewText({ text }) {
 
 export default function Testimonials() {
   const reviews = GOOGLE_REVIEWS
-  const avg = reviews.length ? reviews.reduce((n, r) => n + r.rating, 0) / reviews.length : 0
+  const avg = GOOGLE_RATING
   return (
     <section id="avis" className="reviews" aria-labelledby="avis-title">
       <div className="wrap">
@@ -60,7 +60,7 @@ export default function Testimonials() {
           <a className="google-score" href={GOOGLE_MAPS_URL} target="_blank" rel="noopener noreferrer">
             <b>{fmtRating(avg)}</b>
             <Stars value={avg} size={18} />
-            <span>{reviews.length} avis sur Google</span>
+            <span>{GOOGLE_COUNT} avis sur Google</span>
           </a>
         )}
 

@@ -4,7 +4,7 @@ import { whatsappLink, mailtoLink, WEB3FORMS_KEY, BOOKING_URL } from '../contact
 
 const needs = ['Contenus & réseaux', 'Identité & branding', 'Site web', 'Plusieurs besoins', 'Autre']
 // « Comment nous avez-vous connus ? » : pour savoir d'où viennent les demandes (point mensuel)
-const origins = ['Recherche Google', 'Instagram', 'LinkedIn', 'Malt', 'Bouche-à-oreille', 'Autre']
+const origins = ['Recherche Google', 'Annonce Google', 'Instagram', 'LinkedIn', 'Malt', 'Bouche-à-oreille', 'Autre']
 const channels = [
   { id: 'whatsapp', label: 'WhatsApp', Icon: MessageCircle },
   { id: 'email', label: 'Email', Icon: Mail },
