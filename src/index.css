@@ -550,3 +550,19 @@ mark.todo { background: rgba(255, 196, 87, .15); color: #ffc457; padding: .05rem
   .booking-fab-label { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .booking-fab, .booking-fab-label { transition: none; } }
+
+/* Section avis compacte */
+.reviews .review-card { gap: .85rem; padding: clamp(1.1rem, 2vw, 1.35rem); border-radius: 18px; }
+.reviews .review-card blockquote p, .reviews .review-card.is-google blockquote p { font-size: 15px; line-height: 1.5; }
+.reviews .review-mark { width: 20px; height: 20px; }
+.reviews .review-av { width: 34px; height: 34px; font-size: 14px; }
+.reviews .review-card figcaption { gap: .65rem; }
+.reviews .review-card figcaption b { font-size: 15px; }
+.reviews .review-card figcaption small { font-size: 12.5px; }
+.reviews .stars svg { width: 14px; height: 14px; }
+.reviews .g-badge { font-size: 11px; padding: .2rem .5rem; }
+.reviews-grid.has-google { columns: 3 250px; column-gap: 1rem; max-width: 62rem; }
+.reviews-grid.has-google .review-card { margin-bottom: 1rem; }
+.reviews .google-score { font-size: 14px; padding: .45rem .95rem; }
+.reviews .google-score b { font-size: 1rem; }
+.reviews .google-score .stars svg { width: 15px; height: 15px; }
