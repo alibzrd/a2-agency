@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
-import { ChevronRight, MessageCircle, Mail, CheckCircle2, CalendarCheck } from 'lucide-react'
-import { whatsappLink, mailtoLink, INSTAGRAM_URL, WEB3FORMS_KEY, BOOKING_URL } from '../contact'
+import { MessageCircle, Mail, CheckCircle2, CalendarCheck } from 'lucide-react'
+import { whatsappLink, mailtoLink, WEB3FORMS_KEY, BOOKING_URL } from '../contact'
 
 const needs = ['Contenus & réseaux', 'Identité & branding', 'Site web', 'Plusieurs besoins', 'Autre']
 const channels = [
@@ -16,15 +16,6 @@ export default function Contact() {
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
   const formRef = useRef(null)
-
-  // « Envoyer un email » : bascule le formulaire en mode email et y amène le visiteur,
-  // pour que l'adresse de l'agence n'apparaisse jamais.
-  const goToEmailForm = () => {
-    setChannel('email')
-    setStatus('idle')
-    formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    setTimeout(() => document.getElementById('c-name')?.focus({ preventScroll: true }), 500)
-  }
 
   // WhatsApp : ouvre la conversation avec le message prêt. Email : envoi direct via Web3Forms
   // (ou, si la clé n'est pas encore renseignée, ouverture de la messagerie du visiteur).
@@ -73,33 +64,13 @@ export default function Contact() {
       <div className="grid-bg" />
       <div className="wrap">
         <h2 className="h-section grad">Parlons de votre projet.</h2>
-        <p className="sub muted">
-          Un commerce à faire connaître, un club à mettre en avant, une marque à lancer ?{' '}
-          {BOOKING_URL
-            ? 'Écrivez-nous sur WhatsApp ou par email, on vous répond sous 24 h. Ou réservez directement un appel de 30 minutes.'
-            : 'Écrivez-nous sur WhatsApp ou par email, on vous répond sous 24 h.'}
-        </p>
-
-        <div className="actions contact-cta">
-          <a
-            className="btn btn-fill btn-wa"
-            href={whatsappLink('Bonjour A² Agency, j\'ai un projet à vous présenter.')}
-            target="_blank" rel="noopener noreferrer"
-          >
-            <MessageCircle size={20} /> Écrire sur WhatsApp
-          </a>
-          <button type="button" className="btn btn-ghost btn-wa" onClick={goToEmailForm}>
-            <Mail size={20} /> Envoyer un email
-          </button>
-          {BOOKING_URL && (
-            <a className="btn btn-ghost btn-wa" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+        {BOOKING_URL && (
+          <div className="actions contact-cta">
+            <a className="btn btn-fill btn-wa" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
               <CalendarCheck size={20} /> Réserver un appel de 30 min
             </a>
-          )}
-        </div>
-        <p className="contact-direct muted">
-          <a className="link" href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">Instagram <ChevronRight size={15} /></a>
-        </p>
+          </div>
+        )}
 
         <form className="form-card" onSubmit={handleSubmit} ref={formRef}>
           <p className="form-intro">Ou décrivez votre projet ici : on prépare le message pour vous.</p>
