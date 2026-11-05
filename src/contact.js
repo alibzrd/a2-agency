@@ -1,6 +1,8 @@
 // Coordonnées de l'agence, utilisées dans tout le site
 export const WHATSAPP_NUMBER = '33672258425' // numéro au format international (33 + numéro sans le 0), jamais affiché sur le site
 export const INSTAGRAM_URL = 'https://www.instagram.com/a2agency.fr'
+export const LINKEDIN_URL = 'https://www.linkedin.com/company/a2agency-fr/'
+export const MALT_URL = 'https://www.malt.fr/profile/arthurmichel4'
 export const EMAIL = 'a2agency@outlook.fr'
 
 // Clé Web3Forms (reçue par email sur web3forms.com) : permet d'envoyer le formulaire directement,
