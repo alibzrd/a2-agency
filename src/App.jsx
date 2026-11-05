@@ -6,6 +6,7 @@ import Services from './components/Services'
 import Feed from './components/Feed'
 import Videos from './components/Videos'
 import Storytelling from './components/Storytelling'
+import Testimonials from './components/Testimonials'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import Legal from './components/Legal'
@@ -51,6 +52,7 @@ function App() {
           <Services />
           <Feed />
           <Videos />
+          <Testimonials />
           <Storytelling />
           <Contact />
         </main>

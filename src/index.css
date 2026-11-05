@@ -372,6 +372,23 @@ mark.todo { background: rgba(255, 196, 87, .15); color: #ffc457; padding: .05rem
 .form-legal a { color: var(--ice); }
 
 /* ─── Agence ─── */
+/* Témoignages */
+.reviews { padding: clamp(3.5rem, 7vw, 5.5rem) 0; text-align: center; border-top: 1px solid var(--line); }
+.reviews .h-section { font-size: clamp(1.8rem, 3.6vw, 2.75rem); }
+.reviews .sub { margin: .75rem auto 0; max-width: 36rem; font-size: clamp(1.05rem, 1.6vw, 1.25rem); }
+.reviews-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, 2vw, 1.5rem); max-width: 60rem; margin: clamp(2rem, 4vw, 2.75rem) auto 0; text-align: left; }
+.review-card { margin: 0; display: flex; flex-direction: column; gap: 1.25rem; padding: clamp(1.5rem, 3vw, 2rem); border-radius: var(--radius); background: radial-gradient(120% 90% at 0% 0%, #0f1b30 0%, var(--bg-2) 70%); border: 1px solid var(--line); min-width: 0; }
+.review-mark { color: var(--ice); opacity: .8; }
+.review-card blockquote { margin: 0; flex: 1; }
+.review-card blockquote p { margin: 0; font-size: clamp(1.05rem, 1.5vw, 1.2rem); line-height: 1.5; letter-spacing: -0.01em; }
+.review-card figcaption { display: flex; align-items: center; gap: .85rem; }
+.review-av { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex: none; box-shadow: 0 0 0 1px var(--line); }
+.review-initial { display: grid; place-items: center; background: linear-gradient(135deg, var(--ice), var(--steel)); color: var(--bg); font-weight: 600; }
+.review-card figcaption b { display: block; font-weight: 600; }
+.review-card figcaption small { display: block; color: var(--muted); font-size: 14px; }
+.reviews-cta { margin-top: clamp(1.5rem, 3vw, 2rem); font-size: 15px; }
+@media (max-width: 720px) { .reviews-grid { grid-template-columns: 1fr; max-width: 34rem; } }
+
 .agency { position: relative; overflow: hidden; padding: clamp(3.5rem, 7vw, 5.5rem) 0; text-align: center; border-top: 1px solid var(--line); }
 .agency > .wrap { position: relative; z-index: 1; }
 .agency .aurora::before { top: 30%; }

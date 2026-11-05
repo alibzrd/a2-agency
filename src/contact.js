@@ -12,3 +12,6 @@ export const whatsappLink = (text) =>
 
 export const mailtoLink = (subject, body) =>
   `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}${body ? `&body=${encodeURIComponent(body)}` : ''}`
+
+// Lien direct « Laisser un avis » de la fiche Google A² Agency
+export const GOOGLE_REVIEW_URL = 'https://g.page/r/CcdJAUBgGRE3EBM/review'
