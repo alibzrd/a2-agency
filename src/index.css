@@ -645,10 +645,6 @@ mark.todo { background: rgba(255, 196, 87, .15); color: #ffc457; padding: .05rem
   .reviews-set > li { scroll-snap-align: start; }
 }
 
-/* Bandeau du haut : dernier article du blog */
-.ribbon-tag { display: inline-block; margin-right: .5rem; padding: .15rem .55rem; border-radius: 999px; background: rgba(194, 231, 255, .14); color: var(--ice); font-size: 12px; font-weight: 600; letter-spacing: .02em; vertical-align: 1px; }
-.ribbon .link { color: var(--text); }
-@media (max-width: 560px) { .ribbon { font-size: 13px; } .ribbon-tag { display: table; margin: 0 auto .35rem; } }
 
 /* Menu : pastille « Nouveau » sur Blog (30 jours après le dernier article) */
 .nav-new { display: inline-block; margin-left: .4rem; padding: .08rem .45rem; border-radius: 999px; background: var(--ice); color: #06101e; font-size: 10.5px; font-weight: 700; letter-spacing: .02em; vertical-align: 1px; }
