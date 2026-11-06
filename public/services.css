@@ -151,3 +151,7 @@ footer a:hover { color: var(--text); }
 .post-card p { margin: 0; color: var(--muted); font-size: 15.5px; }
 .post-card em { font-style: normal; color: var(--accent); font-size: 14px; font-weight: 600; }
 @media (max-width: 560px) { .post .body { font-size: 17px; } .post-card { padding: 18px; } .post-card b { font-size: 19px; } }
+
+/* Blog 2 */
+.tip.warn { border-left-color: #f0b35a; background: rgba(240, 179, 90, .08); }
+.tip.warn b { color: #f5c983; }
