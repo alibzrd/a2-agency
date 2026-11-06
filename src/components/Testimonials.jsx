@@ -32,14 +32,14 @@ function Stars({ value, size = 16 }) {
 const fmtRating = n => n.toLocaleString('fr-FR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
 
 // Texte d'avis coupé à 5 lignes au-delà d'une certaine longueur, avec « Lire la suite »
-function ReviewText({ text }) {
+function ReviewText({ text, copy }) {
   const [open, setOpen] = useState(false)
-  const long = text.length > 260
+  const long = text.length > 220
   return (
     <blockquote>
       <p className={long && !open ? 'is-clamped' : undefined}>{text}</p>
       {long && (
-        <button type="button" className="review-more" onClick={() => setOpen(o => !o)} aria-expanded={open}>
+        <button type="button" className="review-more" onClick={() => setOpen(o => !o)} aria-expanded={open} tabIndex={copy ? -1 : undefined}>
           {open ? 'Réduire' : 'Lire la suite'}
         </button>
       )}
@@ -47,12 +47,50 @@ function ReviewText({ text }) {
   )
 }
 
+// Une série complète de cartes ; elle est affichée deux fois pour que le défilement boucle sans saut
+function Cards({ reviews, copy }) {
+  return (
+    <ul className="reviews-set" aria-hidden={copy || undefined}>
+      {reviews.map(r => (
+        <li key={r.author}>
+          <figure className="review-card is-google">
+            <div className="review-top">
+              <Stars value={r.rating} />
+              <span className="g-badge">Avis Google</span>
+            </div>
+            <ReviewText text={r.text} copy={copy} />
+            <figcaption>
+              <span className="review-av review-initial" aria-hidden="true">{r.author.charAt(0)}</span>
+              <span>
+                <b>{r.author}</b>
+                <small>Avis Google · {r.date}</small>
+              </span>
+            </figcaption>
+          </figure>
+        </li>
+      ))}
+      {testimonials.map(t => (
+        <li key={t.name}>
+          <figure className="review-card">
+            <Quote className="review-mark" size={28} aria-hidden="true" />
+            <blockquote><p>{t.quote}</p></blockquote>
+            <figcaption>
+              {t.avatar
+                ? <img className="review-av" src={t.avatar} alt="" width="44" height="44" loading="lazy" />
+                : <span className="review-av review-initial" aria-hidden="true">{t.initial}</span>}
+              <span><b>{t.name}</b><small>{t.role}</small></span>
+            </figcaption>
+          </figure>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 export default function Testimonials() {
   const reviews = GOOGLE_REVIEWS
   const avg = GOOGLE_RATING
-  // 4 cartes par ligne, ou 3 si cela évite une carte seule sur la dernière ligne
   const total = reviews.length + testimonials.length
-  const cols3 = total % 4 !== 0 && total % 3 === 0
   return (
     <section id="avis" className="reviews" aria-labelledby="avis-title">
       <div className="wrap">
@@ -67,37 +105,17 @@ export default function Testimonials() {
           </a>
         )}
 
-        <div className={`reviews-grid${reviews.length ? ' has-google' : ''}${cols3 ? ' cols-3' : ''}`}>
-          {reviews.map(r => (
-            <figure className="review-card is-google" key={r.author}>
-              <div className="review-top">
-                <Stars value={r.rating} />
-                <span className="g-badge">Avis Google</span>
-              </div>
-              <ReviewText text={r.text} />
-              <figcaption>
-                <span className="review-av review-initial" aria-hidden="true">{r.author.charAt(0)}</span>
-                <span>
-                  <b>{r.author}</b>
-                  <small>Avis Google · {r.date}</small>
-                </span>
-              </figcaption>
-            </figure>
-          ))}
-          {testimonials.map(t => (
-            <figure className="review-card" key={t.name}>
-              <Quote className="review-mark" size={28} aria-hidden="true" />
-              <blockquote><p>{t.quote}</p></blockquote>
-              <figcaption>
-                {t.avatar
-                  ? <img className="review-av" src={t.avatar} alt="" width="44" height="44" loading="lazy" />
-                  : <span className="review-av review-initial" aria-hidden="true">{t.initial}</span>}
-                <span><b>{t.name}</b><small>{t.role}</small></span>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
+      </div>
 
+      {/* Bandeau qui défile tout seul ; il s'arrête au survol et au clavier */}
+      <div className="reviews-marquee" style={{ '--dur': `${total * 7}s` }}>
+        <div className="reviews-track">
+          <Cards reviews={reviews} />
+          <Cards reviews={reviews} copy />
+        </div>
+      </div>
+
+      <div className="wrap">
         <p className="reviews-cta muted">
           Vous avez travaillé avec nous ?{' '}
           <a className="link" href={GOOGLE_REVIEW_URL} target="_blank" rel="noopener noreferrer">Laissez-nous un avis sur Google <ChevronRight size={15} /></a>
