@@ -155,3 +155,8 @@ footer a:hover { color: var(--text); }
 /* Blog 2 */
 .tip.warn { border-left-color: #f0b35a; background: rgba(240, 179, 90, .08); }
 .tip.warn b { color: #f5c983; }
+
+/* Blog 3 : articles côte à côte */
+.posts { grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); max-width: none; gap: 16px; }
+.post-card { grid-template-rows: auto auto 1fr auto; align-content: start; }
+.post-card em { margin-top: 6px; }
