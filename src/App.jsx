@@ -4,7 +4,6 @@ import Header from './components/Header'
 import Hero from './components/Hero'
 import Services from './components/Services'
 import CaseStudies from './components/CaseStudies'
-import BlogHome from './components/BlogHome'
 import Feed from './components/Feed'
 import Videos from './components/Videos'
 import Storytelling from './components/Storytelling'
@@ -57,7 +56,6 @@ function App() {
           <Feed />
           <Videos />
           <Testimonials />
-          <BlogHome />
           <Storytelling />
           <Contact />
         </main>

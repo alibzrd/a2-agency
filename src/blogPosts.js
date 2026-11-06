@@ -5,6 +5,7 @@ export const BLOG_POSTS = [
     "title": "Comment avoir plus d'avis Google : la méthode simple",
     "category": "Google",
     "date": "6 novembre 2026",
+    "iso": "2026-11-06",
     "read": 6,
     "text": "Lien d'avis, QR code, message à copier, réponses : comment obtenir des avis réguliers sans tricher ni harceler vos clients."
   },
@@ -13,6 +14,7 @@ export const BLOG_POSTS = [
     "title": "Comment gérer l'Instagram d'un restaurant : 8 conseils concrets",
     "category": "Réseaux sociaux",
     "date": "6 novembre 2026",
+    "iso": "2026-11-06",
     "read": 6,
     "text": "Bio, photos, feed, stories, réels : la méthode simple pour que votre Instagram donne envie de venir manger chez vous."
   }
