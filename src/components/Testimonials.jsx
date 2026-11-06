@@ -107,7 +107,7 @@ export default function Testimonials() {
 
       </div>
 
-      {/* Bandeau qui défile tout seul ; il s'arrête au survol et au clavier */}
+      {/* Bandeau qui défile tout seul ; il ne s'arrête pas au survol */}
       <div className="reviews-marquee" style={{ '--dur': `${total * 7}s` }}>
         <div className="reviews-track">
           <Cards reviews={reviews} />
