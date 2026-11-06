@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
 import { ChevronRight, Sparkles, CheckCircle2, Globe } from 'lucide-react'
 import { Phone, ImageScreen, Chip } from './Mockups'
+import { BLOG_POSTS } from '../blogPosts'
 
-// Bande défilante : visuels tirés des feeds clients, sans reprendre ceux de la composition du haut
 // Bande défilante : visuels tirés des feeds clients, sans reprendre ceux de la composition du haut
 const reelImages = [
   ['/contenus/matchday.webp', "Affiche Match Day pour Sekou Fofana"],
@@ -32,12 +32,14 @@ const rise = {
   visible: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.9, delay: 0.1 + i * 0.12, ease } }),
 }
 
+const latest = BLOG_POSTS[0]
+
 export default function Hero() {
   return (
     <>
       <div className="ribbon">
-        Une idée, un projet ? On vous répond sous 24 h.
-        <a href="#contact" className="link">Nous écrire <ChevronRight size={14} /></a>
+        <span className="ribbon-tag">Nouveau sur le blog</span>
+        <a href={`/blog/${latest.slug}/`} className="link">{latest.title} <ChevronRight size={14} /></a>
       </div>
 
       <section id="top" className="hero">
