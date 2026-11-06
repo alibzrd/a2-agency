@@ -182,7 +182,6 @@ sup.sq { font-size: .5em; position: relative; top: -.85em; vertical-align: basel
 /* Bande défilante */
 .reel { overflow: hidden; padding: clamp(4rem, 7vw, 5.5rem) 0 clamp(3rem, 6vw, 4.5rem); position: relative; z-index: 1; }
 .reel-track { display: flex; gap: 1.25rem; width: max-content; animation: reel 80s linear infinite; }
-.reel:hover .reel-track { animation-play-state: paused; }
 .reel-track img { height: clamp(200px, 26vw, 340px); width: auto; border-radius: 18px; box-shadow: 0 0 0 1px var(--line); }
 @keyframes reel { to { transform: translateX(-50%); } }
 
@@ -628,8 +627,8 @@ mark.todo { background: rgba(255, 196, 87, .15); color: #ffc457; padding: .05rem
           mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
 .reviews-track { display: flex; width: max-content; animation: reviews-scroll var(--dur, 60s) linear infinite; }
-.reviews-marquee:hover .reviews-track,
-.reviews-marquee:focus-within .reviews-track { animation-play-state: paused; }
+/* Pas d'arrêt au survol ; pause seulement quand on navigue au clavier dans une carte */
+.reviews-marquee:has(:focus-visible) .reviews-track { animation-play-state: paused; }
 .reviews-set { display: flex; align-items: stretch; gap: .8rem; padding: 0 .8rem 0 0; margin: 0; list-style: none; }
 .reviews-set > li { display: flex; width: 270px; flex: none; }
 .reviews-set .review-card { width: 100%; }
