@@ -160,3 +160,4 @@ footer a:hover { color: var(--text); }
 .posts { grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); max-width: none; gap: 16px; }
 .post-card { grid-template-rows: auto auto 1fr auto; align-content: start; }
 .post-card em { margin-top: 6px; }
+.posts.single { max-width: 640px; }
