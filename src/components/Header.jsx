@@ -5,6 +5,7 @@ const navLinks = [
   { label: 'Expertises', href: '#expertises' },
   { label: 'Feed Instagram', href: '#feed' },
   { label: 'Agence', href: '#agence' },
+  { label: 'Blog', href: '/blog/' },
 ]
 
 export default function Header() {
