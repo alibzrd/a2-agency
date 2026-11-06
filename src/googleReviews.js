@@ -4,9 +4,15 @@ export const GOOGLE_MAPS_URL = 'https://www.google.com/maps?cid=3967980647871498
 
 // Note et nombre d'avis affichés par Google sur la fiche (à recopier à chaque mise à jour)
 export const GOOGLE_RATING = 5.0
-export const GOOGLE_COUNT = 7
+export const GOOGLE_COUNT = 8
 
 export const GOOGLE_REVIEWS = [
+  {
+    author: 'Younes Laajoul',
+    rating: 5,
+    date: 'novembre 2026',
+    text: 'Super !',
+  },
   {
     author: 'Loic',
     rating: 5,
