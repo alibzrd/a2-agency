@@ -3,6 +3,7 @@ import './index.css'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Services from './components/Services'
+import CaseStudies from './components/CaseStudies'
 import Feed from './components/Feed'
 import Videos from './components/Videos'
 import Storytelling from './components/Storytelling'
@@ -51,6 +52,7 @@ function App() {
         <main>
           <Hero />
           <Services />
+          <CaseStudies />
           <Feed />
           <Videos />
           <Testimonials />

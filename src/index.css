@@ -598,3 +598,21 @@ mark.todo { background: rgba(255, 196, 87, .15); color: #ffc457; padding: .05rem
 .reviews-grid.has-google .review-card { flex-basis: calc((100% - 2.4rem) / 4); }
 @media (max-width: 1100px) { .reviews-grid.has-google .review-card { flex-basis: calc((100% - 1.6rem) / 3); } }
 @media (max-width: 760px) { .reviews-grid.has-google .review-card { flex-basis: 100%; } }
+
+/* Études de cas sur l'accueil */
+.cases-home { padding: clamp(3rem, 7vw, 6rem) 0; text-align: center; }
+.cases-home .sub { margin-top: .6rem; }
+.cases-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; max-width: 66rem; margin: 2rem auto 0; text-align: left; }
+@media (max-width: 900px) { .cases-grid { grid-template-columns: minmax(0, 1fr); max-width: 34rem; } }
+.case-tile { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: rgba(15, 28, 49, .55); color: inherit; text-decoration: none; transition: border-color .25s, transform .25s; }
+.case-tile:hover { border-color: rgba(194, 231, 255, .4); transform: translateY(-3px); }
+.case-tile img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.case-body { padding: 1rem 1.15rem 1.25rem; display: grid; gap: .4rem; }
+.case-body small { color: var(--muted); font-size: 13px; }
+.case-body h3 { margin: 0; font-size: 1.25rem; letter-spacing: -.01em; }
+.case-body p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.45; }
+.case-result { margin-top: .35rem; font-size: 14px; font-weight: 600; color: var(--ice); }
+.case-more { display: inline-flex; align-items: center; gap: .15rem; font-size: 14px; color: var(--muted); }
+.case-tile:hover .case-more { color: var(--ice); }
+.cases-all { margin-top: 1.5rem; }
+@media (prefers-reduced-motion: reduce) { .case-tile, .case-tile:hover { transition: none; transform: none; } }
