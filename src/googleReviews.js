@@ -8,6 +8,12 @@ export const GOOGLE_COUNT = 7
 
 export const GOOGLE_REVIEWS = [
   {
+    author: 'Loic',
+    rating: 5,
+    date: 'novembre 2026',
+    text: 'Service au top, très professionnel!',
+  },
+  {
     author: 'Henri Hammond',
     rating: 5,
     date: 'novembre 2026',
