@@ -50,6 +50,9 @@ function ReviewText({ text }) {
 export default function Testimonials() {
   const reviews = GOOGLE_REVIEWS
   const avg = GOOGLE_RATING
+  // 4 cartes par ligne, ou 3 si cela évite une carte seule sur la dernière ligne
+  const total = reviews.length + testimonials.length
+  const cols3 = total % 4 !== 0 && total % 3 === 0
   return (
     <section id="avis" className="reviews" aria-labelledby="avis-title">
       <div className="wrap">
@@ -64,7 +67,7 @@ export default function Testimonials() {
           </a>
         )}
 
-        <div className={`reviews-grid${reviews.length ? ' has-google' : ''}`}>
+        <div className={`reviews-grid${reviews.length ? ' has-google' : ''}${cols3 ? ' cols-3' : ''}`}>
           {reviews.map(r => (
             <figure className="review-card is-google" key={r.author}>
               <div className="review-top">
