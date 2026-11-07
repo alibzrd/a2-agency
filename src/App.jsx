@@ -5,6 +5,7 @@ import Hero from './components/Hero'
 import Services from './components/Services'
 import CaseStudies from './components/CaseStudies'
 import Process from './components/Process'
+import TrustStrip from './components/TrustStrip'
 import Feed from './components/Feed'
 import Videos from './components/Videos'
 import Storytelling from './components/Storytelling'
@@ -52,6 +53,7 @@ function App() {
       {legal ? <Legal page={legal} /> : (
         <main>
           <Hero />
+          <TrustStrip />
           <Services />
           <CaseStudies />
           <Feed />

@@ -1,8 +1,11 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { MessageCircle, Mail, CheckCircle2, CalendarCheck } from 'lucide-react'
 import { whatsappLink, mailtoLink, WEB3FORMS_KEY, BOOKING_URL } from '../contact'
 
-const needs = ['Contenus & réseaux', 'Identité & branding', 'Site web', 'Plusieurs besoins', 'Autre']
+// Offre d'appel : « Audit gratuit de votre Instagram en 15 min » (lien #audit depuis le haut de page)
+export const AUDIT_NEED = 'Audit Instagram gratuit (15 min)'
+const DEFAULT_NEED = 'Contenus & réseaux'
+const needs = [AUDIT_NEED, 'Contenus & réseaux', 'Identité & branding', 'Site web', 'Plusieurs besoins', 'Autre']
 // « Comment nous avez-vous connus ? » : pour savoir d'où viennent les demandes (point mensuel)
 const origins = ['Recherche Google', 'Annonce Google', 'Instagram', 'LinkedIn', 'Malt', 'Bouche-à-oreille', 'Autre']
 const channels = [
@@ -11,13 +14,24 @@ const channels = [
 ]
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', need: needs[0], origin: '', message: '', botcheck: false })
+  const [form, setForm] = useState({ name: '', email: '', need: DEFAULT_NEED, origin: '', message: '', botcheck: false })
   const [channel, setChannel] = useState('whatsapp')
   const [status, setStatus] = useState('idle') // idle | sending | sent | error
   const current = channels.find(c => c.id === channel)
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
   const formRef = useRef(null)
+
+  // Lien #audit : on choisit « Audit Instagram gratuit » et on prépare le début du message
+  useEffect(() => {
+    const pickAudit = () => {
+      if (window.location.hash !== '#audit') return
+      setForm(f => ({ ...f, need: AUDIT_NEED, message: f.message || 'Mon compte Instagram : @' }))
+    }
+    pickAudit()
+    window.addEventListener('hashchange', pickAudit)
+    return () => window.removeEventListener('hashchange', pickAudit)
+  }, [])
 
   // WhatsApp : ouvre la conversation avec le message prêt. Email : envoi direct via Web3Forms
   // (ou, si la clé n'est pas encore renseignée, ouverture de la messagerie du visiteur).
@@ -57,7 +71,7 @@ export default function Contact() {
       const data = await res.json()
       if (!data.success) throw new Error(data.message)
       setStatus('sent')
-      setForm({ name: '', email: '', need: needs[0], origin: '', message: '', botcheck: false })
+      setForm({ name: '', email: '', need: DEFAULT_NEED, origin: '', message: '', botcheck: false })
     } catch {
       setStatus('error')
     }
@@ -76,7 +90,7 @@ export default function Contact() {
           </div>
         )}
 
-        <form className="form-card" onSubmit={handleSubmit} ref={formRef}>
+        <form id="audit" className="form-card" onSubmit={handleSubmit} ref={formRef}>
           <p className="form-intro">Ou décrivez votre projet ici : on prépare le message pour vous.</p>
           <div className="channel-pick">
             <span>Recevoir votre message par</span>

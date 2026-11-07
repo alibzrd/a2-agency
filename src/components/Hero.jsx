@@ -53,9 +53,12 @@ export default function Hero() {
             Branding, contenus et sites web pour les commerces, les clubs et les marques qui veulent marquer.
           </motion.p>
           <motion.div className="actions" initial="hidden" animate="visible" variants={rise} custom={2}>
-            <a href="#contact" className="btn btn-fill">Demander un devis</a>
-            <a href="#expertises" className="btn btn-ghost">Voir nos réalisations</a>
+            <a href="#audit" className="btn btn-fill">Audit Instagram gratuit</a>
+            <a href="#contact" className="btn btn-ghost">Demander un devis</a>
           </motion.div>
+          <motion.p className="hero-offer" initial="hidden" animate="visible" variants={rise} custom={3}>
+            15 min, gratuit et sans engagement : on regarde votre compte et on vous dit quoi améliorer.
+          </motion.p>
         </div>
 
         <motion.div

@@ -190,3 +190,5 @@ footer a:hover { color: var(--text); }
   .drop-menu { left: 20px; right: 20px; width: auto; }
 }
 @media (prefers-reduced-motion: reduce) { .drop-menu { animation: none; } }
+.audit-offer { margin: 0 auto 18px; max-width: 560px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 12px; background: rgba(194, 231, 255, .06); font-size: 15px; }
+.audit-offer b { color: var(--accent); }
