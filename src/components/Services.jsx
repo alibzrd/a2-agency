@@ -16,7 +16,6 @@ function Links({ more }) {
   return (
     <div className="actions links">
       {more && <a href={more.href} className="link">{more.label} <ChevronRight size={16} /></a>}
-      <a href="#contact" className="link">Demander un devis <ChevronRight size={16} /></a>
     </div>
   )
 }

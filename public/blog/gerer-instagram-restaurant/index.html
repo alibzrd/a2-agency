@@ -25,8 +25,13 @@
 <body>
 <header class="top"><div class="wrap">
   <a href="/" aria-label="A² Agency, retour à l'accueil"><img src="/logo-mark.png" alt="A² Agency" width="38" height="40"></a>
-  <nav aria-label="Navigation"><a class="hide-sm" href="/blog/">Blog</a><a class="hide-sm" href="/realisations/">Études de cas</a><a class="hide-sm" href="/creation-site-internet/">Sites web</a><a class="hide-sm" href="/gestion-reseaux-sociaux/">Réseaux sociaux</a><a class="btn btn-primary" href="/#contact">Demander un devis</a></nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Ouvrir le menu" data-blog-latest="2026-11-06">
+    <span class="menu-btn-label">Menu</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span class="menu-dot" hidden></span>
+  </button>
 </div></header>
+<div class="drop-backdrop" hidden></div>
+<nav id="site-menu" class="drop-menu" aria-label="Navigation principale" hidden><a href="/#expertises">Expertises</a><a href="/#feed">Feed Instagram</a><a href="/#agence">Agence</a><a href="/realisations/">Études de cas</a><a href="/blog/" aria-current="page">Blog<span class="nav-new" hidden>Nouveau</span></a><a href="/#contact" class="btn btn-primary drop-cta">Demander un devis</a></nav>
+<script src="/menu.js" defer></script>
 <main>
   <section class="hero" style="padding-bottom: 40px"><div class="wrap post">
     <p class="crumbs"><a href="/">Accueil</a> › <a href="/blog/">Blog</a> › Réseaux sociaux</p>

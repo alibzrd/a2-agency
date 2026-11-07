@@ -662,3 +662,59 @@ mark.todo { background: rgba(255, 196, 87, .15); color: #ffc457; padding: .05rem
   .drop-menu { left: var(--gutter); right: var(--gutter); width: auto; }
 }
 @media (prefers-reduced-motion: reduce) { .drop-menu { animation: none; } }
+
+/* ─── Accueil plus court ─── */
+/* Expertises : les 3 tuiles sur une seule ligne, visuels réduits */
+.tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 84rem; margin: 0 auto; }
+.tile, .tile.is-wide { grid-column: auto; min-height: 0; padding: 2.25rem 1.25rem 0; }
+.tile .h-tile { font-size: clamp(24px, 2.2vw, 30px); }
+.tile .sub { font-size: 16px; }
+.tile .scope { font-size: 13px; }
+.tile-art { padding-top: 1.75rem; }
+.art-phones .print-card, .art-phones .chip { display: none; }
+.art-phones .phone { --w: clamp(84px, 7.5vw, 112px); margin-bottom: -22%; }
+.art-phones .phone:nth-child(3) { --w: clamp(100px, 9vw, 134px); }
+.art-brand { height: clamp(220px, 18vw, 270px); }
+.art-brand .brand-card.is-logo { width: 46%; }
+.art-brand .brand-card.is-poster { width: 46%; }
+.art-brand .chip { display: none; }
+.art-sites .segmented-sm { display: none; }
+.browser-shot { width: 100%; margin-bottom: -1.5rem; }
+@media (max-width: 960px) {
+  .tiles { grid-template-columns: minmax(0, 1fr); max-width: 34rem; }
+  .art-phones .phone { --w: 25vw; }
+  .art-phones .phone:nth-child(3) { --w: 29vw; }
+}
+@media (max-width: 560px) {
+  .tile, .tile.is-wide { padding-top: 1.75rem; }
+  .tile .icon-badge { width: 40px; height: 40px; margin-bottom: .8rem; }
+  .art-brand, .art-sites { display: none; }
+  .art-phones .phone { --w: 22vw; }
+  .art-phones .phone:nth-child(3) { --w: 26vw; }
+}
+
+/* Études de cas : sur téléphone, les cartes défilent côte à côte au doigt */
+@media (max-width: 900px) {
+  .cases-grid {
+    grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: min(78vw, 22rem);
+    max-width: none; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+    margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter));
+    padding: 0 var(--gutter) .5rem; scroll-padding-inline: var(--gutter);
+  }
+  .cases-grid::-webkit-scrollbar { display: none; }
+  .case-tile { scroll-snap-align: start; }
+  .case-tile img { aspect-ratio: 16 / 10; }
+  .case-body p { display: none; }
+}
+
+/* Comment on travaille : 4 étapes */
+.process { padding: clamp(3rem, 7vw, 5.5rem) 0; text-align: center; }
+.process-steps { list-style: none; padding: 0; margin: 2rem auto 0; max-width: 66rem; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; text-align: left; counter-reset: none; }
+.process-steps li { position: relative; padding: 1.25rem 1.15rem 1.3rem; border: 1px solid var(--line); border-radius: 16px; background: rgba(15, 28, 49, .45); }
+.process-num { position: absolute; top: 1rem; right: 1.1rem; font-size: 13px; font-weight: 700; color: var(--muted); }
+.process-ico { color: var(--ice); margin-bottom: .7rem; }
+.process-steps h3 { margin: 0 0 .35rem; font-size: 17px; letter-spacing: -.01em; }
+.process-steps p { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.5; }
+.process-cta { margin: 1.5rem 0 0; }
+@media (max-width: 900px) { .process-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 40rem; } }
+@media (max-width: 420px) { .process-steps { gap: .6rem; } .process-steps li { padding: 1rem .9rem 1.05rem; } .process-steps p { font-size: 13.5px; } }
