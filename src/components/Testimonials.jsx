@@ -11,12 +11,6 @@ const testimonials = [
     role: 'Restaurant · gestion Instagram',
     avatar: '/feed/smash-gourmet-avatar.webp',
   },
-  {
-    quote: "Arthur a tout de suite compris l'univers que je voulais pour Nanalash. Mon identité est élégante et mes clientes me la complimentent souvent.",
-    name: 'Nawel',
-    role: 'Fondatrice de Nanalash · identité visuelle',
-    initial: 'N',
-  },
 ]
 
 function Stars({ value, size = 16 }) {
