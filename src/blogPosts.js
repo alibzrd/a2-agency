@@ -1,6 +1,15 @@
 // Fichier généré par gen_blog.py : ne pas modifier à la main
 export const BLOG_POSTS = [
   {
+    "slug": "site-vitrine-ou-instagram",
+    "title": "Site vitrine ou page Instagram : de quoi votre commerce a vraiment besoin ?",
+    "category": "Sites web",
+    "date": "23 novembre 2026",
+    "iso": "2026-11-23",
+    "read": 6,
+    "text": "Ce que chaque outil fait le mieux, ce qu'il vous faut selon votre activité, et par où commencer avec un petit budget."
+  },
+  {
     "slug": "avoir-plus-avis-google",
     "title": "Comment avoir plus d'avis Google : la méthode simple",
     "category": "Google",
