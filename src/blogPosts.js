@@ -1,6 +1,15 @@
 // Fichier généré par gen_blog.py : ne pas modifier à la main
 export const BLOG_POSTS = [
   {
+    "slug": "instagram-bar-brasserie",
+    "title": "Instagram pour un bar ou une brasserie : 7 idées pour remplir la salle",
+    "category": "Réseaux sociaux",
+    "date": "26 novembre 2026",
+    "iso": "2026-11-26",
+    "read": 6,
+    "text": "Afterwork, soirées match, terrasse, formule du midi : 7 idées concrètes pour qu'Instagram fasse venir du monde chez vous."
+  },
+  {
     "slug": "site-vitrine-ou-instagram",
     "title": "Site vitrine ou page Instagram : de quoi votre commerce a vraiment besoin ?",
     "category": "Sites web",

@@ -455,7 +455,7 @@ mark.todo { background: rgba(255, 196, 87, .15); color: #ffc457; padding: .05rem
 
 /* ─── Pied de page ─── */
 .site-footer { border-top: 1px solid var(--line); background: var(--bg-2); color: var(--muted); font-size: 12px; line-height: 1.33; padding: 2.5rem 0 1.5rem; }
-.footer-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--line); }
+.footer-cols { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--line); }
 .footer-cols h4 { color: var(--text); font-weight: 600; font-size: 12px; margin-bottom: .75rem; }
 .footer-cols ul { list-style: none; display: grid; gap: .6rem; }
 .footer-cols a { text-decoration: none; color: var(--muted); }

@@ -2,6 +2,7 @@ import { whatsappLink, INSTAGRAM_URL, LINKEDIN_URL, MALT_URL } from '../contact'
 
 const cols = [
   { title: 'Expertises', links: [['Réseaux sociaux', '/gestion-reseaux-sociaux/'], ['Logo & identité visuelle', '/creation-logo-identite-visuelle/'], ['Affiches, flyers & enseignes', '/creation-affiches-flyers/'], ['Création de site internet', '/creation-site-internet/'], ['Audit Instagram gratuit', '/audit-instagram-gratuit/']] },
+  { title: 'Secteurs', links: [['Restaurants et bars', '/communication-restaurant/'], ['Beauté et barbiers', '/communication-beaute-barbier/'], ['Garages et location de voitures', '/communication-automobile/']] },
   { title: "L'agence", links: [['Agence de communication digitale', '/agence-communication-digitale/'], ['Études de cas', '/realisations/'], ['Blog', '/blog/'], ['Feed Instagram', '#feed'], ['Notre histoire', '#agence'], ['Questions fréquentes', '#faq']] },
   { title: 'Contact', links: [['WhatsApp', whatsappLink()], ['Email', '#contact'], ['Instagram', INSTAGRAM_URL], ['LinkedIn', LINKEDIN_URL], ['Malt', MALT_URL], ['Demander un devis', '#contact']] },
 ]
