@@ -759,5 +759,51 @@ mark.todo { background: rgba(255, 196, 87, .15); color: #ffc457; padding: .05rem
   .footer-cols ul { gap: 0; }
   .footer-cols li a { display: inline-block; padding: .6rem 0; font-size: 13px; }
   .footer-legal a { display: inline-block; padding: .6rem 0; }
-  .ribbon .link { display: inline-block; padding: .35rem 0; }
+  .ribbon .link { padding: .35rem 0; }
+}
+
+/* Ordinateur : liens visibles directement dans la barre du haut (plus de clic sur « Menu ») */
+.drop-menu:not(.is-open) { display: none; }
+@media (min-width: 1024px) {
+  .site-header .menu-btn { display: none; }
+  .drop-backdrop { display: none; }
+  .drop-menu, .drop-menu:not(.is-open) {
+    display: flex; flex-direction: row; align-items: center; gap: .15rem;
+    top: 0; height: 48px; width: auto; padding: 0; z-index: 51;
+    background: none; border: 0; box-shadow: none; animation: none;
+  }
+  .drop-menu a:not(.btn) { padding: .35rem .7rem; font-size: 13.5px; color: var(--muted); white-space: nowrap; }
+  .drop-menu a:not(.btn):hover, .drop-menu a:not(.btn):focus-visible { background: none; color: var(--text); }
+  .drop-menu .drop-cta { margin: 0 0 0 .6rem; min-height: 32px; padding: .3rem .95rem; font-size: 13.5px; }
+}
+
+/* Points de position sous les rangées qui défilent au doigt */
+.scroll-dots { display: flex; justify-content: center; gap: 2px; margin-top: .6rem; }
+.scroll-dots button { width: 28px; height: 28px; border: 0; padding: 0; background: none; cursor: pointer; display: grid; place-items: center; }
+.scroll-dots button::before { content: ''; width: 7px; height: 7px; border-radius: 99px; background: rgba(194, 231, 255, .28); transition: width .25s, background .25s; }
+.scroll-dots button.is-active::before { width: 20px; background: var(--ice); }
+@media (prefers-reduced-motion: reduce) { .scroll-dots button::before { transition: none; } }
+
+/* « C'est Arthur qui vous répond » au-dessus du formulaire */
+.form-who { display: flex; align-items: center; gap: .9rem; max-width: 34rem; margin: 1.75rem auto 0; text-align: left; }
+.form-who img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; flex: none; box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px rgba(194, 231, 255, .45); }
+.form-who p { color: var(--muted); font-size: 15px; line-height: 1.45; }
+.form-who b { color: var(--text); font-weight: 600; }
+
+/* Mobile : haut de page et feed plus compacts, avis qui s'estompent sur les bords */
+@media (max-width: 560px) {
+  .ribbon-lead { display: none; }
+  .ribbon { padding-top: .6rem; padding-bottom: .6rem; }
+  .stage { height: 420px; }
+  .stage .phone { --w: 196px; }
+  .stage .chip.c2 { display: none; }
+  .feed { padding: 3.5rem 0; }
+  .feed-phone { --w: 228px; }
+  .feed .split { display: none; }
+  .feed-copy { margin-top: 1.25rem; }
+  .feed-explain { font-size: 15px; margin-top: .6rem; }
+  .reviews-marquee {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  }
 }

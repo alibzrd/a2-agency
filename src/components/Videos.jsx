@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { Play, X, Volume2 } from 'lucide-react'
+import ScrollDots from './ScrollDots'
 
 const videos = [
   { id: 'evenement', title: 'Événement', note: "Couverture d'une soirée" },
@@ -78,6 +79,7 @@ function Player({ video, onClose }) {
 
 export default function Videos() {
   const [open, setOpen] = useState(null)
+  const row = useRef(null)
 
   return (
     <section id="videos" className="reels">
@@ -85,9 +87,10 @@ export default function Videos() {
         <h2 className="two-tone reels-title">Vidéo & Reels. <span>Des formats courts qui retiennent l'attention.</span></h2>
         <p className="reels-hint muted"><Volume2 size={15} /> Ouvrez une vidéo pour la regarder avec le son.</p>
 
-        <div className="reels-grid">
+        <div className="reels-grid" ref={row}>
           {videos.map(v => <Preview key={v.id} video={v} onOpen={setOpen} />)}
         </div>
+        <ScrollDots target={row} count={videos.length} label="Position dans les vidéos" />
       </div>
 
       <AnimatePresence>

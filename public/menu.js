@@ -44,7 +44,8 @@
     '/gestion-reseaux-sociaux/': 'reseaux',
     '/creation-logo-identite-visuelle/': 'branding',
     '/creation-affiches-flyers/': 'affiches',
-    '/creation-site-internet/': 'site'
+    '/creation-site-internet/': 'site',
+    '/audit-instagram-gratuit/': 'audit'
   };
   var need = NEEDS[location.pathname];
   var devis = need ? '/?besoin=' + need + '#contact' : '/#contact';

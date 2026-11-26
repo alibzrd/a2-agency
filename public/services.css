@@ -215,3 +215,18 @@ footer a:hover { color: var(--text); }
   footer nav a { display: inline-block; padding: 9px 0; }
 }
 @media (prefers-reduced-motion: reduce) { .action-bar { transition: none; } }
+
+/* Ordinateur : liens visibles directement dans la barre du haut (plus de clic sur « Menu ») */
+@media (min-width: 1024px) {
+  .top .menu-btn { display: none; }
+  .drop-backdrop, .drop-backdrop[hidden] { display: none !important; }
+  .drop-menu, .drop-menu[hidden] {
+    display: flex !important; flex-direction: row; align-items: center; gap: 2px;
+    top: 0; height: 68px; width: auto; padding: 0; z-index: 11;
+    background: none; border: 0; box-shadow: none; animation: none;
+  }
+  .drop-menu a:not(.btn) { padding: 6px 11px; font-size: 14.5px; color: var(--muted); white-space: nowrap; }
+  .drop-menu a:not(.btn):hover, .drop-menu a:not(.btn):focus-visible { background: none; color: var(--text); }
+  .drop-menu a[aria-current="page"] { color: var(--text); }
+  .drop-menu .drop-cta { margin: 0 0 0 10px; min-height: 40px; padding: 0 18px; font-size: 14.5px; }
+}

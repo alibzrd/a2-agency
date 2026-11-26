@@ -59,21 +59,17 @@ export default function Header() {
         </div>
       </header>
 
-      {menuOpen && (
-        <>
-          {/* Clic en dehors du menu : il se ferme */}
-          <div className="drop-backdrop" onClick={close} aria-hidden="true" />
-          <nav id="site-menu" className="drop-menu" aria-label="Navigation principale">
-            {navLinks.map(link => (
-              <a key={link.href} href={link.href} onClick={close}>
-                {link.label}
-                {link.href === '/blog/' && blogIsNew && <span className="nav-new">Nouveau</span>}
-              </a>
-            ))}
-            <a href="#contact" className="btn btn-fill drop-cta" onClick={close}>Demander un devis</a>
-          </nav>
-        </>
-      )}
+      {/* Sur ordinateur, les liens s'affichent directement dans la barre du haut ; sur mobile, ils s'ouvrent avec « Menu » */}
+      {menuOpen && <div className="drop-backdrop" onClick={close} aria-hidden="true" />}
+      <nav id="site-menu" className={`drop-menu${menuOpen ? ' is-open' : ''}`} aria-label="Navigation principale">
+        {navLinks.map(link => (
+          <a key={link.href} href={link.href} onClick={close}>
+            {link.label}
+            {link.href === '/blog/' && blogIsNew && <span className="nav-new">Nouveau</span>}
+          </a>
+        ))}
+        <a href="#contact" className="btn btn-fill drop-cta" onClick={close}>Demander un devis</a>
+      </nav>
     </>
   )
 }

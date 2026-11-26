@@ -35,7 +35,7 @@ export default function Hero() {
   return (
     <>
       <div className="ribbon">
-        Une idée, un projet ? On vous répond sous 24 h.
+        <span className="ribbon-lead">Une idée, un projet ? </span>On vous répond sous 24 h.
         <a href="#contact" className="link">Nous écrire <ChevronRight size={14} /></a>
       </div>
 
@@ -57,7 +57,7 @@ export default function Hero() {
             <a href="#contact" className="btn btn-ghost">Demander un devis</a>
           </motion.div>
           <motion.p className="hero-offer" initial="hidden" animate="visible" variants={rise} custom={3}>
-            15 min, gratuit et sans engagement : on regarde votre compte et on vous dit quoi améliorer.
+            15 min, gratuit et sans engagement : on regarde votre compte et on vous dit quoi améliorer. <a href="/audit-instagram-gratuit/" className="link">Comment ça se passe ?</a>
           </motion.p>
         </div>
 

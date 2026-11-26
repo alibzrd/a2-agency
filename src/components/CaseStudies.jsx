@@ -1,4 +1,6 @@
+import { useRef } from 'react'
 import { ChevronRight } from 'lucide-react'
+import ScrollDots from './ScrollDots'
 
 // Études de cas : chaque carte renvoie vers sa page détaillée (public/realisations/<slug>/)
 const cases = [
@@ -29,12 +31,13 @@ const cases = [
 ]
 
 export default function CaseStudies() {
+  const row = useRef(null)
   return (
     <section id="etudes-de-cas" className="cases-home" aria-labelledby="cases-title">
       <div className="wrap">
         <h2 id="cases-title" className="h-section grad">Études de cas.</h2>
         <p className="sub muted">Le besoin, ce qu'on a fait, le résultat.</p>
-        <div className="cases-grid">
+        <div className="cases-grid" ref={row}>
           {cases.map(c => (
             <a key={c.slug} className="case-tile" href={`/realisations/${c.slug}/`}>
               <img src={c.img} alt="" loading="lazy" width="480" height="360" />
@@ -48,6 +51,7 @@ export default function CaseStudies() {
             </a>
           ))}
         </div>
+        <ScrollDots target={row} count={cases.length} label="Position dans les études de cas" />
         <p className="cases-all"><a className="link" href="/realisations/">Toutes les études de cas <ChevronRight size={16} /></a></p>
       </div>
     </section>
