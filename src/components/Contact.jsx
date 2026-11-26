@@ -134,7 +134,7 @@ export default function Contact() {
 
         <div className="form-who">
           <img src="/founders/arthur-mini.webp" alt="" width="56" height="56" loading="lazy" />
-          <p><b>C'est Arthur qui vous répond</b>, sous 24 h. Fondateur d'A² Agency, il suit votre projet du début à la fin.</p>
+          <p><b>C'est Arthur qui vous répond</b>, sous 24&nbsp;h. Fondateur d'A² Agency, il suit votre projet du début à la fin.</p>
         </div>
 
         <form id="audit" className="form-card" onSubmit={handleSubmit} ref={formRef}>
