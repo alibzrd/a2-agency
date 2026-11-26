@@ -1,7 +1,7 @@
 import { Plus } from 'lucide-react'
 
 // Questions fréquentes de l'accueil : réponses reprises des pages services (déjà validées)
-export const FAQ = [
+const FAQ = [
   {
     q: 'Où intervenez-vous ?',
     a: "Partout en France. Tout se fait facilement à distance : échanges par téléphone ou en visio, validations en ligne et livraison des fichiers. L'agence est basée en Normandie, et on peut aussi se rencontrer en Normandie et en Île-de-France.",
