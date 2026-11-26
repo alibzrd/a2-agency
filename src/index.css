@@ -515,28 +515,39 @@ mark.todo { background: rgba(255, 196, 87, .15); color: #ffc457; padding: .05rem
 /* Texte lu par les moteurs de recherche et les lecteurs d’écran, invisible à l’écran */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
-/* Icône fixe « Réserver un appel » sur le côté droit */
+/* Raccourcis de contact fixes : bouton en bas à droite (ordinateur), barre en bas d'écran (mobile) */
 .booking-fab {
-  position: fixed; right: 16px; top: 50%; transform: translateY(-50%); z-index: 40;
-  display: flex; align-items: center; gap: .6rem; text-decoration: none;
-  padding: 5px; border-radius: 999px; color: var(--bg);
+  position: fixed; right: 22px; bottom: 22px; z-index: 40;
+  display: flex; align-items: center; gap: .55rem; text-decoration: none;
+  padding: 6px 18px 6px 6px; border-radius: 999px; color: var(--bg);
   background: var(--ice); box-shadow: 0 12px 30px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.25);
-  transition: box-shadow .3s, background .3s;
-}
-.booking-fab-icon { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; flex: none; }
-.booking-fab-label {
-  max-width: 0; overflow: hidden; white-space: nowrap; opacity: 0;
   font-size: 15px; font-weight: 600; letter-spacing: -0.01em;
-  transition: max-width .35s ease, opacity .25s ease, padding .35s ease;
+  opacity: 0; transform: translateY(12px); pointer-events: none; visibility: hidden;
+  transition: opacity .3s, transform .3s, box-shadow .3s, visibility .3s;
 }
-.booking-fab:hover .booking-fab-label, .booking-fab:focus-visible .booking-fab-label { max-width: 200px; opacity: 1; padding-left: .9rem; }
-.booking-fab:hover { box-shadow: 0 14px 34px rgba(0,0,0,.5), 0 0 0 4px rgba(194,231,255,.25); }
+.booking-fab.is-visible { opacity: 1; transform: none; pointer-events: auto; visibility: visible; }
+.booking-fab-icon { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; flex: none; background: rgba(6,9,18,.08); }
+.booking-fab:hover { background: #fff; box-shadow: 0 14px 34px rgba(0,0,0,.5), 0 0 0 4px rgba(194,231,255,.25); }
+
+.action-bar { display: none; }
 @media (max-width: 640px) {
-  .booking-fab { right: 0; padding: 2px; border-radius: 14px 0 0 14px; box-shadow: 0 10px 24px rgba(0,0,0,.45); }
-  .booking-fab-icon { width: 40px; height: 44px; border-radius: 12px 0 0 12px; }
-  .booking-fab-label { display: none; }
+  .booking-fab { display: none; }
+  .action-bar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+    display: flex; gap: .5rem; padding: .6rem .75rem calc(.6rem + env(safe-area-inset-bottom));
+    background: rgba(6, 9, 18, .9); backdrop-filter: saturate(180%) blur(18px); -webkit-backdrop-filter: saturate(180%) blur(18px);
+    border-top: 1px solid var(--line);
+    transform: translateY(110%); visibility: hidden; transition: transform .3s ease, visibility .3s;
+  }
+  .action-bar.is-visible { transform: none; visibility: visible; }
+  .action-bar a {
+    flex: 1 1 0; min-height: 46px; display: flex; align-items: center; justify-content: center; gap: .45rem;
+    border-radius: 999px; font-size: 15px; font-weight: 600; text-decoration: none; letter-spacing: -0.01em;
+  }
+  .ab-main { background: var(--ice); color: var(--bg); }
+  .ab-alt { color: var(--text); border: 1px solid rgba(194,231,255,.3); }
 }
-@media (prefers-reduced-motion: reduce) { .booking-fab, .booking-fab-label { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .booking-fab, .action-bar { transition: none; } }
 
 /* Section avis compacte */
 .reviews .review-card { gap: .85rem; padding: clamp(1.1rem, 2vw, 1.35rem); border-radius: 18px; }
@@ -723,3 +734,30 @@ mark.todo { background: rgba(255, 196, 87, .15); color: #ffc457; padding: .05rem
 .hero-offer { margin: .9rem auto 0; max-width: 42rem; font-size: 14px; color: var(--muted); }
 #audit { scroll-margin-top: 80px; }
 
+
+/* Questions fréquentes (accueil) */
+.faq-home { padding: clamp(3rem, 7vw, 5.5rem) 0; text-align: center; border-top: 1px solid var(--line); }
+.faq-list { max-width: 46rem; margin: 2rem auto 0; text-align: left; border-top: 1px solid var(--line); }
+.faq-list details { border-bottom: 1px solid var(--line); }
+.faq-list summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1.1rem .25rem; min-height: 56px; font-size: 17px; font-weight: 500; letter-spacing: -0.01em; color: var(--text);
+}
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary svg { flex: none; color: var(--ice); transition: transform .25s ease; }
+.faq-list details[open] summary svg { transform: rotate(45deg); }
+.faq-list summary:hover { color: var(--ice); }
+.faq-list details p { margin: 0; padding: 0 .25rem 1.2rem; color: var(--muted); font-size: 15.5px; line-height: 1.6; max-width: 62ch; }
+.faq-more { margin: 1.5rem 0 0; font-size: 15px; }
+@media (prefers-reduced-motion: reduce) { .faq-list summary svg { transition: none; } }
+
+/* Exemples dans les champs du formulaire */
+.form-card input::placeholder, .form-card textarea::placeholder { color: var(--muted); opacity: .7; }
+
+/* Liens plus faciles à toucher sur mobile (pied de page, bandeau du haut) */
+@media (max-width: 640px) {
+  .footer-cols ul { gap: 0; }
+  .footer-cols li a { display: inline-block; padding: .6rem 0; font-size: 13px; }
+  .footer-legal a { display: inline-block; padding: .6rem 0; }
+  .ribbon .link { display: inline-block; padding: .35rem 0; }
+}

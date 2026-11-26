@@ -192,3 +192,26 @@ footer a:hover { color: var(--text); }
 @media (prefers-reduced-motion: reduce) { .drop-menu { animation: none; } }
 .audit-offer { margin: 0 auto 18px; max-width: 560px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 12px; background: rgba(194, 231, 255, .06); font-size: 15px; }
 .audit-offer b { color: var(--accent); }
+
+/* Barre de contact fixe en bas d'écran (mobile uniquement) */
+.action-bar { display: none; }
+@media (max-width: 640px) {
+  .action-bar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 15;
+    display: flex; gap: 8px; padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(6, 9, 18, .9); backdrop-filter: saturate(180%) blur(18px); -webkit-backdrop-filter: saturate(180%) blur(18px);
+    border-top: 1px solid var(--line);
+    transform: translateY(110%); visibility: hidden; transition: transform .3s ease, visibility .3s;
+  }
+  .action-bar.is-visible { transform: none; visibility: visible; }
+  .action-bar a {
+    flex: 1 1 0; min-height: 46px; display: flex; align-items: center; justify-content: center; gap: 7px;
+    border-radius: 999px; font-size: 15px; font-weight: 600; text-decoration: none;
+  }
+  .action-bar .ab-main { background: var(--accent); color: var(--ink); }
+  .action-bar .ab-alt { color: var(--text); border: 1px solid rgba(194, 231, 255, .3); }
+  /* Liens du pied de page plus faciles à toucher */
+  footer nav { gap: 2px 20px; }
+  footer nav a { display: inline-block; padding: 9px 0; }
+}
+@media (prefers-reduced-motion: reduce) { .action-bar { transition: none; } }

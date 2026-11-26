@@ -9,6 +9,7 @@ import Feed from './components/Feed'
 import Videos from './components/Videos'
 import Storytelling from './components/Storytelling'
 import Testimonials from './components/Testimonials'
+import Faq from './components/Faq'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import BookingButton from './components/BookingButton'
@@ -59,6 +60,7 @@ function App() {
           <Testimonials />
           <Storytelling />
           <Process />
+          <Faq />
           <Contact />
         </main>
       )}

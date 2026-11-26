@@ -5,7 +5,20 @@ import { whatsappLink, mailtoLink, WEB3FORMS_KEY, BOOKING_URL } from '../contact
 // Offre d'appel : « Audit gratuit de votre Instagram en 15 min » (lien #audit depuis le haut de page)
 export const AUDIT_NEED = 'Audit Instagram gratuit (15 min)'
 const DEFAULT_NEED = 'Contenus & réseaux'
-const needs = [AUDIT_NEED, 'Contenus & réseaux', 'Identité & branding', 'Site web', 'Plusieurs besoins', 'Autre']
+const needs = [AUDIT_NEED, 'Contenus & réseaux', 'Identité & branding', 'Affiches & flyers', 'Site web', 'Plusieurs besoins', 'Autre']
+// Lien « /?besoin=site#contact » depuis les pages services : le besoin est déjà choisi
+const NEED_PARAM = { audit: AUDIT_NEED, reseaux: 'Contenus & réseaux', branding: 'Identité & branding', affiches: 'Affiches & flyers', site: 'Site web' }
+// Exemple affiché dans « Votre projet » selon le besoin choisi, pour aider à se lancer
+const EXAMPLES = {
+  [AUDIT_NEED]: 'Ex. : @moncompte. Je publie peu et je ne sais pas quoi poster.',
+  'Contenus & réseaux': 'Ex. : je tiens un restaurant et je voudrais un Instagram régulier et plus pro.',
+  'Identité & branding': 'Ex. : je lance ma marque et j’ai besoin d’un logo et de couleurs.',
+  'Affiches & flyers': 'Ex. : une affiche et des flyers pour un événement le mois prochain.',
+  'Site web': 'Ex. : un site vitrine pour présenter mon activité et recevoir des demandes.',
+  'Plusieurs besoins': 'Ex. : un logo, puis un site et des posts Instagram.',
+  Autre: 'Dites-nous en quelques mots ce que vous avez en tête.',
+}
+const DRAFT_KEY = 'a2-contact-brouillon'
 // « Comment nous avez-vous connus ? » : pour savoir d'où viennent les demandes (point mensuel)
 const origins = ['Recherche Google', 'Annonce Google', 'Instagram', 'LinkedIn', 'Malt', 'Bouche-à-oreille', 'Autre']
 const channels = [
@@ -16,11 +29,35 @@ const channels = [
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', need: DEFAULT_NEED, origin: '', message: '', botcheck: false })
   const [channel, setChannel] = useState('whatsapp')
-  const [status, setStatus] = useState('idle') // idle | sending | sent | error
+  const [status, setStatus] = useState('idle') // idle | sending | sent | error | opened (WhatsApp ouvert)
   const current = channels.find(c => c.id === channel)
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
   const formRef = useRef(null)
+
+  // Besoin présélectionné depuis une page service, sinon brouillon gardé d'une visite précédente
+  const ready = useRef(false)
+  useEffect(() => {
+    let draft = null
+    try { draft = JSON.parse(localStorage.getItem(DRAFT_KEY) || 'null') } catch { /* stockage indisponible */ }
+    const fromUrl = NEED_PARAM[new URLSearchParams(window.location.search).get('besoin')]
+    if (draft || fromUrl) {
+      setForm(f => ({
+        ...f,
+        ...(draft ? { name: draft.name || '', origin: draft.origin || '', message: draft.message || '', need: draft.need || f.need } : {}),
+        ...(fromUrl ? { need: fromUrl } : {}),
+      }))
+    }
+    ready.current = true
+  }, [])
+  // On garde le brouillon pendant la saisie : rien n'est perdu si le visiteur quitte la page et revient
+  useEffect(() => {
+    if (!ready.current) return
+    try {
+      if (form.name || form.message) localStorage.setItem(DRAFT_KEY, JSON.stringify({ name: form.name, need: form.need, origin: form.origin, message: form.message }))
+      else localStorage.removeItem(DRAFT_KEY)
+    } catch { /* stockage indisponible */ }
+  }, [form.name, form.need, form.origin, form.message])
 
   // Lien #audit : on choisit « Audit Instagram gratuit » et on prépare le début du message
   useEffect(() => {
@@ -44,7 +81,11 @@ export default function Contact() {
       (form.origin ? `Je vous ai connus par : ${form.origin}.\n` : '') + '\n' +
       form.message.trim()
     if (channel === 'whatsapp') {
-      window.open(whatsappLink(text), '_blank', 'noopener,noreferrer')
+      // Certains navigateurs mobiles bloquent les nouveaux onglets : on ouvre alors WhatsApp dans la page
+      const w = window.open(whatsappLink(text), '_blank', 'noopener,noreferrer')
+      if (!w) window.location.href = whatsappLink(text)
+      setStatus('opened')
+      try { localStorage.removeItem(DRAFT_KEY) } catch { /* stockage indisponible */ }
       return
     }
     if (!WEB3FORMS_KEY) {
@@ -71,6 +112,7 @@ export default function Contact() {
       const data = await res.json()
       if (!data.success) throw new Error(data.message)
       setStatus('sent')
+      try { localStorage.removeItem(DRAFT_KEY) } catch { /* stockage indisponible */ }
       setForm({ name: '', email: '', need: DEFAULT_NEED, origin: '', message: '', botcheck: false })
     } catch {
       setStatus('error')
@@ -98,7 +140,7 @@ export default function Contact() {
               {channels.map(c => (
                 <button
                   key={c.id} type="button" role="radio" aria-checked={channel === c.id}
-                  className={channel === c.id ? 'is-active' : ''} onClick={() => setChannel(c.id)}
+                  className={channel === c.id ? 'is-active' : ''} onClick={() => { setChannel(c.id); setStatus('idle') }}
                 >
                   {c.label}
                 </button>
@@ -108,7 +150,7 @@ export default function Contact() {
           <div className="row">
             <div className="field">
               <label htmlFor="c-name">Nom</label>
-              <input id="c-name" type="text" name="name" value={form.name} onChange={handleChange} required autoComplete="name" />
+              <input id="c-name" type="text" name="name" value={form.name} onChange={handleChange} required autoComplete="name" placeholder="Prénom et nom" />
             </div>
             <div className="field">
               <label htmlFor="c-need">Votre besoin</label>
@@ -134,7 +176,7 @@ export default function Contact() {
             checked={form.botcheck} onChange={e => setForm({ ...form, botcheck: e.target.checked })} />
           <div className="field">
             <label htmlFor="c-msg">Votre projet</label>
-            <textarea id="c-msg" name="message" value={form.message} onChange={handleChange} required rows={5} />
+            <textarea id="c-msg" name="message" value={form.message} onChange={handleChange} required rows={5} placeholder={EXAMPLES[form.need]} />
           </div>
           {status === 'sent' && channel === 'email' ? (
             <p className="form-success" role="status"><CheckCircle2 size={20} /> Message envoyé ! On vous répond sous 24 h.</p>
@@ -143,9 +185,11 @@ export default function Contact() {
               <current.Icon size={18} /> {channel === 'whatsapp' ? 'Envoyer sur WhatsApp' : status === 'sending' ? 'Envoi en cours…' : 'Envoyer par email'}
             </button>
           )}
-          <p className="form-note" role={status === 'error' ? 'alert' : undefined}>
+          <p className="form-note" role={status === 'error' ? 'alert' : status === 'opened' ? 'status' : undefined}>
             {channel === 'whatsapp'
-              ? "WhatsApp s'ouvre avec votre message pré-rempli. Il ne reste qu'à appuyer sur envoyer."
+              ? status === 'opened'
+                ? "WhatsApp s'est ouvert avec votre message : il ne reste qu'à appuyer sur envoyer. Rien ne s'est ouvert ? Choisissez « Email » plus haut."
+                : "WhatsApp s'ouvre avec votre message pré-rempli. Il ne reste qu'à appuyer sur envoyer."
               : status === 'error'
                 ? "L'envoi n'a pas fonctionné. Réessayez dans un instant ou écrivez-nous sur WhatsApp."
                 : WEB3FORMS_KEY

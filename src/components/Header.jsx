@@ -18,6 +18,7 @@ function useBlogIsNew() {
 const navLinks = [
   { label: 'Expertises', href: '#expertises' },
   { label: 'Feed Instagram', href: '#feed' },
+  { label: 'Avis clients', href: '#avis' },
   { label: 'Agence', href: '#agence' },
   { label: 'Études de cas', href: '/realisations/' },
   { label: 'Blog', href: '/blog/' },
